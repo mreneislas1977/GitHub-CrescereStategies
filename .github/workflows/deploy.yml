@@ -22,10 +22,12 @@ jobs:
 
       - name: 'Build and Push'
         run: |
-          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/crescere-web
+          gcloud builds submit --suppress-logs --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/crescere-web
 
       - name: 'Deploy to Cloud Run'
         run: |
-          gcloud run deploy crescere-web             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/crescere-web             --platform managed             --region us-east1             --allow-unauthenticated
-# Triggering Build 5
-# Triggering Build 5
+          gcloud run deploy crescere-web \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/crescere-web \
+            --platform managed \
+            --region us-east1 \
+            --allow-unauthenticated
