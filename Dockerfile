@@ -9,7 +9,7 @@ FROM node:20-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
-# Copy only the standalone output and static assets
+# Copy the standalone output and static assets
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
