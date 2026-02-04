@@ -1,1 +1,23 @@
-.cache/
+# Dependencies
+node_modules/
+.next/
+out/
+build/
+
+# Environment variables
+.env*.local
+
+# System/Misc
+.bash*
+.codeoss/
+.config/
+.docker/
+.gemini/
+.gitconfig
+.npm/
+.profile
+.sudo_as_admin_successful
+.vscode/
+*.zip
+t
+README-cloudshell.txt
