@@ -9,11 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "chart.js": "latest",
+    "firebase": "^12.8.0",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "firebase": "latest",
-    "chart.js": "latest",
-    "react-chartjs-2": "latest"
+    "react-chartjs-2": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "@types/react": "^19.2.11",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
   }
 }
