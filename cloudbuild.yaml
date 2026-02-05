@@ -1,5 +1,4 @@
-steps:
-  # 1. Build the Docker image for Crescere Strategies
+# 1. Build the Docker image for Crescere Strategies
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build', 
@@ -38,4 +37,4 @@ options:
 
 # Tagging the image so you can find it easily
 images:
-  - 'gcr.io/$PROJECT_ID/crescere-web:$COMMIT_SHA'crescere-web'
+  - 'gcr.io/$PROJECT_ID/crescere-web:$COMMIT_SHA'
