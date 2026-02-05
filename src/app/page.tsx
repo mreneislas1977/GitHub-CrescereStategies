@@ -1,5 +1,5 @@
-export const dynamic = "force-dynamic";
 'use client';
+export const dynamic = "force-dynamic";
 import { db } from '../firebaseConfig';
 import { collection, getDocs, limit, query } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
@@ -15,7 +15,7 @@ export default function Home() {
         setDbStatus('Database Connected successfully!');
       } catch (error) {
         console.error(error);
-        setDbStatus('App Live, but Database Connection failed. Check rules.');
+        setDbStatus('App Live, but Database Connection failed.');
       }
     }
     checkConnection();
@@ -25,7 +25,6 @@ export default function Home() {
     <main style={{ padding: '4rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
       <h1 style={{ color: '#0070f3' }}>Crescere Strategies</h1>
       <p style={{ fontSize: '1.2rem' }}>Status: <strong>{dbStatus}</strong></p>
-      <p>Project ID: gen-lang-client-0572328590</p>
     </main>
   );
 }
