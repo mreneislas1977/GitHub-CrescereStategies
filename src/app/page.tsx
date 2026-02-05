@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 'use client';
 import { db } from '../firebaseConfig';
 import { collection, getDocs, limit, query } from 'firebase/firestore';
