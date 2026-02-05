@@ -45,7 +45,7 @@ const Solutions: React.FC = () => {
               onMouseEnter={() => setActiveHover(sol.id)}
               onMouseLeave={() => setActiveHover(null)}
             >
-              <div className={}>
+              <div className={`text-4xl mb-6 transition-colors duration-300 ${activeHover === sol.id ? 'text-crescere-gold' : 'text-crescere-green'}`}>
                 {sol.icon}
               </div>
               <h3 className="text-2xl font-bold mb-4">{sol.title}</h3>
@@ -53,7 +53,7 @@ const Solutions: React.FC = () => {
                 {sol.description}
               </p>
               
-              <div className={}>
+              <div className={`flex items-center gap-2 font-bold text-sm uppercase tracking-wider transition-all duration-300 ${activeHover === sol.id ? 'text-crescere-gold translate-x-2' : 'text-gray-400'}`}>
                 <span>Learn More</span>
                 <FaArrowRight />
               </div>
