@@ -1,89 +1,62 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Insights', href: '/insights', isHighlight: true },
-  ];
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled || isMenuOpen ? 'bg-crescere-green py-4 shadow-lg' : 'bg-transparent py-6'
-    }`}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Brand */}
-        <Link href="/" className="font-display text-2xl font-bold text-white z-50">
-          CRESCERE<span className="text-crescere-gold">.</span>
+    <header className="fixed w-full z-50 bg-crescere-cream/95 backdrop-blur-md border-b border-crescere-green/10 shadow-sm">
+      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+        {/* NAV LOGO */}
+        <Link href="/" className="flex items-center gap-2">
+          <div className="relative h-14 w-48">
+            <Image 
+              src="/Cswril.png" 
+              alt="Crescere Strategies" 
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </div>
         </Link>
 
-        {/* Mobile Hamburger Toggle */}
-        <button 
-          className="md:hidden z-50 text-white p-2"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <div className="space-y-2">
-            <span className={`block w-8 h-0.5 bg-white transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
-            <span className={`block w-8 h-0.5 bg-white transition-opacity ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-            <span className={`block w-8 h-0.5 bg-white transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
-          </div>
-        </button>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              className={`text-sm font-bold uppercase tracking-widest transition ${
-                link.isHighlight ? 'text-crescere-gold border border-crescere-gold px-4 py-2 rounded hover:bg-crescere-gold hover:text-crescere-green' : 'text-crescere-cream hover:text-crescere-gold'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link href="#contact" className="bg-crescere-gold text-crescere-green px-5 py-2 rounded font-bold hover:brightness-110 transition text-sm uppercase tracking-widest">
-            Contact
-          </Link>
-        </div>
-
-        {/* Mobile Full-Screen Overlay */}
-        <div className={`fixed inset-0 bg-crescere-green flex flex-col items-center justify-center space-y-8 transition-transform duration-500 md:hidden ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}>
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              onClick={() => setIsMenuOpen(false)}
-              className="text-2xl font-display font-bold text-white hover:text-crescere-gold transition"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link 
-            href="#contact" 
-            onClick={() => setIsMenuOpen(false)}
-            className="bg-crescere-gold text-crescere-green px-10 py-4 rounded-full font-bold text-xl"
-          >
+        {/* DESKTOP NAV */}
+        <nav className="hidden md:flex gap-8 font-medium text-crescere-green items-center">
+          <Link href="#about" className="hover:text-crescere-gold transition">About</Link>
+          <Link href="#solutions" className="hover:text-crescere-gold transition">Solutions</Link>
+          <Link href="#process" className="hover:text-crescere-gold transition">Process</Link>
+          <Link href="/insights" className="hover:text-crescere-gold transition">Insights</Link>
+          <Link href="#contact" className="px-5 py-2 bg-crescere-green text-white rounded-lg hover:bg-opacity-90 transition shadow-md">
             Contact Us
           </Link>
-        </div>
+        </nav>
+
+        {/* MOBILE MENU BUTTON */}
+        <button 
+          className="md:hidden text-crescere-green text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        {/* MOBILE MENU */}
+        {isOpen && (
+          <div className="absolute top-full left-0 w-full bg-crescere-cream border-b border-crescere-green/10 md:hidden flex flex-col items-center py-8 gap-6 shadow-xl">
+            <Link href="#about" onClick={() => setIsOpen(false)}>About</Link>
+            <Link href="#solutions" onClick={() => setIsOpen(false)}>Solutions</Link>
+            <Link href="#process" onClick={() => setIsOpen(false)}>Process</Link>
+            <Link href="/insights" onClick={() => setIsOpen(false)}>Insights</Link>
+            <Link href="#contact" onClick={() => setIsOpen(false)} className="px-8 py-3 bg-crescere-green text-white rounded-lg font-bold">
+              Contact Us
+            </Link>
+          </div>
+        )}
       </div>
-    </nav>
+    </header>
   );
 };
 
