@@ -1,9 +1,25 @@
 steps:
-  # 1. Build the container image
+  # 1. Build the container image with Build Args
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/crescere-web', '.']
+    args: 
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/crescere-web'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyDMoSO2-v0cLMQJddMfuYL-L7w17u0FFmo'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=gen-lang-client-0572328590.firebaseapp.com'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_FIREBASE_PROJECT_ID=gen-lang-client-0572328590'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=gen-lang-client-0572328590.firebasestorage.app'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=782480574555'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_FIREBASE_APP_ID=1:782480574555:web:ddbec0e2881ab9dca9977e'
+      - '.'
 
-  # 2. Push the image to the registry
+  # 2. Push the image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/crescere-web']
 
