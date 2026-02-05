@@ -1,0 +1,28 @@
+steps:
+  # 1. Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/crescere-web', '.']
+
+  # 2. Push the image to the registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/crescere-web']
+
+  # 3. Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'crescere-web'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/crescere-web'
+      - '--region'
+      - 'us-east1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyDMoSO2-v0cLMQJddMfuYL-L7w17u0FFmo,NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=gen-lang-client-0572328590.firebaseapp.com,NEXT_PUBLIC_FIREBASE_PROJECT_ID=gen-lang-client-0572328590,NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=gen-lang-client-0572328590.firebasestorage.app,NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=782480574555,NEXT_PUBLIC_FIREBASE_APP_ID=1:782480574555:web:ddbec0e2881ab9dca9977e'
+
+images:
+  - 'gcr.io/$PROJECT_ID/crescere-web'
