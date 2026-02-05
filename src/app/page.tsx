@@ -1,31 +1,40 @@
 'use client';
-export const dynamic = "force-dynamic";
-
-import { db } from '../firebaseConfig';
-import { collection, getDocs, limit, query } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const [dbStatus, setDbStatus] = useState('Checking database...');
-
-  useEffect(() => {
-    async function checkConnection() {
-      try {
-        const q = query(collection(db, 'test'), limit(1));
-        await getDocs(q);
-        setDbStatus('Database Connected successfully!');
-      } catch (error) {
-        console.error(error);
-        setDbStatus('App Live, but Database Connection failed.');
-      }
-    }
-    checkConnection();
-  }, []);
-
   return (
-    <main style={{ padding: '4rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
-      <h1 style={{ color: '#0070f3' }}>Crescere Strategies</h1>
-      <p style={{ fontSize: '1.2rem' }}>Status: <strong>{dbStatus}</strong></p>
+    <main style={{ 
+      padding: '4rem', 
+      fontFamily: 'system-ui, sans-serif', 
+      textAlign: 'center',
+      backgroundColor: '#f9fafb',
+      minHeight: '100vh'
+    }}>
+      <div style={{
+        maxWidth: '600px',
+        margin: '0 auto',
+        backgroundColor: '#fff',
+        padding: '2rem',
+        borderRadius: '12px',
+        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+      }}>
+        <h1 style={{ color: '#111827', fontSize: '2.5rem', marginBottom: '1rem' }}>
+          Crescere Strategies
+        </h1>
+        <p style={{ color: '#4b5563', fontSize: '1.2rem', lineHeight: '1.6' }}>
+          Welcome to the next generation of psychometric assessment.
+        </p>
+        <div style={{ 
+          marginTop: '2rem', 
+          padding: '1rem', 
+          backgroundColor: '#ecfdf5', 
+          borderRadius: '8px',
+          border: '1px solid #10b981'
+        }}>
+          <p style={{ color: '#065f46', fontWeight: '600' }}>
+            System Status: Online & Operational
+          </p>
+        </div>
+      </div>
     </main>
   );
 }
