@@ -21,3 +21,4 @@ build/
 *.zip
 t
 README-cloudshell.txt
+.cache/
