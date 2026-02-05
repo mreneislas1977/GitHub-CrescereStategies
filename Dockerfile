@@ -11,11 +11,11 @@ ENV NODE_ENV=production
 ENV PORT 8080
 ENV HOSTNAME "0.0.0.0"
 
-# Copy the standalone output
+# Copy standalone output
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-# Only copy public if it exists and has files
+# IMPORTANT: Public folder must be inside the app root for standalone mode
 COPY --from=builder /app/public ./public
 
 EXPOSE 8080
