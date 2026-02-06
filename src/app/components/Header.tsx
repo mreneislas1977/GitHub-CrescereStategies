@@ -13,7 +13,7 @@ const Header: React.FC = () => {
         {/* LOGO SECTION - TEXT ONLY */}
         <Link href="/" className="flex items-center gap-2 group">
           <span className="font-display font-bold text-2xl text-crescere-green tracking-tight group-hover:text-crescere-gold transition-colors">
-            Crescere Strategies LLC.
+            Crescere Strategies LLC
           </span>
         </Link>
 
