@@ -31,14 +31,14 @@ const Footer: React.FC = () => {
             <h4 className="font-display font-bold text-crescere-gold mb-6 uppercase tracking-widest text-sm">Connect</h4>
             <ul className="space-y-4 font-body opacity-80">
               <li><Link href="#contact" className="hover:text-crescere-gold transition">Request Briefing</Link></li>
-              <li><Link href="/portfolio" className="hover:text-crescere-gold transition">Insights Portfolio</Link></li>
+              <li><Link href="/portfolio" className="hover:text-crescere-gold transition">The Lab</Link></li>
               <li><a href="https://linkedin.com" className="hover:text-crescere-gold transition">LinkedIn</a></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/10 text-center text-sm opacity-60">
-          <p>© {new Date().getFullYear()} Crescere Strategies LLC. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Crescere Strategies LLC | All Rights Reserved.</p>
         </div>
       </div>
     </footer>
