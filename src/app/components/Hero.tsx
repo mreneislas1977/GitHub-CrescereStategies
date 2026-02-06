@@ -14,9 +14,9 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl">
           
-          {/* LOGO CARD - The white box from your screenshot */}
-          <div className="bg-white p-8 w-72 mb-12 shadow-2xl flex flex-col items-center">
-            <div className="relative w-48 h-48">
+          {/* LOGO CARD - Smaller & Tighter */}
+          <div className="bg-white p-6 w-60 mb-10 shadow-2xl flex flex-col items-center rounded-sm">
+            <div className="relative w-36 h-36">
               <Image 
                 src="/logo.png" 
                 alt="Crescere Logo" 
@@ -26,35 +26,35 @@ const Hero: React.FC = () => {
               />
             </div>
             {/* Logo Text inside the box */}
-            <p className="text-crescere-green font-display font-bold text-xl mt-4 text-center leading-tight">
+            <p className="text-crescere-green font-display font-bold text-lg mt-3 text-center leading-tight">
               Crescere Strategies LLC
             </p>
           </div>
 
           {/* INTRO TEXT */}
-          <p className="text-white/80 text-lg md:text-xl mb-6 font-medium tracking-wide">
+          <p className="text-white/80 text-lg mb-4 font-medium tracking-wide">
             Maximize sustainable results for enterprises and non-profit organizations.
           </p>
 
           {/* HEADLINE */}
-          <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-10 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-8 leading-tight">
             Execute Strategy.<br />
             Develop Leaders.<br />
             Achieve Unstoppable Growth.
           </h1>
           
-          {/* BUTTONS - Adapted for Dark Background */}
+          {/* BUTTONS - Shrunk to standard size */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
               href="/insights" 
-              className="group flex items-center justify-center gap-3 px-8 py-4 bg-white text-crescere-green text-lg font-bold rounded-sm hover:bg-crescere-gold hover:text-white transition shadow-lg"
+              className="group flex items-center justify-center gap-2 px-6 py-3 bg-white text-crescere-green font-bold rounded-sm hover:bg-crescere-gold hover:text-white transition shadow-lg"
             >
               Access Insights
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
               href="#process" 
-              className="flex items-center justify-center px-8 py-4 border-2 border-white text-white text-lg font-bold rounded-sm hover:bg-white hover:text-crescere-green transition"
+              className="flex items-center justify-center px-6 py-3 border-2 border-white text-white font-bold rounded-sm hover:bg-white hover:text-crescere-green transition"
             >
               Our Process
             </Link>
