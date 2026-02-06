@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header: React.FC = () => {
@@ -10,18 +9,12 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed w-full z-50 bg-crescere-cream/95 backdrop-blur-md border-b border-crescere-green/10 shadow-sm">
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        {/* NAV LOGO */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="relative h-14 w-48">
-            <Image 
-              src="/Cswril.png" 
-              alt="Crescere Strategies" 
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </div>
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        {/* LOGO SECTION - TEXT ONLY */}
+        <Link href="/" className="flex items-center gap-2 group">
+          <span className="font-display font-bold text-2xl text-crescere-green tracking-tight group-hover:text-crescere-gold transition-colors">
+            Crescere Strategies LLC.
+          </span>
         </Link>
 
         {/* DESKTOP NAV */}
