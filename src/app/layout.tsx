@@ -1,16 +1,12 @@
-import React from 'react';
-import '../global.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import { Inter, Playfair_Display } from 'next/font/google';
+import type { Metadata } from "next";
+import "./globals.css";
 
-// Load the fonts
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
-
-export const metadata = {
-  title: 'Crescere Strategies',
-  description: 'Organizational transformation for non-profits and start-ups.',
+export const metadata: Metadata = {
+  title: "Crescere Strategies",
+  description: "Executive Research & Leadership Consulting",
+  icons: {
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -19,12 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="font-sans text-crescere-green bg-crescere-cream antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </body>
+    <html lang="en">
+      <head>
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
