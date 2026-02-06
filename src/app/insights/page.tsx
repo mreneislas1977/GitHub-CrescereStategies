@@ -2,167 +2,188 @@
 
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import { FaInfoCircle, FaFingerprint, FaTachometerAlt, FaChessKnight, FaLock, FaFlask, FaTimes, FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import { FaInfoCircle, FaFingerprint, FaTachometerAlt, FaChessKnight, FaLock, FaFlask, FaTimes, FaEnvelope, FaArrowRight, FaGem } from 'react-icons/fa';
 
 export default function Insights() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const tools = [
     {
-      title: "OCEAN Assessment",
+      title: "The OCEAN Assessment",
       subtitle: "The Thermostat",
       icon: <FaFingerprint />,
       desc: "A baseline behavioral analysis that sets your leadership temperature. Defines your stable traits and default settings.",
       type: "Behavioral",
-      color: "border-crescere-green text-crescere-green"
+      borderColor: "group-hover:border-crescere-green"
     },
     {
-      title: "PANAS-X",
-      subtitle: "The Temperature Gauge",
+      title: "The PANAS-X",
+      subtitle: "The Gauge",
       icon: <FaTachometerAlt />,
       desc: "A reactive, situational measure of positive and negative affect. Diagnostics for how you are showing up in the moment.",
       type: "Situational",
-      color: "border-crescere-gold text-crescere-gold"
+      borderColor: "group-hover:border-crescere-gold"
     },
     {
-      title: "Decision Rules",
+      title: "Decision Matrix",
       subtitle: "The Operator",
       icon: <FaChessKnight />,
       desc: "Operational heuristics and logic gates. A structured guide to moving from insight to executed decision.",
       type: "Operational",
-      color: "border-gray-600 text-gray-600"
+      borderColor: "group-hover:border-gray-800"
     }
   ];
 
   return (
-    <main className="min-h-screen bg-crescere-cream font-sans">
+    <main className="min-h-screen bg-[#FDFBF7] text-crescere-brown font-sans selection:bg-crescere-gold selection:text-white">
       <Header />
 
-      {/* PAGE HERO */}
-      <section className="bg-crescere-green pt-32 pb-24 text-white text-center px-6 relative overflow-hidden">
-        {/* Background Accent */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
-        
-        <div className="relative z-10 flex flex-col items-center">
-          <div className="mb-6 text-crescere-gold text-5xl">
-            <FaFlask />
-          </div>
-          <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
-            The Leadership Lab
-          </h1>
-          <p className="text-xl max-w-2xl mx-auto opacity-80 mb-8">
-            Experimental frameworks and instrumentation for the modern executive.
-          </p>
+      {/* --- LUXURY HERO --- */}
+      <section className="pt-40 pb-24 px-6 relative">
+        <div className="container mx-auto max-w-5xl text-center">
           
-          {/* TRIGGER BUTTON FOR MODAL */}
+          {/* Decorative Top Line */}
+          <div className="w-px h-16 bg-crescere-gold mx-auto mb-8 opacity-60"></div>
+
+          <div className="flex justify-center mb-6">
+            <span className="border border-crescere-green/30 px-4 py-1 text-xs font-bold tracking-[0.2em] uppercase text-crescere-green rounded-full">
+              Executive Research Division
+            </span>
+          </div>
+
+          <h1 className="text-6xl md:text-7xl font-display font-medium text-crescere-green mb-6 leading-tight">
+            The Leadership <span className="italic font-serif text-crescere-gold">Lab</span>.
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-crescere-brown/70 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+            Experimental frameworks and behavioral instrumentation designed for the modern executive.
+          </p>
+
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-crescere-gold text-crescere-green font-bold px-8 py-3 rounded-sm hover:bg-white transition-colors shadow-lg flex items-center gap-2"
+            className="group relative inline-flex items-center gap-3 px-10 py-4 bg-crescere-green text-white font-medium tracking-wide hover:bg-crescere-brown transition-colors duration-500"
           >
-            <FaEnvelope /> Join the Lab
+            <span>Request Access</span>
+            <FaArrowRight className="text-xs opacity-50 group-hover:translate-x-1 transition-transform" />
           </button>
+
         </div>
       </section>
 
-      {/* CONSTRUCTION BANNER */}
-      <div className="bg-crescere-gold text-crescere-green font-bold text-center py-3 px-4 shadow-md sticky top-[72px] z-40">
-        <div className="container mx-auto flex items-center justify-center gap-2 text-sm md:text-base">
-          <FaInfoCircle />
-          <span>PREVIEW MODE: The Lab is currently under development.</span>
+      {/* --- PREVIEW STRIP --- */}
+      <div className="border-y border-crescere-green/10 bg-white py-4">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-3 text-sm tracking-wide text-crescere-brown/60">
+          <FaInfoCircle className="text-crescere-gold" />
+          <span className="uppercase font-bold text-xs">Status:</span>
+          <span>In Development — Spring 2026 Release</span>
         </div>
       </div>
 
-      {/* SECTION 1: INSTRUMENTATION (The Tools) */}
+      {/* --- INSTRUMENTATION SECTION --- */}
       <section className="py-24 container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-display font-bold text-crescere-green">Instrumentation</h2>
-          <p className="opacity-70 mt-2 text-lg">Calibrate your leadership style with our proprietary toolkit.</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {tools.map((tool, index) => (
-            <div key={index} className={`relative bg-white p-8 rounded-sm shadow-sm border-t-4 ${tool.color} hover:shadow-xl transition-shadow duration-300 group`}>
-              
-              {/* "COMING SOON" BADGE */}
-              <div className="absolute top-4 right-4 bg-gray-100 text-gray-500 text-xs font-bold px-2 py-1 rounded-sm uppercase tracking-wider flex items-center gap-1">
-                <FaLock className="text-[10px]" /> Coming Soon
-              </div>
-
-              <div className="flex justify-between items-start mb-6 mt-2">
-                <div className={`text-4xl ${tool.color} opacity-80 group-hover:scale-110 transition-transform`}>
-                  {tool.icon}
-                </div>
-                <span className="text-xs font-bold uppercase tracking-widest opacity-50 border border-gray-200 px-2 py-1 rounded-sm">
-                  {tool.type}
-                </span>
-              </div>
-              
-              <h3 className="text-2xl font-bold text-gray-800 mb-1">{tool.title}</h3>
-              <p className={`text-sm font-bold uppercase tracking-wide mb-4 opacity-70 ${tool.color.split(' ')[1]}`}>
-                {tool.subtitle}
-              </p>
-              
-              <p className="text-gray-600 leading-relaxed text-sm mb-8">
-                {tool.desc}
-              </p>
-
-              {/* DISABLED BUTTON */}
-              <button disabled className="w-full py-3 bg-gray-50 text-gray-400 font-bold text-sm rounded-sm border border-gray-200 cursor-not-allowed flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors">
-                <FaLock />
-                Tool In Development
-              </button>
+        <div className="max-w-6xl mx-auto">
+          
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-crescere-green/10 pb-6">
+            <div>
+              <h2 className="text-4xl font-display text-crescere-green mb-2">Instrumentation</h2>
+              <p className="text-crescere-brown/60 font-serif italic text-lg">Calibrate your leadership style.</p>
             </div>
-          ))}
+            <div className="hidden md:block text-xs font-bold tracking-widest uppercase text-crescere-brown/40">
+              Proprietary Toolkit
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {tools.map((tool, index) => (
+              <div key={index} className={`group relative bg-white p-10 border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:border-transparent ${tool.borderColor} border-t-2`}>
+                
+                {/* Coming Soon Stamp */}
+                <div className="absolute top-6 right-6 opacity-30 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest border border-gray-300 px-2 py-1 text-gray-400">
+                    <FaLock size={8} /> Coming Soon
+                  </div>
+                </div>
+
+                <div className="mb-8 pt-4">
+                  <div className="text-3xl text-crescere-gold mb-6 opacity-80 group-hover:scale-110 transition-transform duration-700">
+                    {tool.icon}
+                  </div>
+                  
+                  <div className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">
+                    {tool.type}
+                  </div>
+                  
+                  <h3 className="text-2xl font-display font-medium text-crescere-green">
+                    {tool.title}
+                  </h3>
+                </div>
+                
+                <p className="text-gray-500 leading-relaxed mb-10 font-light border-l-2 border-gray-100 pl-4">
+                  {tool.desc}
+                </p>
+
+                <div className="flex items-center justify-between pt-6 border-t border-gray-50">
+                  <span className="text-xs font-bold uppercase tracking-widest text-crescere-gold">
+                    {tool.subtitle}
+                  </span>
+                  <FaLock className="text-gray-200 group-hover:text-crescere-green transition-colors" />
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
-      {/* --- THE MODAL --- */}
+      {/* --- THE LUXURY MODAL --- */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center px-4">
-          {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-[#1a2e1a]/80 backdrop-blur-sm transition-opacity"
             onClick={() => setIsModalOpen(false)}
           ></div>
 
-          {/* Modal Content */}
-          <div className="relative bg-white p-8 md:p-10 rounded-sm shadow-2xl max-w-lg w-full text-center border-t-8 border-crescere-green animate-in fade-in zoom-in duration-200">
+          <div className="relative bg-[#FDFBF7] p-12 md:p-16 w-full max-w-xl shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-300">
+            {/* Elegant Close Button */}
             <button 
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors"
+              className="absolute top-6 right-6 text-crescere-brown/40 hover:text-crescere-gold transition-colors"
             >
               <FaTimes className="text-xl" />
             </button>
 
-            <div className="text-crescere-green text-4xl mb-4 flex justify-center">
-              <FaEnvelope />
+            <div className="text-center">
+              <div className="w-12 h-1 bg-crescere-gold mx-auto mb-8"></div>
+              
+              <h3 className="text-3xl font-display text-crescere-green mb-4">
+                Invitation Only
+              </h3>
+              
+              <p className="text-crescere-brown/70 mb-10 leading-relaxed font-light">
+                The Leadership Lab provides exclusive instrumentation for executive growth. Join the waitlist to receive priority access upon launch.
+              </p>
+
+              <form className="space-y-6">
+                <div className="relative">
+                  <input 
+                    type="email" 
+                    placeholder=" " 
+                    className="peer w-full border-b border-crescere-brown/20 bg-transparent py-3 text-crescere-green focus:border-crescere-gold focus:outline-none placeholder-transparent"
+                  />
+                  <label className="absolute left-0 -top-3.5 text-xs font-bold text-crescere-brown/50 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-crescere-brown/30 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-crescere-gold">
+                    Email Address
+                  </label>
+                </div>
+                
+                <button 
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="w-full bg-crescere-green text-white font-medium tracking-widest py-4 hover:bg-crescere-brown transition-colors duration-500 uppercase text-xs"
+                >
+                  Request Invitation
+                </button>
+              </form>
             </div>
-
-            <h3 className="text-3xl font-display font-bold text-crescere-green mb-2">
-              Join the Leadership Lab
-            </h3>
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              Get notified when we launch our proprietary tools and release new strategic frameworks.
-            </p>
-
-            <form className="flex flex-col gap-4">
-              <input 
-                type="email" 
-                placeholder="Enter your email address" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-crescere-green focus:ring-1 focus:ring-crescere-green"
-              />
-              <button 
-                type="button"
-                className="w-full bg-crescere-green text-white font-bold py-3 rounded-sm hover:bg-crescere-gold transition-colors flex items-center justify-center gap-2"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Notify Me <FaArrowRight />
-              </button>
-            </form>
-            
-            <p className="text-xs text-gray-400 mt-4">
-              We respect your inbox. No spam, just strategy.
-            </p>
           </div>
         </div>
       )}
