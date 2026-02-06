@@ -3,61 +3,61 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaArrowRight } from 'react-icons/fa';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 bg-crescere-cream overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-crescere-gold/5 skew-x-12 translate-x-20" />
-      
+    <section className="relative min-h-screen flex items-center bg-crescere-green overflow-hidden pt-20">
+      {/* Background decoration (Subtle) */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-12 translate-x-20" />
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="max-w-4xl">
           
-          {/* LEFT CONTENT */}
-          <div className="md:w-1/2 text-center md:text-left">
-            {/* LARGE HERO LOGO */}
-            <div className="relative w-64 h-64 mx-auto md:mx-0 mb-8">
+          {/* LOGO CARD - The white box from your screenshot */}
+          <div className="bg-white p-8 w-72 mb-12 shadow-2xl flex flex-col items-center">
+            <div className="relative w-48 h-48">
               <Image 
                 src="/logo.png" 
-                alt="Crescere Emblem" 
+                alt="Crescere Logo" 
                 fill
                 className="object-contain"
                 priority
               />
             </div>
-
-            <h1 className="text-5xl md:text-6xl font-display font-bold text-crescere-green mb-6 leading-tight">
-              Growth with <br/>
-              <span className="text-crescere-gold">Purpose.</span>
-            </h1>
-            <p className="text-xl text-crescere-brown/80 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
-              Empowering non-profits and startups to navigate complexity, align stakeholders, and scale their impact.
+            {/* Logo Text inside the box */}
+            <p className="text-crescere-green font-display font-bold text-xl mt-4 text-center leading-tight">
+              Crescere Strategies LLC
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Link 
-                href="/insights" 
-                className="px-8 py-4 bg-crescere-green text-white font-bold rounded-lg hover:bg-opacity-90 transition shadow-lg text-center"
-              >
-                Access Insights
-              </Link>
-              <Link 
-                href="#process" 
-                className="px-8 py-4 border-2 border-crescere-green text-crescere-green font-bold rounded-lg hover:bg-crescere-green hover:text-white transition text-center"
-              >
-                Our Process
-              </Link>
-            </div>
           </div>
 
-          {/* RIGHT IMAGE/GRAPHIC */}
-          <div className="md:w-1/2 relative h-[500px] w-full hidden md:block">
-            {/* Abstract visual representation of growth/strategy */}
-            <div className="absolute inset-0 bg-gradient-to-br from-crescere-green to-crescere-green/80 rounded-2xl shadow-2xl flex items-center justify-center overflow-hidden">
-               <div className="w-full h-full opacity-20 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay" />
-               <div className="absolute p-12 text-white/10 text-9xl font-display font-bold select-none">
-                 Scale
-               </div>
-            </div>
+          {/* INTRO TEXT */}
+          <p className="text-white/80 text-lg md:text-xl mb-6 font-medium tracking-wide">
+            Maximize sustainable results for enterprises and non-profit organizations.
+          </p>
+
+          {/* HEADLINE */}
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-10 leading-tight">
+            Execute Strategy.<br />
+            Develop Leaders.<br />
+            Achieve Unstoppable Growth.
+          </h1>
+          
+          {/* BUTTONS - Adapted for Dark Background */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link 
+              href="/insights" 
+              className="group flex items-center justify-center gap-3 px-8 py-4 bg-white text-crescere-green text-lg font-bold rounded-sm hover:bg-crescere-gold hover:text-white transition shadow-lg"
+            >
+              Access Insights
+              <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link 
+              href="#process" 
+              className="flex items-center justify-center px-8 py-4 border-2 border-white text-white text-lg font-bold rounded-sm hover:bg-white hover:text-crescere-green transition"
+            >
+              Our Process
+            </Link>
           </div>
         </div>
       </div>
