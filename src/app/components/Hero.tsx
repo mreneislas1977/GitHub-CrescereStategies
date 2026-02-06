@@ -14,11 +14,11 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl">
           
-          {/* LOGO CARD - Smaller & Tighter */}
+          {/* LOGO CARD */}
           <div className="bg-white p-6 w-60 mb-10 shadow-2xl flex flex-col items-center rounded-sm">
             <div className="relative w-36 h-36">
               <Image 
-                src="/logo.png" 
+                src="/hero-logo.png" 
                 alt="Crescere Logo" 
                 fill
                 className="object-contain"
@@ -31,9 +31,9 @@ const Hero: React.FC = () => {
             </p>
           </div>
 
-          {/* INTRO TEXT */}
+          {/* INTRO TEXT - Swapped Order */}
           <p className="text-white/80 text-lg mb-4 font-medium tracking-wide">
-            Maximize sustainable results for enterprises and non-profit organizations.
+            Maximize sustainable results for non-profit organizations and enterprises.
           </p>
 
           {/* HEADLINE */}
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
             Achieve Unstoppable Growth.
           </h1>
           
-          {/* BUTTONS - Shrunk to standard size */}
+          {/* BUTTONS - Removed "Our Process" */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
               href="/insights" 
@@ -51,12 +51,6 @@ const Hero: React.FC = () => {
             >
               Access Insights
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link 
-              href="#process" 
-              className="flex items-center justify-center px-6 py-3 border-2 border-white text-white font-bold rounded-sm hover:bg-white hover:text-crescere-green transition"
-            >
-              Our Process
             </Link>
           </div>
         </div>
