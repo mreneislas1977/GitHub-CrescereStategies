@@ -1,10 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
-import { FaInfoCircle, FaFingerprint, FaTachometerAlt, FaChessKnight, FaLock, FaFlask } from 'react-icons/fa';
+import { FaInfoCircle, FaFingerprint, FaTachometerAlt, FaChessKnight, FaLock, FaFlask, FaTimes, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 
 export default function Insights() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const tools = [
     {
       title: "OCEAN Assessment",
@@ -33,7 +35,7 @@ export default function Insights() {
   ];
 
   return (
-    <main className="min-h-screen bg-crescere-cream">
+    <main className="min-h-screen bg-crescere-cream font-sans">
       <Header />
 
       {/* PAGE HERO */}
@@ -48,9 +50,17 @@ export default function Insights() {
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
             The Leadership Lab
           </h1>
-          <p className="text-xl max-w-2xl mx-auto opacity-80">
+          <p className="text-xl max-w-2xl mx-auto opacity-80 mb-8">
             Experimental frameworks and instrumentation for the modern executive.
           </p>
+          
+          {/* TRIGGER BUTTON FOR MODAL */}
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="bg-crescere-gold text-crescere-green font-bold px-8 py-3 rounded-sm hover:bg-white transition-colors shadow-lg flex items-center gap-2"
+          >
+            <FaEnvelope /> Join the Lab
+          </button>
         </div>
       </section>
 
@@ -105,6 +115,57 @@ export default function Insights() {
           ))}
         </div>
       </section>
+
+      {/* --- THE MODAL --- */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center px-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsModalOpen(false)}
+          ></div>
+
+          {/* Modal Content */}
+          <div className="relative bg-white p-8 md:p-10 rounded-sm shadow-2xl max-w-lg w-full text-center border-t-8 border-crescere-green animate-in fade-in zoom-in duration-200">
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors"
+            >
+              <FaTimes className="text-xl" />
+            </button>
+
+            <div className="text-crescere-green text-4xl mb-4 flex justify-center">
+              <FaEnvelope />
+            </div>
+
+            <h3 className="text-3xl font-display font-bold text-crescere-green mb-2">
+              Join the Leadership Lab
+            </h3>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              Get notified when we launch our proprietary tools and release new strategic frameworks.
+            </p>
+
+            <form className="flex flex-col gap-4">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-crescere-green focus:ring-1 focus:ring-crescere-green"
+              />
+              <button 
+                type="button"
+                className="w-full bg-crescere-green text-white font-bold py-3 rounded-sm hover:bg-crescere-gold transition-colors flex items-center justify-center gap-2"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Notify Me <FaArrowRight />
+              </button>
+            </form>
+            
+            <p className="text-xs text-gray-400 mt-4">
+              We respect your inbox. No spam, just strategy.
+            </p>
+          </div>
+        </div>
+      )}
 
     </main>
   );
