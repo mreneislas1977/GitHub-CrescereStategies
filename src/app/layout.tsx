@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ModalProvider } from "./components/ModalContext";
-import ModalUI from "./components/ModalUI";
+import { ModalProvider } from "./ModalContext";
+import ModalUI from "./ModalUI";
 
 export const metadata: Metadata = {
   title: "Crescere Strategies",
@@ -21,5 +21,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-// Force Build Sat Feb  7 03:01:50 AM UTC 2026
-// Build Update Sat Feb  7 03:03:17 AM UTC 2026
