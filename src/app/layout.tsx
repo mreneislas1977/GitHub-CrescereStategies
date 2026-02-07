@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ModalProvider } from "./context/ModalContext";
+import { ModalProvider } from "./components/ModalContext";
 import ModalUI from "./components/ModalUI";
 
 export const metadata: Metadata = {
