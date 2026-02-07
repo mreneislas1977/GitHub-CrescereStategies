@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ModalProvider } from "@/context/ModalContext";
-import ModalUI from "@/components/ModalUI";
+import { ModalProvider } from "../context/ModalContext";
+import ModalUI from "../components/ModalUI";
 
 export const metadata: Metadata = {
   title: "Crescere Strategies",
