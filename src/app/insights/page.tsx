@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Header from '../components/Header';
+import Header from '@/components/Header';
 import { FaInfoCircle, FaFingerprint, FaTachometerAlt, FaChessKnight, FaLock, FaFlask, FaTimes, FaEnvelope, FaArrowRight, FaGem } from 'react-icons/fa';
 
 export default function Insights() {
