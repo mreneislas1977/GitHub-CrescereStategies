@@ -2,16 +2,19 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDMoSO2-v0cLMQJddMfuYL-L7w17u0FFmo",
-  authDomain: "gen-lang-client-0572328590.firebaseapp.com",
-  projectId: "gen-lang-client-0572328590",
-  storageBucket: "gen-lang-client-0572328590.firebasestorage.app",
-  messagingSenderId: "782480574555",
-  appId: "1:782480574555:web:ddbec0e2881ab9dca9977e",
-  measurementId: "G-H0Q4W3QH4S"
+  apiKey: "AIzaSyD9RdUJiQdgIswe90192UwJc77Q0QNwE1s",
+  authDomain: "crescere-strategies-official.firebaseapp.com",
+  projectId: "crescere-strategies-official",
+  storageBucket: "crescere-strategies-official.firebasestorage.app",
+  messagingSenderId: "627030636854",
+  appId: "1:627030636854:web:593f2845ff5d9607339b97"
 };
 
+// Initialize Firebase (using a check to prevent double-initialization)
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+
+// Initialize Firestore (This is what the form needs!)
 const db = getFirestore(app);
 
+// Export the database so the Insights page can use it
 export { db };

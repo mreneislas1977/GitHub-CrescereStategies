@@ -1,35 +1,54 @@
+"use client";
 import React from 'react';
-import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Link from 'next/link';
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-crescere-green text-white py-16 px-6 border-t border-white/10">
-      <div className="container mx-auto grid md:grid-cols-3 gap-12">
-        <div>
-          <h3 className="font-display font-bold text-2xl mb-6">Crescere Strategies</h3>
-          <p className="text-crescere-cream/70 leading-relaxed">
-            Elevating executive leadership through rigorous research and psychological insight.
-          </p>
+    <footer className="bg-[#014421] text-white/80 py-12 border-t border-white/10 print:hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
+          
+          {/* Brand Column: TITLE CASE + GOLD LLC */}
+          <div className="col-span-1 md:col-span-2">
+            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
+              Crescere Strategies <span className="text-[#C5A059]">LLC</span>
+            </h3>
+            <p className="max-w-xs text-sm leading-relaxed text-white/60">
+              Defining the science of executive growth.
+              <br/>Alexandria, VA • United States
+            </p>
+          </div>
+          
+          {/* Leadership Lab Links */}
+          <div>
+            <h4 className="font-bold text-white mb-4">Leadership Lab</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/panas" className="hover:text-white transition-colors">PANAS-X Assessment</Link></li>
+              <li><Link href="/ocean" className="hover:text-white transition-colors">OCEAN Profile</Link></li>
+              <li><Link href="/financial" className="hover:text-white transition-colors">Financial Intel</Link></li>
+            </ul>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h4 className="font-bold text-white mb-4">Company</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+              <li><Link href="/admin" className="hover:text-white transition-colors">Admin Vault</Link></li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h4 className="font-bold mb-6 text-crescere-gold uppercase tracking-widest text-sm">Navigation</h4>
-          <ul className="space-y-4 text-crescere-cream/80">
-            <li><a href="/" className="hover:text-white transition">Home</a></li>
-            <li><a href="/insights" className="hover:text-white transition">Leadership Lab</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-bold mb-6 text-crescere-gold uppercase tracking-widest text-sm">Connect</h4>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
+          <p>&copy; {new Date().getFullYear()} Crescere Strategies LLC. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-crescere-gold transition text-2xl"><FaLinkedin /></a>
-            <a href="#" className="hover:text-crescere-gold transition text-2xl"><FaTwitter /></a>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
           </div>
         </div>
       </div>
-      <div className="container mx-auto mt-16 pt-8 border-t border-white/5 text-center text-crescere-cream/40 text-sm">
-        &copy; 2026 Crescere Strategies LLC. All Rights Reserved.
-      </div>
     </footer>
   );
-};
-export default Footer;
+}
