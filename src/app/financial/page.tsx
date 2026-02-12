@@ -8,7 +8,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { UploadCloud, CheckCircle, Loader2, FileText, AlertCircle } from 'lucide-react';
 
 function FinancialIntelContent() {
-  const [step, setStep] = useState(1); // 1: Upload, 2: Confirm, 3: Success
+  const [step, setStep] = useState(1); // 1: Upload, 2: Verify, 3: Success
   const [email, setEmail] = useState('');
   const [isParsing, setIsParsing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,21 +39,25 @@ function FinancialIntelContent() {
       const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
       let fullText = "";
 
-      for (let i = 1; i <= Math.min(pdf.numPages, 10); i++) {
+      // Extraction focused on Page 1 (Summary) and Page 10 (Functional Expenses)
+      for (let i = 1; i <= Math.min(pdf.numPages, 11); i++) {
         const page = await pdf.getPage(i);
         const content = await page.getTextContent();
         fullText += content.items.map((item: any) => item.str).join(" ");
       }
 
       const newData = { ...data };
-      const cleanNum = (val: string) => parseFloat(val.replace(/,/g, '')) || 0;
+      const cleanNum = (val: string) => parseFloat(val.replace(/[$,]/g, '')) || 0;
       
+      // Patterns anchored to capture "Current Year" (last column) and ignore dates
       const patterns = {
-        totalRevenue: /(?:Line 12|Total revenue).*?([\d,]{4,})/i,
-        totalExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(A\).*?([\d,]{4,})/i,
+        totalRevenue: /(?:Total revenue|Line 12).*?([\d,]{4,})$/im,
+        totalExpenses: /(?:Total expenses|Line 18).*?([\d,]{4,})$/im,
         progExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(B\).*?([\d,]{4,})/i,
         adminExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(C\).*?([\d,]{4,})/i,
-        fundExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(D\).*?([\d,]{4,})/i
+        fundExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(D\).*?([\d,]{4,})/i,
+        totalAssets: /(?:Total assets|Line 20).*?([\d,]{4,})$/im,
+        totalLiabilities: /(?:Line 21|Total liabilities).*?([\d,]{4,})$/im
       };
 
       Object.entries(patterns).forEach(([key, regex]) => {
@@ -62,10 +66,9 @@ function FinancialIntelContent() {
       });
 
       setData(newData);
-      setStep(2); // Automatically move to confirmation step
+      setStep(2); 
     } catch (err) {
       console.error("Extraction Error:", err);
-      alert("Could not auto-parse PDF. Please enter data manually.");
       setStep(2);
     } finally {
       setIsParsing(false);
@@ -75,7 +78,6 @@ function FinancialIntelContent() {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      // 1. Save to Firebase
       await addDoc(collection(db, "financial_results"), {
         email,
         inputData: data,
@@ -83,13 +85,12 @@ function FinancialIntelContent() {
         source: '501c3_intel_audit'
       });
 
-      // 2. Trigger Alert API
       await fetch('/api/send-alert', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           clientEmail: email, 
-          testType: 'Executive 990 Audit Request' 
+          testType: 'Executive 990 Audit Request: M. Rene Islas to schedule in <24hrs' 
         })
       });
 
@@ -101,7 +102,6 @@ function FinancialIntelContent() {
     }
   };
 
-  // --- Success View ---
   if (step === 3) return (
     <div className="min-h-screen bg-[#fdfbf5]">
       <Header />
@@ -110,11 +110,10 @@ function FinancialIntelContent() {
           <CheckCircle className="mx-auto text-[#014421] mb-6" size={64} />
           <h1 className="text-3xl font-serif text-[#014421] mb-4">Request Submitted Successfully</h1>
           <p className="text-[#014421]/70 leading-relaxed mb-8">
-            Your fiscal data has been securely transmitted to Crescere Strategies LLC. 
-            <strong> M. Rene Islas</strong> will review your audit and contact you within 24 hours to schedule your strategy session.
+            Your fiscal data has been securely transmitted. <strong>M. Rene Islas</strong> will review your audit and contact you within 24 hours or less to schedule your strategy meeting.
           </p>
           <div className="bg-[#fdfbf5] p-4 border-l-4 border-[#C5A059] text-left text-sm italic">
-            Check your inbox for a confirmation of this request.
+            Professional Confidentiality Guaranteed | Crescere Strategies LLC
           </div>
         </div>
       </div>
@@ -127,40 +126,35 @@ function FinancialIntelContent() {
       <Header />
       <main className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
         <div className="bg-white border border-[#014421]/10 shadow-2xl overflow-hidden">
-          
-          {/* Progress Header */}
           <div className="flex border-b border-[#014421]/10 text-[10px] font-bold uppercase tracking-widest">
             <div className={`flex-1 py-4 text-center ${step === 1 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>1. Upload 990</div>
-            <div className={`flex-1 py-4 text-center ${step === 2 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>2. Verify & Analyze</div>
+            <div className={`flex-1 py-4 text-center ${step === 2 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>2. Verify Data</div>
           </div>
-
           <div className="p-10">
             {step === 1 ? (
               <div className="text-center py-10">
-                <div className="border-2 border-dashed border-[#014421]/10 p-20 mb-6 bg-[#fdfbf5]/50 hover:bg-[#fdfbf5] transition-all">
+                <div className="border-2 border-dashed border-[#014421]/10 p-20 mb-6 bg-[#fdfbf5]/50">
                   {isParsing ? (
                     <div className="flex flex-col items-center">
                       <Loader2 className="animate-spin text-[#C5A059] mb-4" size={48} />
-                      <p className="text-xs font-bold uppercase tracking-widest text-[#014421]">Analyzing IRS Data...</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-[#014421]">Extracting IRS Markers...</p>
                     </div>
                   ) : (
                     <>
                       <UploadCloud className="mx-auto text-[#014421]/10 mb-4" size={64} />
                       <h3 className="font-serif text-xl text-[#014421] mb-2">Upload IRS Form 990</h3>
-                      <p className="text-sm text-[#014421]/50 mb-6">PDF format preferred. Our engine will extract key fiscal markers.</p>
                       <input type="file" accept=".pdf" onChange={(e) => e.target.files && extractDataFrom990(e.target.files[0])} className="hidden" id="pdf-up" />
-                      <label htmlFor="pdf-up" className="cursor-pointer bg-[#014421] text-white px-10 py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-[#C5A059] transition-all inline-block">Begin Digital Audit</label>
+                      <label htmlFor="pdf-up" className="cursor-pointer bg-[#014421] text-white px-10 py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-[#C5A059]">Begin Digital Audit</label>
                     </>
                   )}
                 </div>
               </div>
             ) : (
-              <div className="space-y-8 animate-in fade-in duration-500">
-                <div className="bg-[#fdfbf5] p-6 border-l-4 border-[#C5A059] flex items-start gap-4">
-                  <AlertCircle className="text-[#C5A059] shrink-0" size={20} />
-                  <p className="text-xs text-[#014421]/70 italic">Please confirm the extracted values below. Accuracy is critical for a valid strategy session.</p>
+              <div className="space-y-8">
+                <div className="bg-[#fdfbf5] p-6 border-l-4 border-[#C5A059] flex items-start gap-4 text-xs italic text-[#014421]/70">
+                   <AlertCircle className="text-[#C5A059] shrink-0" size={20} />
+                   Confirm the extracted values. Accuracy is critical for your 24-hour strategy callback from M. Rene Islas.
                 </div>
-
                 <div className="grid md:grid-cols-2 gap-6">
                   {Object.keys(data).map((key) => (
                     <div key={key}>
@@ -169,11 +163,10 @@ function FinancialIntelContent() {
                     </div>
                   ))}
                 </div>
-
                 <div className="pt-6 border-t border-[#014421]/10 flex justify-between items-center">
-                  <button onClick={() => setStep(1)} className="text-[10px] uppercase font-bold text-[#014421]/40 border-b border-transparent hover:border-[#014421]/40">Re-upload Document</button>
-                  <button onClick={handleSubmit} disabled={isSubmitting || !email} className="px-12 py-4 bg-[#014421] text-white font-bold uppercase text-xs tracking-widest hover:bg-[#C5A059] transition-all flex items-center gap-2">
-                    {isSubmitting ? 'Submitting...' : 'Request Strategy Meeting'} <FileText size={16} />
+                  <button onClick={() => setStep(1)} className="text-[10px] uppercase font-bold text-[#014421]/40">Start Over</button>
+                  <button onClick={handleSubmit} disabled={isSubmitting} className="px-12 py-4 bg-[#014421] text-white font-bold uppercase text-xs tracking-widest flex items-center gap-2">
+                    {isSubmitting ? 'Processing...' : 'Request Strategy Meeting'} <FileText size={16} />
                   </button>
                 </div>
               </div>
