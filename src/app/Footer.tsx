@@ -1,54 +1,53 @@
-"use client";
 import React from 'react';
 import Link from 'next/link';
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-[#014421] text-white/80 py-12 border-t border-white/10 print:hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
-          
-          {/* Brand Column: TITLE CASE + GOLD LLC */}
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
-              Crescere Strategies <span className="text-[#C5A059]">LLC</span>
-            </h3>
-            <p className="max-w-xs text-sm leading-relaxed text-white/60">
-              Defining the science of executive growth.
-              <br/>Alexandria, VA • United States
-            </p>
-          </div>
-          
-          {/* Leadership Lab Links */}
-          <div>
-            <h4 className="font-bold text-white mb-4">Leadership Lab</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/panas" className="hover:text-white transition-colors">PANAS-X Assessment</Link></li>
-              <li><Link href="/ocean" className="hover:text-white transition-colors">OCEAN Profile</Link></li>
-              <li><Link href="/financial" className="hover:text-white transition-colors">Financial Intel</Link></li>
-            </ul>
-          </div>
-
-          {/* Company Links */}
-          <div>
-            <h4 className="font-bold text-white mb-4">Company</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
-              <li><Link href="/admin" className="hover:text-white transition-colors">Admin Vault</Link></li>
-            </ul>
-          </div>
+    <footer style={{ backgroundColor: '#014421' }} className="text-[#fdfbf5] py-16 px-6 border-t border-[#C5A059]/30">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+        
+        {/* Brand Identity */}
+        <div className="col-span-1 md:col-span-2">
+          <h2 className="text-2xl font-bold tracking-tighter mb-4 italic">
+            CRESCERE<span style={{ color: '#C5A059' }}>STRATEGIES</span>
+          </h2>
+          <p className="text-[#fdfbf5]/80 max-w-sm mb-6 leading-relaxed">
+            Proprietary diagnostic engines for quantifying executive performance and propelling organizational health.
+          </p>
+          <p className="text-[10px] uppercase tracking-widest text-[#fdfbf5]/40">
+            © {new Date().getFullYear()} Crescere Strategies LLC. Driving Growth & Impact.
+          </p>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
-          <p>&copy; {new Date().getFullYear()} Crescere Strategies LLC. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
-          </div>
+        {/* Intelligence Engines */}
+        <div>
+          <h3 style={{ color: '#C5A059' }} className="font-bold mb-6 uppercase tracking-[0.2em] text-xs">
+            Intelligence
+          </h3>
+          <ul className="space-y-3 text-sm font-light">
+            <li><Link href="/leadership-lab" className="hover:text-[#C5A059] transition-colors border-b border-transparent hover:border-[#C5A059]">Leadership Lab</Link></li>
+            <li><Link href="/ocean" className="hover:text-[#C5A059] transition-colors border-b border-transparent hover:border-[#C5A059]">OCEAN Profile</Link></li>
+            <li><Link href="/panas" className="hover:text-[#C5A059] transition-colors border-b border-transparent hover:border-[#C5A059]">PANAS-X Affect</Link></li>
+            <li><Link href="/financial" className="hover:text-[#C5A059] transition-colors border-b border-transparent hover:border-[#C5A059]">Financial Intel</Link></li>
+          </ul>
         </div>
+
+        {/* Foundation */}
+        <div>
+          <h3 style={{ color: '#C5A059' }} className="font-bold mb-6 uppercase tracking-[0.2em] text-xs">
+            Foundation
+          </h3>
+          <ul className="space-y-3 text-sm font-light">
+            <li><Link href="/contact" className="hover:text-[#C5A059] transition-colors">Contact</Link></li>
+            <li><Link href="/privacy" className="hover:text-[#C5A059] transition-colors">Privacy Policy</Link></li>
+            <li><Link href="/terms" className="hover:text-[#C5A059] transition-colors">Terms of Service</Link></li>
+            <li><Link href="/disclaimer" className="hover:text-[#C5A059] transition-colors">Disclaimers</Link></li>
+          </ul>
+        </div>
+
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
