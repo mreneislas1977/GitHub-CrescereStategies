@@ -1,71 +1,48 @@
-"use client";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronRight } from 'lucide-react';
-import { useModal } from './ModalContext';
 
-export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { openModal } = useModal(); 
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+const Header = () => {
   return (
-    <header 
-      id="crescere-header-v8"
-      className={`fixed w-full z-40 transition-all duration-300 border-b ${
-        isScrolled || mobileMenuOpen 
-          ? 'bg-[#fdfbf5]/95 backdrop-blur-md shadow-sm border-[#014421]/5 py-4' 
-          : 'bg-[#fdfbf5] border-transparent py-6'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <nav style={{ backgroundColor: '#014421' }} className="sticky top-0 z-50 px-6 py-3 border-b border-[#C5A059]/40 shadow-xl">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         
-        {/* LOGO: Title Case + Gold LLC */}
-        <Link href="/" className="z-50 relative group">
-           <span className="text-xl md:text-2xl font-bold tracking-tighter text-[#014421]">
-             Crescere Strategies <span className="text-[#C5A059]">LLC</span>
-           </span>
-        </Link>
-
-        {/* DESKTOP NAV: Button links to /leadership-lab */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Logo & Centered Home Link Stack */}
+        <div className="flex flex-col items-center">
+          <Link href="/" className="text-xl font-bold tracking-tighter italic text-[#fdfbf5] leading-none">
+            CRESCERE<span style={{ color: '#C5A059' }}>STRATEGIES</span>
+          </Link>
           <Link 
-            href="/leadership-lab"
-            className="px-6 py-2.5 bg-[#014421] text-white text-sm font-bold rounded-full hover:bg-[#014421]/90 transition-all shadow-lg flex items-center gap-2"
+            href="/" 
+            className="text-[10px] uppercase tracking-[0.3em] font-bold mt-1.5 transition-colors hover:text-[#fdfbf5]"
+            style={{ color: '#C5A059' }}
           >
-            Leadership Lab <ChevronRight size={14} />
+            Home
           </Link>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
-        <button 
-          className="md:hidden z-50 text-[#014421]"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
-        {/* MOBILE NAV OVERLAY */}
-        {mobileMenuOpen && (
-          <div className="fixed inset-0 bg-[#fdfbf5] z-40 flex flex-col items-center justify-center space-y-8 animate-in fade-in duration-200">
-            <Link 
-              href="/leadership-lab"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-8 py-4 bg-[#014421] text-white font-bold rounded-full text-lg flex items-center gap-2"
-            >
-              Leadership Lab <ChevronRight size={18} />
-            </Link>
-          </div>
-        )}
+        {/* Navigation Links */}
+        <div className="hidden md:flex space-x-8 items-center">
+          <Link href="/leadership-lab" className="text-sm font-medium text-[#fdfbf5] hover:text-[#C5A059] transition-colors">
+            Leadership Lab
+          </Link>
+          <Link href="/ocean" className="text-sm font-medium text-[#fdfbf5] hover:text-[#C5A059] transition-colors">
+            OCEAN
+          </Link>
+          <Link href="/panas" className="text-sm font-medium text-[#fdfbf5] hover:text-[#C5A059] transition-colors">
+            PANAS-X
+          </Link>
+          {/* Action Button */}
+          <Link 
+            href="/contact" 
+            style={{ backgroundColor: '#C5A059' }} 
+            className="px-5 py-2 text-[#014421] text-xs font-bold uppercase tracking-widest rounded hover:bg-[#fdfbf5] transition-all ml-4"
+          >
+            Contact
+          </Link>
+        </div>
       </div>
-    </header>
+    </nav>
   );
-}
+};
+
+export default Header;
