@@ -11,9 +11,11 @@ export async function POST(request: Request) {
       service: 'gmail',
       auth: {
         user: 'mrene@crescere-strat.com', 
-        // PASTE YOUR 16-CHAR APP PASSWORD BELOW (Keep the quotes!)
-        pass: zgqfjxknratpsaca, 
+        // CORRECTED: Wrapped in quotes to prevent syntax error
+        pass: 'zgqfjxknratpsaca', 
       },
+      // Cloud Run Optimization: Ensures the connection doesn't hang
+      connectionTimeout: 10000, 
     });
     // ---------------------------
 
@@ -22,13 +24,13 @@ export async function POST(request: Request) {
       to: 'mreneislas@crescere-strat.com',
       subject: `🚨 CONSULTATION REQUEST: ${testType}`,
       text: `
-        The client has reviewed their results and requested a consultation.
+        A client has reviewed their results and requested a full consultation.
         
         Client Email: ${clientEmail}
-        Assessment: ${testType}
+        Assessment Type: ${testType}
         Timestamp: ${new Date().toLocaleString()}
         
-        Action: Please contact them to schedule the analysis session.
+        Action: Please follow up with the client to schedule their formal analysis session.
       `,
     };
 
@@ -37,7 +39,6 @@ export async function POST(request: Request) {
 
   } catch (error: any) {
     console.error('Email error:', error);
-    // Return the actual error message so we can debug if it fails again
     return NextResponse.json(
       { success: false, error: error.message }, 
       { status: 500 }
