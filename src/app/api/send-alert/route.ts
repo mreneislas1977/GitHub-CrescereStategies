@@ -6,18 +6,14 @@ export async function POST(request: Request) {
     const data = await request.json();
     const { clientEmail, testType } = data;
 
-    // --- CREDENTIALS SECTION ---
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: 'mrene@crescere-strat.com', 
-        // CORRECTED: Wrapped in quotes to prevent syntax error
         pass: 'zgqfjxknratpsaca', 
       },
-      // Cloud Run Optimization: Ensures the connection doesn't hang
       connectionTimeout: 10000, 
     });
-    // ---------------------------
 
     const mailOptions = {
       from: '"Crescere System" <mrene@crescere-strat.com>',

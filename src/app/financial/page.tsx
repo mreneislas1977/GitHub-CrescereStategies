@@ -1,21 +1,14 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Header from '../Header';
 import Footer from '../Footer';
 import { db } from '../../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { ArrowRight, UploadCloud, Calculator, CheckCircle, Mail, Loader2, FileText } from 'lucide-react';
-import * as pdfjs from 'pdfjs-dist';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-
-interface FinancialData {
-  progExpenses: number; adminExpenses: number; fundExpenses: number; totalExpenses: number; depreciation: number;
-  totalContributions: number; totalRevenue: number; maxSingleSource: number;
-  totalAssets: number; totalLiabilities: number; cashSavings: number; unrestrictedNetAssets: number; totalNetAssets: number;
-}
-
-export default function FinancialIntel() {
+// Main Component Logic
+function FinancialIntelContent() {
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,7 +16,7 @@ export default function FinancialIntel() {
   const [files, setFiles] = useState<File[]>([]);
   const [requestStatus, setRequestStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   
-  const [data, setData] = useState<FinancialData>({
+  const [data, setData] = useState({
     progExpenses: 0, adminExpenses: 0, fundExpenses: 0, totalExpenses: 0, depreciation: 0,
     totalContributions: 0, totalRevenue: 0, maxSingleSource: 0,
     totalAssets: 0, totalLiabilities: 0, cashSavings: 0, unrestrictedNetAssets: 0, totalNetAssets: 0
@@ -41,6 +34,9 @@ export default function FinancialIntel() {
 
   const extractDataFrom990 = async (file: File) => {
     setIsParsing(true);
+    const pdfjs = await import('pdfjs-dist');
+    pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
     const reader = new FileReader();
     reader.onload = async () => {
       try {
@@ -145,8 +141,8 @@ export default function FinancialIntel() {
           <div className="bg-white border border-[#014421]/10 p-10 shadow-xl mb-12">
             <h4 className="text-[#C5A059] font-bold uppercase text-[10px] mb-6 tracking-widest text-center">Auditor's Narrative Analysis</h4>
             <div className="max-w-3xl mx-auto text-[#014421]/80 leading-relaxed text-sm">
-              <p className="mb-4">The organization's allocation of <strong>{r.progRatio.toFixed(1)}%</strong> to program services suggests a <strong>{r.progRatio > 70 ? 'strong' : 'conservative'}</strong> operational alignment with its exempt mission.</p>
-              <p>Current liquidity standing at <strong>{r.currentRatio.toFixed(2)}x</strong> indicates the capacity to manage short-term obligations {r.currentRatio > 1.5 ? 'without structural risk' : 'requiring immediate cash-flow oversight'}.</p>
+              <p className="mb-4">The organization's allocation of <strong>{r.progRatio.toFixed(1)}%</strong> to program services suggests a <strong>{r.progRatio > 70 ? 'strong' : 'conservative'}</strong> operational alignment with its mission.</p>
+              <p>Current liquidity standing at <strong>{r.currentRatio.toFixed(2)}x</strong> indicates capacity to manage obligations {r.currentRatio > 1.5 ? 'without structural risk' : 'requiring cash-flow oversight'}.</p>
             </div>
           </div>
 
@@ -187,25 +183,26 @@ export default function FinancialIntel() {
           </div>
           <div className="p-10">
             {step === 1 ? (
-              <div className="grid md:grid-cols-2 gap-6">
-                {Object.keys(data).map((key) => (
-                  <div key={key}>
-                    <label className="block text-[9px] uppercase font-bold text-[#014421]/50 mb-1">{key.replace(/([A-Z])/g, ' $1')}</label>
-                    <input type="number" name={key} value={(data as any)[key] || ''} onChange={handleInputChange} className="w-full p-3 bg-[#fdfbf5] border border-[#014421]/10 focus:border-[#C5A059] outline-none transition-colors" />
-                  </div>
-                ))}
-                <button onClick={() => setStep(2)} className="md:col-span-2 w-full py-4 bg-[#014421] text-white font-bold uppercase text-xs tracking-widest">Proceed to Verification</button>
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {Object.keys(data).map((key) => (
+                    <div key={key}>
+                      <label className="block text-[9px] uppercase font-bold text-[#014421]/50 mb-1">{key.replace(/([A-Z])/g, ' $1')}</label>
+                      <input type="number" name={key} value={(data as any)[key] || ''} onChange={handleInputChange} className="w-full p-3 bg-[#fdfbf5] border border-[#014421]/10 focus:border-[#C5A059] outline-none transition-colors" />
+                    </div>
+                  ))}
+                </div>
+                <button onClick={() => setStep(2)} className="w-full py-4 bg-[#014421] text-white font-bold uppercase text-xs tracking-widest mt-6">Proceed to Verification</button>
               </div>
             ) : (
               <div className="text-center py-10">
                 <div className="border-2 border-dashed border-[#014421]/10 p-20 mb-8">
                   {isParsing ? <Loader2 className="animate-spin mx-auto text-[#C5A059]" size={48} /> : <UploadCloud className="mx-auto text-[#014421]/10" size={64} />}
                   <h3 className="text-xl font-serif text-[#014421] mt-6">Upload IRS Form 990</h3>
-                  <p className="text-[#014421]/40 text-sm mb-6 max-w-xs mx-auto">Select your most recent PDF return. Data will be auto-extracted for analysis.</p>
                   <input type="file" accept=".pdf" onChange={(e) => {if(e.target.files) { setFiles([e.target.files[0]]); extractDataFrom990(e.target.files[0]); }}} className="hidden" id="pdf-upload" />
-                  <label htmlFor="pdf-upload" className="cursor-pointer bg-[#014421] text-white px-8 py-3 font-bold uppercase text-[10px] tracking-widest">Select PDF Document</label>
+                  <label htmlFor="pdf-upload" className="mt-4 cursor-pointer bg-[#014421] text-white px-8 py-3 font-bold uppercase text-[10px] tracking-widest inline-block">Select PDF Document</label>
                 </div>
-                <button onClick={handleSubmit} className="px-12 py-4 bg-[#C5A059] text-white font-bold uppercase text-xs tracking-widest">Execute Fiscal Health Audit</button>
+                <button onClick={handleSubmit} disabled={!email} className="px-12 py-4 bg-[#C5A059] text-white font-bold uppercase text-xs tracking-widest disabled:opacity-50">Execute Fiscal Health Audit</button>
               </div>
             )}
           </div>
@@ -215,3 +212,8 @@ export default function FinancialIntel() {
     </div>
   );
 }
+
+// SSR Lockdown: This ensures pdfjs-dist only loads in the browser
+export default dynamic(() => Promise.resolve(FinancialIntelContent), {
+  ssr: false,
+});
