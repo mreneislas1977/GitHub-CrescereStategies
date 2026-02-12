@@ -7,7 +7,6 @@ import { db } from '../../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { ArrowRight, UploadCloud, Calculator, CheckCircle, Mail, Loader2, FileText } from 'lucide-react';
 
-// Main Component Logic
 function FinancialIntelContent() {
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState('');
@@ -34,40 +33,46 @@ function FinancialIntelContent() {
 
   const extractDataFrom990 = async (file: File) => {
     setIsParsing(true);
-    const pdfjs = await import('pdfjs-dist');
-    https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+    try {
+      const pdfjs = await import('pdfjs-dist');
+      pdfjs.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
 
-    const reader = new FileReader();
-    reader.onload = async () => {
-      try {
-        const typedarray = new Uint8Array(reader.result as ArrayBuffer);
-        const pdf = await pdfjs.getDocument(typedarray).promise;
-        let fullText = "";
-        for (let i = 1; i <= Math.min(pdf.numPages, 12); i++) {
-          const page = await pdf.getPage(i);
-          const content = await page.getTextContent();
-          fullText += content.items.map((item: any) => item.str).join(" ");
-        }
-        const newData = { ...data };
-        const cleanNum = (val: string) => parseFloat(val.replace(/,/g, '')) || 0;
-        const patterns = {
-          totalRevenue: /(?:Line 12|Total revenue).*?([\d,]{4,})/i,
-          totalExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(A\).*?([\d,]{4,})/i,
-          progExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(B\).*?([\d,]{4,})/i,
-          adminExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(C\).*?([\d,]{4,})/i,
-          fundExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(D\).*?([\d,]{4,})/i,
-          totalAssets: /(?:Line 16|Total assets).*?Column\s?\(B\).*?([\d,]{4,})/i,
-          totalLiabilities: /(?:Line 26|Total liabilities).*?Column\s?\(B\).*?([\d,]{4,})/i,
-        };
-        Object.entries(patterns).forEach(([key, regex]) => {
-          const match = fullText.match(regex);
-          if (match && match[1]) (newData as any)[key] = cleanNum(match[1]);
-        });
-        setData(newData);
-        setStep(1); 
-      } catch (err) { console.error(err); } finally { setIsParsing(false); }
-    };
-    reader.readAsArrayBuffer(file);
+      const reader = new FileReader();
+      reader.onload = async () => {
+        try {
+          const typedarray = new Uint8Array(reader.result as ArrayBuffer);
+          const pdf = await pdfjs.getDocument(typedarray).promise;
+          let fullText = "";
+          for (let i = 1; i <= Math.min(pdf.numPages, 12); i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            fullText += content.items.map((item: any) => item.str).join(" ");
+          }
+          const newData = { ...data };
+          const cleanNum = (val: string) => parseFloat(val.replace(/,/g, '')) || 0;
+          const patterns = {
+            totalRevenue: /(?:Line 12|Total revenue).*?([\d,]{4,})/i,
+            totalExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(A\).*?([\d,]{4,})/i,
+            progExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(B\).*?([\d,]{4,})/i,
+            adminExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(C\).*?([\d,]{4,})/i,
+            fundExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(D\).*?([\d,]{4,})/i,
+            totalAssets: /(?:Line 16|Total assets).*?Column\s?\(B\).*?([\d,]{4,})/i,
+            totalLiabilities: /(?:Line 26|Total liabilities).*?Column\s?\(B\).*?([\d,]{4,})/i,
+          };
+          Object.entries(patterns).forEach(([key, regex]) => {
+            const match = fullText.match(regex);
+            if (match && match[1]) (newData as any)[key] = cleanNum(match[1]);
+          });
+          setData(newData);
+          setStep(1); 
+        } catch (err) { console.error(err); }
+      };
+      reader.readAsArrayBuffer(file);
+    } catch (err) {
+      console.error("PDFJS Import Error:", err);
+    } finally {
+      setIsParsing(false);
+    }
   };
 
   const calculateRatios = () => {
@@ -187,22 +192,164 @@ function FinancialIntelContent() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {Object.keys(data).map((key) => (
                     <div key={key}>
-                      <label className="block text-[9px] uppercase font-bold text-[#014421]/50 mb-1">{key.replace(/([A-Z])/g, ' $1')}</label>
-                      <input type="number" name={key} value={(data as any)[key] || ''} onChange={handleInputChange} className="w-full p-3 bg-[#fdfbf5] border border-[#014421]/10 focus:border-[#C5A059] outline-none transition-colors" />
-                    </div>
-                  ))}
-                </div>
-                <button onClick={() => setStep(2)} className="w-full py-4 bg-[#014421] text-white font-bold uppercase text-xs tracking-widest mt-6">Proceed to Verification</button>
+                      <label className="block text-[9px] uppercase font-bold text-[#01
+cat << 'EOF' > src/app/financial/page.tsx
+"use client";
+import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import Header from '../Header';
+import Footer from '../Footer';
+import { db } from '../../lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { ArrowRight, UploadCloud, CheckCircle, Loader2, FileText } from 'lucide-react';
+
+function FinancialIntelContent() {
+  const [step, setStep] = useState(1);
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isParsing, setIsParsing] = useState(false);
+  const [data, setData] = useState({
+    progExpenses: 0, adminExpenses: 0, fundExpenses: 0, totalExpenses: 0, depreciation: 0,
+    totalContributions: 0, totalRevenue: 0, maxSingleSource: 0,
+    totalAssets: 0, totalLiabilities: 0, cashSavings: 0, unrestrictedNetAssets: 0, totalNetAssets: 0
+  });
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('crescere_user_email');
+    if (storedEmail) setEmail(storedEmail);
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setData(prev => ({ ...prev, [name]: parseFloat(value) || 0 }));
+  };
+
+  const extractDataFrom990 = async (file: File) => {
+    if (!file) return;
+    setIsParsing(true);
+    
+    try {
+      const pdfjs = await import('pdfjs-dist');
+      // Using the most stable CDN path for the worker
+      pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        try {
+          const typedarray = new Uint8Array(event.target?.result as ArrayBuffer);
+          const loadingTask = pdfjs.getDocument({ data: typedarray });
+          const pdf = await loadingTask.promise;
+          let fullText = "";
+
+          // Scan first 10 pages
+          for (let i = 1; i <= Math.min(pdf.numPages, 10); i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            fullText += content.items.map((item: any) => item.str).join(" ");
+          }
+
+          const newData = { ...data };
+          const cleanNum = (val: string) => parseFloat(val.replace(/,/g, '')) || 0;
+          
+          const patterns = {
+            totalRevenue: /(?:Line 12|Total revenue).*?([\d,]{4,})/i,
+            totalExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(A\).*?([\d,]{4,})/i,
+            progExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(B\).*?([\d,]{4,})/i,
+            adminExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(C\).*?([\d,]{4,})/i,
+            fundExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(D\).*?([\d,]{4,})/i
+          };
+
+          Object.entries(patterns).forEach(([key, regex]) => {
+            const match = fullText.match(regex);
+            if (match && match[1]) (newData as any)[key] = cleanNum(match[1]);
+          });
+
+          setData(newData);
+          setStep(1); // Return to view data
+          setIsParsing(false);
+        } catch (innerError) {
+          console.error("PDF Parsing Inner Error:", innerError);
+          setIsParsing(false);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    } catch (err) {
+      console.error("Worker Setup Error:", err);
+      setIsParsing(false);
+    }
+  };
+
+  const calculateRatios = () => {
+    const d = data;
+    return {
+      progRatio: d.totalExpenses ? (d.progExpenses / d.totalExpenses) * 100 : 0,
+      opMargin: d.totalRevenue ? ((d.totalRevenue - d.totalExpenses) / d.totalRevenue) * 100 : 0,
+      currentRatio: d.totalLiabilities ? (d.totalAssets / d.totalLiabilities) : 0
+    };
+  };
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, "financial_results"), {
+        email,
+        inputData: data,
+        ratios: calculateRatios(),
+        timestamp: serverTimestamp()
+      });
+      setStep(3);
+    } catch (e) {
+      console.error("Firebase Error:", e);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (step === 3) return (
+    <div className="min-h-screen bg-[#fdfbf5]">
+      <Header />
+      <div className="pt-40 text-center px-6">
+        <CheckCircle className="mx-auto text-[#014421] mb-4" size={60} />
+        <h1 className="text-3xl font-serif text-[#014421]">Analysis Complete</h1>
+        <p className="mt-4 text-[#014421]/60">Your 501(c)(3) Fiscal Health Audit is being finalized.</p>
+      </div>
+      <Footer />
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-[#fdfbf5]">
+      <Header />
+      <main className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
+        <div className="bg-white border border-[#014421]/10 shadow-2xl">
+          <div className="flex border-b border-[#014421]/10 text-[10px] font-bold uppercase tracking-widest">
+            <button onClick={() => setStep(1)} className={`flex-1 py-4 ${step === 1 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>1. Metrics</button>
+            <button onClick={() => setStep(2)} className={`flex-1 py-4 ${step === 2 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>2. 990 Upload</button>
+          </div>
+          
+          <div className="p-10">
+            {step === 1 ? (
+              <div className="grid md:grid-cols-2 gap-6">
+                {Object.keys(data).map((key) => (
+                  <div key={key}>
+                    <label className="block text-[9px] uppercase font-bold text-[#014421]/50 mb-1">{key}</label>
+                    <input type="number" name={key} value={(data as any)[key]} onChange={handleInputChange} className="w-full p-3 bg-[#fdfbf5] border border-[#014421]/10 outline-none focus:border-[#C5A059]" />
+                  </div>
+                ))}
+                <button onClick={() => setStep(2)} className="md:col-span-2 w-full py-4 bg-[#014421] text-white font-bold uppercase text-xs tracking-widest">Next: Upload 990</button>
               </div>
             ) : (
               <div className="text-center py-10">
-                <div className="border-2 border-dashed border-[#014421]/10 p-20 mb-8">
-                  {isParsing ? <Loader2 className="animate-spin mx-auto text-[#C5A059]" size={48} /> : <UploadCloud className="mx-auto text-[#014421]/10" size={64} />}
-                  <h3 className="text-xl font-serif text-[#014421] mt-6">Upload IRS Form 990</h3>
-                  <input type="file" accept=".pdf" onChange={(e) => {if(e.target.files) { setFiles([e.target.files[0]]); extractDataFrom990(e.target.files[0]); }}} className="hidden" id="pdf-upload" />
-                  <label htmlFor="pdf-upload" className="mt-4 cursor-pointer bg-[#014421] text-white px-8 py-3 font-bold uppercase text-[10px] tracking-widest inline-block">Select PDF Document</label>
+                <div className="border-2 border-dashed border-[#014421]/10 p-20">
+                  {isParsing ? <Loader2 className="animate-spin mx-auto text-[#C5A059]" size={48} /> : (
+                    <>
+                      <UploadCloud className="mx-auto text-[#014421]/10 mb-4" size={64} />
+                      <input type="file" accept=".pdf" onChange={(e) => e.target.files && extractDataFrom990(e.target.files[0])} className="hidden" id="pdf-up" />
+                      <label htmlFor="pdf-up" className="cursor-pointer bg-[#014421] text-white px-8 py-3 font-bold uppercase text-[10px] tracking-widest">Select PDF</label>
+                    </>
+                  )}
                 </div>
-                <button onClick={handleSubmit} disabled={!email} className="px-12 py-4 bg-[#C5A059] text-white font-bold uppercase text-xs tracking-widest disabled:opacity-50">Execute Fiscal Health Audit</button>
+                <button onClick={handleSubmit} disabled={!email || isSubmitting} className="mt-8 px-12 py-4 bg-[#C5A059] text-white font-bold uppercase text-xs tracking-widest disabled:opacity-50">Generate Executive Audit</button>
               </div>
             )}
           </div>
@@ -213,7 +360,4 @@ function FinancialIntelContent() {
   );
 }
 
-// SSR Lockdown: This ensures pdfjs-dist only loads in the browser
-export default dynamic(() => Promise.resolve(FinancialIntelContent), {
-  ssr: false,
-});
+export default dynamic(() => Promise.resolve(FinancialIntelContent), { ssr: false });
