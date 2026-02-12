@@ -3,9 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer style={{ backgroundColor: '#014421' }} className="text-[#fdfbf5] py-16 px-6 border-t border-[#C5A059]/30">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
-        
+<footer style={{ backgroundColor: '#5c4033' }} className="text-[#fdfbf5] py-16 px-6 border-t border-[#C5A059]/30">        
         {/* Brand Identity */}
         <div className="col-span-1 md:col-span-2">
           <h2 className="text-2xl font-bold tracking-tighter mb-4 italic">
