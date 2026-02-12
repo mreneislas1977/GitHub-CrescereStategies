@@ -23,11 +23,6 @@ function FinancialIntelContent() {
     if (storedEmail) setEmail(storedEmail);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setData(prev => ({ ...prev, [name]: parseFloat(value) || 0 }));
-  };
-
   const extractDataFrom990 = async (file: File) => {
     if (!file) return;
     setIsParsing(true);
@@ -46,27 +41,28 @@ function FinancialIntelContent() {
       }
 
       const newData = { ...data };
-      // Aggressive cleaner for currency and dates
       const cleanNum = (val: string) => {
           const stripped = val.replace(/[$\s,]/g, '');
           return parseFloat(stripped) || 0;
       };
       
       const patterns = {
-        totalRevenue: /(?:Total revenue|Line 12).*?([\d,]{4,})\s*$/im,
-        totalExpenses: /(?:Total expenses|Line 18).*?([\d,]{4,})\s*$/im,
-        progExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(B\).*?([\d,]{4,})/i,
-        adminExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(C\).*?([\d,]{4,})/i,
-        fundExpenses: /(?:Line 25|Total functional expenses).*?Column\s?\(D\).*?([\d,]{4,})/i,
-        totalAssets: /(?:Total assets|Line 20).*?([\d,]{4,})\s*$/im,
-        totalLiabilities: /(?:Total liabilities|Line 21).*?([\d,]{4,})\s*$/im
+        // Look for the absolute last currency-formatted number on the specific line
+        totalRevenue: /(?:Total revenue|Line 12).*?(\d[\d,]{3,})/i,
+        totalExpenses: /(?:Total expenses|Line 18|Line 25).*?(\d[\d,]{3,})/i,
+        progExpenses: /(?:Program service expenses|Line 25).*?Column\s?\(B\).*?(\d[\d,]{3,})/i,
+        adminExpenses: /(?:Management and general|Line 25).*?Column\s?\(C\).*?(\d[\d,]{3,})/i,
+        fundExpenses: /(?:Fundraising expenses|Line 25).*?Column\s?\(D\).*?(\d[\d,]{3,})/i,
+        totalAssets: /(?:Total assets|Line 20).*?(\d[\d,]{3,})/i,
+        totalLiabilities: /(?:Total liabilities|Line 21).*?(\d[\d,]{3,})/i
       };
 
       Object.entries(patterns).forEach(([key, regex]) => {
-        const matches = [...fullText.matchAll(new RegExp(regex, 'gim'))];
-        if (matches.length > 0) {
-            const lastMatch = matches[matches.length - 1];
-            (newData as any)[key] = cleanNum(lastMatch[1]);
+        const matches = fullText.match(new RegExp(regex, 'gi'));
+        if (matches) {
+            // Grab the last sequence of digits in that matched line
+            const lastVal = matches[matches.length - 1].match(/(\d[\d,]{2,})/);
+            if (lastVal) (newData as any)[key] = cleanNum(lastVal[1]);
         }
       });
 
@@ -87,18 +83,7 @@ function FinancialIntelContent() {
         email,
         inputData: data,
         timestamp: serverTimestamp(),
-        source: '501c3_intel_audit'
       });
-
-      await fetch('/api/send-alert', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          clientEmail: email, 
-          testType: 'Executive 990 Audit Request: M. Rene Islas to schedule in <24hrs' 
-        })
-      });
-
       setStep(3);
     } catch (e) { console.error(e); } finally { setIsSubmitting(false); }
   };
@@ -107,11 +92,11 @@ function FinancialIntelContent() {
     <div className="min-h-screen bg-[#fdfbf5]">
       <Header />
       <div className="pt-40 text-center px-6 max-w-2xl mx-auto">
-        <div className="bg-white p-12 border border-[#014421]/10 shadow-2xl font-serif">
+        <div className="bg-white p-12 border border-[#014421]/10 shadow-2xl">
           <CheckCircle className="mx-auto text-[#014421] mb-6" size={64} />
-          <h1 className="text-3xl text-[#014421] mb-4">Request Submitted</h1>
+          <h1 className="text-3xl font-serif text-[#014421] mb-4">Submitted</h1>
           <p className="text-[#014421]/70 leading-relaxed mb-8">
-            <strong>M. Rene Islas</strong> will contact you within 24 hours to schedule your strategy meeting.
+            <strong>M. Rene Islas</strong> will contact you within 24 hours.
           </p>
         </div>
       </div>
@@ -125,8 +110,8 @@ function FinancialIntelContent() {
       <main className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
         <div className="bg-white border border-[#014421]/10 shadow-2xl">
           <div className="flex border-b border-[#014421]/10 text-[10px] font-bold uppercase tracking-widest">
-            <div className={`flex-1 py-4 text-center ${step === 1 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>1. Upload 990</div>
-            <div className={`flex-1 py-4 text-center ${step === 2 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>2. Verify Data</div>
+            <div className={`flex-1 py-4 text-center ${step === 1 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>1. Upload</div>
+            <div className={`flex-1 py-4 text-center ${step === 2 ? 'bg-[#014421] text-white' : 'text-[#014421]/40'}`}>2. Verify</div>
           </div>
           <div className="p-10">
             {step === 1 ? (
@@ -142,10 +127,10 @@ function FinancialIntelContent() {
                 </div>
               </div>
             ) : (
-              <div className="space-y-8 font-serif">
+              <div className="space-y-8">
                 <div className="bg-[#fdfbf5] p-6 border-l-4 border-[#C5A059] flex items-start gap-4 text-xs italic text-[#014421]/70">
                    <AlertCircle className="text-[#C5A059] shrink-0" size={20} />
-                   Confirm extracted values for your 24-hour callback from M. Rene Islas.
+                   Confirm the values. M. Rene Islas will review these within 24 hours.
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   {Object.keys(data).map((key) => (
@@ -156,9 +141,7 @@ function FinancialIntelContent() {
                   ))}
                 </div>
                 <div className="pt-6 border-t border-[#014421]/10 flex justify-end">
-                  <button onClick={handleSubmit} disabled={isSubmitting} className="px-12 py-4 bg-[#014421] text-white font-bold uppercase text-xs tracking-widest hover:bg-[#C5A059] flex items-center gap-2">
-                    {isSubmitting ? 'Processing...' : 'Request Strategy Meeting'} <FileText size={16} />
-                  </button>
+                  <button onClick={handleSubmit} disabled={isSubmitting} className="px-12 py-4 bg-[#014421] text-white font-bold uppercase text-xs tracking-widest hover:bg-[#C5A059]">Request Strategy Meeting</button>
                 </div>
               </div>
             )}
