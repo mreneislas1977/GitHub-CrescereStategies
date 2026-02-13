@@ -3,6 +3,7 @@ import Hero from './Hero';
 import CollaborativePower from './CollaborativePower';
 import Process from './Process';
 import Stakeholders from './Stakeholders';
+import LeadershipBio from './LeadershipBio';
 import Footer from './Footer';
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <CollaborativePower />
       <Process />
+      <LeadershipBio />
       <Stakeholders />
       <Footer />
     </main>
