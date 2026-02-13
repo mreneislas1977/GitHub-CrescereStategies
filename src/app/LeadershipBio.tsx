@@ -11,7 +11,7 @@ const LeadershipBio = () => {
           <div className="lg:w-1/3">
             <div className="mb-8 overflow-hidden rounded-lg bg-[#5c4033]/5 border border-[#C5A059]/20 shadow-inner group">
                <img 
-                 src="/rene-headshot.jpg" 
+                 src="/rene-headshot.png" 
                  alt="M. René Islas" 
                  className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                />
