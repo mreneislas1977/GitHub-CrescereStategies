@@ -3,6 +3,7 @@ import Hero from './Hero';
 import PainPoints from './PainPoints'; // Fixed Import
 import CollaborativePower from './CollaborativePower';
 import Process from './Process';
+import LeadershipBio from './LeadershipBio';
 import Stakeholders from './Stakeholders';
 import Footer from './Footer';
 
@@ -20,6 +21,7 @@ export default function Home() {
       {/* 3. Solutions & Process */}
       <CollaborativePower />
       <Process />
+      <LeadershipBio />
       <Stakeholders />
       
       {/* 4. Footer */}
