@@ -97,18 +97,15 @@ const LeadershipBio = () => {
               </div>
             </div>
 
-            {/* Education & Community */}
+            {/* Education */}
             <div className="bg-white p-8 rounded-lg border border-[#5c4033]/10 shadow-sm">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-3">Education</h4>
                   <p className="text-sm text-gray-700 font-medium italic">MBA — Western Governors University</p>
-                  <p className="text-sm text-gray-700 font-medium italic">BA, Political Science & Sociology — Whittier College</p>
+                  <p className="text-sm text-gray-700 font-medium italic">BA, Political Science & Sociology — Whittier College (Young Alumni Award Winner)</p>
+                  <p className="text-sm text-gray-700 font-medium italic">College Prepatory Diploma -  Salpointe Catholic High School (Alumni Hall of Fame Member)</p>
                 </div>
-                <div>
-                  <h4 className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-3">Community</h4>
-                  <p className="text-sm text-gray-700 leading-snug">
-                    Eight-year overnight host for the City of Alexandria’s homeless overflow shelter.
                   </p>
                 </div>
               </div>
