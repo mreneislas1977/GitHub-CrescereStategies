@@ -21,7 +21,7 @@ const LeadershipBio = () => {
             {/* Image Placeholder - Replace src with your actual image path */}
             <div className="relative aspect-[3/4] bg-[#fdfbf5] border border-[#C5A059]/30 rounded-sm overflow-hidden shadow-2xl mb-8">
                {/* TODO: Uncomment and update the Image tag below when you have your photo file 
-                 <Image src="/images/founder.jpg" alt="Manuel R. Islas" fill className="object-cover" />
+                 <Image src="/images/founder.jpg" alt="M. René Islas" fill className="object-cover" />
                */}
                <div className="absolute inset-0 flex items-center justify-center text-[#5c4033]/20 font-serif italic text-2xl">
                  [Founder Portrait]
@@ -40,7 +40,7 @@ const LeadershipBio = () => {
           {/* RIGHT COLUMN: Bio & Credentials */}
           <div className="md:col-span-7 lg:col-span-8 md:pl-8">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#014421] mb-2">
-              Manuel R. Islas
+              M. René Islas
             </h1>
             <p className="text-[#C5A059] font-bold uppercase tracking-widest text-sm mb-8">
               Principal & Founder
@@ -48,10 +48,10 @@ const LeadershipBio = () => {
 
             <div className="space-y-6 text-[#5c4033] leading-relaxed text-lg">
               <p>
-                With a career defined by high-stakes strategic execution, Manuel specializes in bridging the gap between executive vision and organizational adoption. His approach combines rigorous sociological frameworks with hard-nosed business logic to dissolve the friction that typically stalls growth.
+                With a career defined by high-stakes strategic execution, René specializes in bridging the gap between executive vision and organizational adoption. His approach combines rigorous sociological frameworks with hard-nosed business logic to dissolve the friction that typically stalls growth.
               </p>
               <p>
-                Before founding Crescere Strategies, he served in key leadership roles where he developed the proprietary diagnostic methodologies now used to assess organizational health and leadership alignment.
+                Before founding Crescere Strategies, he served in the public, private, and non-profit sectors where he developed the proprietary diagnostic methodologies and provisionally patented business processes now used to optimize organizational health, strategic leadership, and rigorus execution.
               </p>
             </div>
 
@@ -68,17 +68,32 @@ const LeadershipBio = () => {
                   Education
                 </h4>
                 <ul className="space-y-4">
-                  {/* Fixed the syntax error here */}
                   <li className="group">
                     <span className="block text-[#5c4033] font-bold text-sm">Salpointe Catholic High School</span>
                     <span className="text-sm text-[#5c4033]/70 italic">
                       College Preparatory Diploma (Alumni Hall of Fame Member)
                     </span>
                   </li>
-                  {/* Add more education items here as needed */}
+                </h4>
+                <ul className="space-y-4">
+                  <li className="group">
+                    <span className="block text-[#5c4033] font-bold text-sm">Whittier College</span>
+                    <span className="text-sm text-[#5c4033]/70 italic">
+                      Dual Degrees in Political Science and Sociology (Young Alumni Award Winner)
+                    </span>
+                  </li>                  
                 </ul>
               </div>
-
+              </h4>
+                <ul className="space-y-4">
+                  <li className="group">
+                    <span className="block text-[#5c4033] font-bold text-sm">Western Governors University</span>
+                    <span className="text-sm text-[#5c4033]/70 italic">
+                      Masters in Business Administration
+                    </span>
+                  </li>                  
+                </ul>
+              </div>
               {/* Areas of Expertise */}
               <div>
                 <h4 className="flex items-center gap-2 text-[#014421] font-bold uppercase tracking-widest text-xs mb-4">
@@ -97,7 +112,16 @@ const LeadershipBio = () => {
                   <li className="flex items-start gap-2">
                     <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     Organizational Diagnostics
+                    </li>
+                  <li className="flex items-start gap-2">
+                    <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    Law & Policy Development
                   </li>
+                </li>
+                  <li className="flex items-start gap-2">
+                    <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    Federal Advocacy
+                    </li>
                 </ul>
               </div>
 
