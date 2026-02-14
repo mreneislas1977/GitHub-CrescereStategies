@@ -1,5 +1,6 @@
 import Header from './Header';
 import Hero from './Hero';
+import PainPoints from './'PainPoints':
 import CollaborativePower from './CollaborativePower';
 import Process from './Process';
 import Stakeholders from './Stakeholders';
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="min-h-screen bg-crescere-cream">
       <Header />
       <Hero />
+      <PainPoints />
       <CollaborativePower />
       <Process />
       <LeadershipBio />
