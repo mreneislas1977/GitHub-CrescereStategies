@@ -55,7 +55,7 @@ const LeadershipBio = () => {
                 With a career defined by high-stakes strategic execution, René specializes in bridging the gap between executive vision and organizational adoption. His approach combines rigorous sociological frameworks with hard-nosed business logic to dissolve the friction that typically stalls growth.
               </p>
               <p>
-                Before founding Crescere Strategies, he served in the public, private, and non-profit sectors where he developed the proprietary diagnostic methodologies and provisionally patented business processes now used to optimize organizational health, strategic leadership, and rigorus execution.
+                Before founding Crescere Strategies, he served in the public, private, and non-profit sectors where he levereged diagnostic methodologies and developed propriatary, provisionally patented business processes now used to optimize organizational health, strategic leadership, and rigorus execution.
               </p>
             </div>
 
