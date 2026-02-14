@@ -1,6 +1,7 @@
 import Header from './Header';
 import Hero from './Hero';
-import PainPoints from './PainPoints'; // Fixed Import
+import PainPoints from './PainPoints'; 
+import StrategyAudit from './StrategyAudit'; // New Import
 import CollaborativePower from './CollaborativePower';
 import Process from './Process';
 import LeadershipBio from './LeadershipBio';
@@ -18,6 +19,10 @@ export default function Home() {
       
       {/* 2. Pain Points (Agitation) */}
       <PainPoints />
+
+      {/* NEW: The Strategy Audit (The Solution/Aspirin) */}
+      {/* Positioned here to bridge the gap between "Pain" and "Methodology" */}
+      <StrategyAudit />
       
       {/* 3. Solutions & Process */}
       <CollaborativePower />
