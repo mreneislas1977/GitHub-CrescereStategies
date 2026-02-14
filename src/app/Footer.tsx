@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col justify-between">
-          <div className="bg-[#fdfbf5]/5 p-6 border border-[#C5A059]/10">
+          <div className="bg-[#05c4033]/5 p-6 border border-[#C5A059]/10">
             <p className="text-[10px] italic opacity-60 leading-relaxed">
               "Strategic alignment is the thermostat of organizational health."
             </p>
