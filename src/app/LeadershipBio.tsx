@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image'; // <--- 1. Added required import
 
 const LeadershipBio = () => {
   return (
@@ -18,14 +19,17 @@ const LeadershipBio = () => {
           
           {/* LEFT COLUMN: Photo & Key Stats */}
           <div className="md:col-span-5 lg:col-span-4 relative">
-            {/* Image Placeholder - Replace src with your actual image path */}
+            
+            {/* PHOTO CONTAINER */}
             <div className="relative aspect-[3/4] bg-[#fdfbf5] border border-[#C5A059]/30 rounded-sm overflow-hidden shadow-2xl mb-8">
-               {/* TODO: Uncomment and update the Image tag below when you have your photo file 
-                 <Image src="/app/LeadershipBio.png" alt="M. René Islas" fill className="object-cover" />
-               */}
-               <div className="absolute inset-0 flex items-center justify-center text-[#5c4033]/20 font-serif italic text-2xl">
-                 [Founder Portrait]
-               </div>
+               {/* 2. Fixed Path to /rene-headshot.png and uncommented the code */}
+               <Image 
+                 src="/rene-headshot.png" 
+                 alt="M. René Islas" 
+                 fill 
+                 className="object-cover"
+                 priority={true} 
+               />
             </div>
 
             {/* Quote / Highlight */}
