@@ -4,6 +4,7 @@ import PainPoints from './PainPoints'; // Fixed Import
 import CollaborativePower from './CollaborativePower';
 import Process from './Process';
 import LeadershipBio from './LeadershipBio';
+import LeadershipLab from './LeadershipLab';
 import Stakeholders from './Stakeholders';
 import Footer from './Footer';
 
@@ -23,6 +24,9 @@ export default function Home() {
       <Process />
       <LeadershipBio />
       <Stakeholders />
+
+      {/* 5. CTA: The Leadership Lab */}
+      <LeadershipLab />
       
       {/* 4. Footer */}
       <Footer />
