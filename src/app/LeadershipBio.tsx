@@ -21,7 +21,7 @@ const LeadershipBio = () => {
             {/* Image Placeholder - Replace src with your actual image path */}
             <div className="relative aspect-[3/4] bg-[#fdfbf5] border border-[#C5A059]/30 rounded-sm overflow-hidden shadow-2xl mb-8">
                {/* TODO: Uncomment and update the Image tag below when you have your photo file 
-                 <Image src="/images/founder.jpg" alt="M. René Islas" fill className="object-cover" />
+                 <Image src="/app/LeadershipBio.png" alt="M. René Islas" fill className="object-cover" />
                */}
                <div className="absolute inset-0 flex items-center justify-center text-[#5c4033]/20 font-serif italic text-2xl">
                  [Founder Portrait]
