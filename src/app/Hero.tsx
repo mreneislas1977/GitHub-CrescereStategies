@@ -1,37 +1,55 @@
 'use client';
 import React from 'react';
-import { FaArrowRight } from 'react-icons/fa';
 import { useModal } from './ModalContext';
 
 const Hero = () => {
   const { openModal } = useModal();
+
   return (
-    <section className="relative min-h-screen flex items-center bg-crescere-green overflow-hidden pt-20">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-      </div>
-      <div className="container mx-auto px-6 relative z-10 text-white">
+    // Solid Cream Background (#fdfbf5) - Center Aligned
+    <section className="relative min-h-screen flex items-center justify-center bg-[#fdfbf5] px-6 pt-20">
+      
+      <div className="container mx-auto relative z-10 flex flex-col items-center text-center">
+        
         <div className="max-w-4xl">
-          <h1 className="text-5xl md:text-7xl font-display font-bold mb-8 leading-tight">
-            Execute Strategy. <br />
-            Develop Leaders. <br />
-            <span className="text-crescere-gold">Achieve Unstoppable Growth.</span>
+          {/* HEADLINE: Deep Green (#014421) with Serif Font */}
+          <h1 className="text-5xl md:text-7xl font-serif font-bold text-[#014421] mb-6 leading-[1.1] tracking-tight">
+            From Conviction <br className="hidden md:block" />
+            to Adoption.
           </h1>
-          <p className="text-xl md:text-2xl mb-10 text-crescere-cream/90 leading-relaxed max-w-2xl">
-            Elite executive research and leadership consulting for firms that refuse to settle for the status quo.
+
+          {/* DECORATIVE DIVIDER: Brown (#5c4033) */}
+          <div className="w-16 h-0.5 bg-[#5c4033] opacity-30 mx-auto mb-8"></div>
+
+          {/* SUB-HEADLINE: Brown (#5c4033) */}
+          <p className="text-lg md:text-[1.125rem] text-[#5c4033] leading-relaxed max-w-2xl mx-auto mb-12">
+            Missions succeed or fail based on the alignment of minds and behaviors. 
+            We apply rigorous sociological frameworks to bridge the gap between internal 
+            conviction and the world's perception, ensuring your mission isn't just 
+            heard—it’s adopted.
           </p>
-          <div className="flex flex-col sm:flex-row gap-5">
-            <button 
-              onClick={openModal} 
-              className="flex items-center justify-center gap-3 px-8 py-4 bg-white text-crescere-green font-bold rounded-sm hover:bg-crescere-gold hover:text-white transition-all shadow-xl group"
+
+          {/* CTA BUTTON: Crimson (#800020) */}
+          <button 
+            onClick={openModal} 
+            className="inline-flex items-center gap-3 bg-[#800020] text-white font-bold text-sm tracking-widest uppercase py-4 px-10 rounded-sm hover:bg-[#66001a] hover:-translate-y-0.5 transition-all shadow-md group"
+          >
+            Initiate a Diagnostic
+            {/* SVG Arrow */}
+            <svg 
+              className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
             >
-              Request A Briefing 
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
   );
 };
+
 export default Hero;
