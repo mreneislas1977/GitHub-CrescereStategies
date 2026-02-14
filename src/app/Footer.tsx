@@ -1,45 +1,54 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
 
 const Footer = () => {
   return (
-    // Changed bg-[#014421] to bg-[#5c4033] (Crescere Brown)
-    <footer className="bg-[#5c4033] text-[#fdfbf5] py-20 px-6 border-t border-[#C5A059]/30">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div className="space-y-6">
-          <h3 className="text-[#C5A059] font-serif text-2xl">CRESCERE STRATEGIES LLC</h3>
-          <p className="text-xs uppercase tracking-[0.2em] leading-relaxed opacity-80">
-            Proprietary diagnostic engines for quantifying executive performance and organizational health.
-          </p>
-          <div className="pt-4">
-            <p className="text-[10px] font-mono opacity-50">© 2026 CRESCERE STRATEGIES LLC </p>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="text-[#C5A059] text-[10px] font-bold uppercase tracking-widest mb-6">LEADERSHIP LAB</h4>
-          <ul className="space-y-4 text-xs font-medium opacity-80">
-            <li><Link href="/leadership-lab" className="hover:text-[#C5A059] transition-colors">Lab Overview</Link></li>
-            <li><Link href="/ocean" className="hover:text-[#C5A059] transition-colors">OCEAN Profile</Link></li>
-            <li><Link href="/panas" className="hover:text-[#C5A059] transition-colors">PANAS-X Affect</Link></li>
-            <li><Link href="/financial" className="hover:text-[#C5A059] transition-colors">Financial Intel</Link></li>
-            <li><Link href="/admin" className="text-[#C5A059]/90 hover:text-[#C5A059] transition-colors">Admin Portal</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-[#C5A059] text-[10px] font-bold uppercase tracking-widest mb-6">FOUNDATION</h4>
-          <ul className="space-y-4 text-xs font-medium opacity-80">
-            <li><Link href="/contact" className="hover:text-[#C5A059] transition-colors">Contact</Link></li>
-            <li><Link href="/privacy" className="hover:text-[#C5A059] transition-colors">Privacy Policy</Link></li>
-            <li><Link href="/terms" className="hover:text-[#C5A059] transition-colors">Terms of Service</Link></li>
-            <li><Link href="/disclaimer" className="hover:text-[#C5A059] transition-colors">Disclaimers</Link></li>
-          </ul>
-        </div>
-
+    <footer className="bg-[#014421] text-[#fdfbf5] py-12 border-t border-[#C5A059]/30">
+      <div className="container mx-auto max-w-6xl px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          
+          {/* Column 1: Brand & Copyright */}
+          <div>
+            <h3 className="text-[#C5A059] font-serif font-bold text-lg mb-4">
+              CRESCERE STRATEGIES
+            </h3>
+            <p className="text-sm opacity-60">
+              &copy; {new Date().getFullYear()} Crescere Strategies LLC.<br />
+              All Rights Reserved.
             </p>
           </div>
+
+          {/* Column 2: Contact / Location */}
+          <div>
+            <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-widest mb-4">
+              Headquarters
+            </h4>
+            <p className="text-sm opacity-80 leading-relaxed">
+              Alexandria, Virginia<br />
+              United States
+            </p>
+          </div>
+
+          {/* Column 3: Legal Links */}
+          <div>
+            <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-widest mb-4">
+              Legal
+            </h4>
+            <ul className="space-y-2 text-sm opacity-60">
+              <li>
+                <a href="#" className="hover:text-[#C5A059] transition-colors">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[#C5A059] transition-colors">Terms of Service</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t border-[#fdfbf5]/10 text-center text-xs opacity-40">
+          <p>Proprietary diagnostic engines for quantifying executive performance and organizational health.</p>
         </div>
       </div>
     </footer>
