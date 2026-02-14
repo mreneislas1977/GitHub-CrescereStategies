@@ -1,117 +1,108 @@
+'use client';
 import React from 'react';
-import { Award, TrendingUp, ShieldCheck, Zap, Linkedin, BookOpen } from 'lucide-react';
 
 const LeadershipBio = () => {
   return (
-    <section className="py-24 bg-[#fdfbf5] border-t border-[#5c4033]/10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row-reverse gap-16 items-start">
+    <section className="bg-white py-24 px-6 border-b-8 border-[#C5A059]/20">
+      <div className="container mx-auto max-w-6xl">
+        
+        {/* Section Label */}
+        <div className="text-center mb-16">
+          <h2 className="text-[#C5A059] font-bold tracking-[0.2em] uppercase text-sm mb-3">
+            Leadership & Vision
+          </h2>
+          <div className="w-16 h-0.5 bg-[#014421] mx-auto opacity-20"></div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           
-          {/* Right Column: Headshot (Now in Color) */}
-          <div className="lg:w-1/3">
-            <div className="mb-8 overflow-hidden rounded-lg border-2 border-[#C5A059] shadow-xl">
-               <img 
-                 src="/rene-headshot.png" 
-                 alt="M. René Islas" 
-                 className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
-               />
+          {/* LEFT COLUMN: Photo & Key Stats */}
+          <div className="md:col-span-5 lg:col-span-4 relative">
+            {/* Image Placeholder - Replace src with your actual image path */}
+            <div className="relative aspect-[3/4] bg-[#fdfbf5] border border-[#C5A059]/30 rounded-sm overflow-hidden shadow-2xl mb-8">
+               {/* TODO: Uncomment and update the Image tag below when you have your photo file 
+                 <Image src="/images/founder.jpg" alt="Manuel R. Islas" fill className="object-cover" />
+               */}
+               <div className="absolute inset-0 flex items-center justify-center text-[#5c4033]/20 font-serif italic text-2xl">
+                 [Founder Portrait]
+               </div>
             </div>
-            
-            {/* Social Links under Image */}
-            <div className="flex justify-center gap-8 py-4 bg-white rounded-lg border border-[#5c4033]/10 shadow-sm">
-              <a href="https://linkedin.com/in/mreneislas" target="_blank" rel="noopener noreferrer" 
-                 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#014421] hover:text-[#C5A059] transition-colors">
-                <Linkedin size={16} /> LinkedIn
-              </a>
-              <a href="https://mreneislas.substack.com" target="_blank" rel="noopener noreferrer"
-                 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#014421] hover:text-[#C5A059] transition-colors">
-                <BookOpen size={16} /> Substack
-              </a>
-            </div>
-          </div>
 
-          {/* Left Column: Full Narrative Content */}
-          <div className="lg:w-2/3">
-            <div className="mb-10">
-              <h2 style={{ color: '#014421' }} className="text-4xl font-bold tracking-tighter mb-2">
-                M. RENÉ ISLAS
-              </h2>
-              <p style={{ color: '#C5A059' }} className="text-sm font-bold uppercase tracking-[0.3em] mb-8">
-                Founder & CEO
+            {/* Quote / Highlight */}
+            <div className="bg-[#014421] text-[#fdfbf5] p-8 relative rounded-sm shadow-lg">
+              <span className="absolute top-4 left-4 text-[#C5A059] text-4xl font-serif leading-none opacity-50">"</span>
+              <p className="font-serif italic text-lg leading-relaxed relative z-10">
+                We don't just advise on growth; we engineer the behavioral architecture that makes it inevitable.
               </p>
-              
-              <div className="space-y-6 text-gray-800 leading-relaxed font-light text-lg">
-                <p>
-                  M. René Islas is an education executive with over 25 years of experience turning federal policy into measurable impact for K-12 students and educators. His career is defined by a capacity to navigate high-stakes environments—including the U.S. Department of Education, the Department of Defense Education Activity (DoDEA), and the national non-profit sector—to build durable systems that foster growth.
-                </p>
-                <p>
-                  René’s work centers on the practical application of strategy and evidence-based methodology to achieve organizational excellence. He specializes in leading through <span className="italic font-medium text-[#014421]">"productive discomfort"</span>—challenging assumptions to build consensus and drive sustainable results.
-                </p>
-              </div>
-            </div>
-
-            {/* Strategic Impact Grid */}
-            <h3 style={{ color: '#014421' }} className="text-xl font-bold mb-8 uppercase tracking-widest border-b border-[#C5A059]/30 pb-2">
-              Proven Strategic Impact
-            </h3>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="group">
-                <div className="flex items-center gap-3 mb-3">
-                  <ShieldCheck size={20} className="text-[#C5A059]" />
-                  <h4 className="font-bold text-[#014421] text-xs tracking-widest uppercase">Federal Policy & Law</h4>
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Architected multiple K-12 laws and managed nearly $30 billion in federal funding as Chief of Staff for OESE.
-                </p>
-              </div>
-
-              <div className="group">
-                <div className="flex items-center gap-3 mb-3">
-                  <TrendingUp size={20} className="text-[#C5A059]" />
-                  <h4 className="font-bold text-[#014421] text-xs tracking-widest uppercase">Systemic Growth</h4>
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Grew association membership by 100 percent—from fewer than 2,000 to more than 4,000 individuals at NAGC.
-                </p>
-              </div>
-
-              <div className="group">
-                <div className="flex items-center gap-3 mb-3">
-                  <Award size={20} className="text-[#C5A059]" />
-                  <h4 className="font-bold text-[#014421] text-xs tracking-widest uppercase">Organizational Efficiency</h4>
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Identified operational efficiencies at the National Psoriasis Foundation that saved over $500,000 in the first year.
-                </p>
-              </div>
-
-              <div className="group">
-                <div className="flex items-center gap-3 mb-3">
-                  <Zap size={20} className="text-[#C5A059]" />
-                  <h4 className="font-bold text-[#014421] text-xs tracking-widest uppercase">Public-Private Innovation</h4>
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Created the "Teacher-to-Teacher" partnership, supporting thousands of educators nationwide to improve instruction.
-                </p>
-              </div>
-            </div>
-
-            {/* Education */}
-            <div className="bg-white p-8 rounded-lg border border-[#5c4033]/10 shadow-sm">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-3">Education</h4>
-                  <p className="text-sm text-gray-700 font-medium italic">MBA — Western Governors University</p>
-                  <p className="text-sm text-gray-700 font-medium italic">BA, Political Science & Sociology — Whittier College (Young Alumni Award Winner)</p>
-                  <p className="text-sm text-gray-700 font-medium italic">College Prepatory Diploma -  Salpointe Catholic High School (Alumni Hall of Fame Member)</p>
-                </div>
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
 
+          {/* RIGHT COLUMN: Bio & Credentials */}
+          <div className="md:col-span-7 lg:col-span-8 md:pl-8">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#014421] mb-2">
+              Manuel R. Islas
+            </h1>
+            <p className="text-[#C5A059] font-bold uppercase tracking-widest text-sm mb-8">
+              Principal & Founder
+            </p>
+
+            <div className="space-y-6 text-[#5c4033] leading-relaxed text-lg">
+              <p>
+                With a career defined by high-stakes strategic execution, Manuel specializes in bridging the gap between executive vision and organizational adoption. His approach combines rigorous sociological frameworks with hard-nosed business logic to dissolve the friction that typically stalls growth.
+              </p>
+              <p>
+                Before founding Crescere Strategies, he served in key leadership roles where he developed the proprietary diagnostic methodologies now used to assess organizational health and leadership alignment.
+              </p>
+            </div>
+
+            {/* DIVIDER */}
+            <div className="w-full h-px bg-[#5c4033]/10 my-10"></div>
+
+            {/* CREDENTIALS & EDUCATION */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              {/* Education */}
+              <div>
+                <h4 className="flex items-center gap-2 text-[#014421] font-bold uppercase tracking-widest text-xs mb-4">
+                  <span className="w-2 h-2 bg-[#C5A059] rounded-full"></span>
+                  Education
+                </h4>
+                <ul className="space-y-4">
+                  {/* Fixed the syntax error here */}
+                  <li className="group">
+                    <span className="block text-[#5c4033] font-bold text-sm">Salpointe Catholic High School</span>
+                    <span className="text-sm text-[#5c4033]/70 italic">
+                      College Preparatory Diploma (Alumni Hall of Fame Member)
+                    </span>
+                  </li>
+                  {/* Add more education items here as needed */}
+                </ul>
+              </div>
+
+              {/* Areas of Expertise */}
+              <div>
+                <h4 className="flex items-center gap-2 text-[#014421] font-bold uppercase tracking-widest text-xs mb-4">
+                  <span className="w-2 h-2 bg-[#C5A059] rounded-full"></span>
+                  Expertise
+                </h4>
+                <ul className="space-y-2 text-sm text-[#5c4033]/80">
+                  <li className="flex items-start gap-2">
+                    <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    Strategic Alignment
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    Executive Behavioral Profiling
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    Organizational Diagnostics
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>
