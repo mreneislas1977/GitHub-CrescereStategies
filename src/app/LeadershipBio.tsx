@@ -74,26 +74,21 @@ const LeadershipBio = () => {
                       College Preparatory Diploma (Alumni Hall of Fame Member)
                     </span>
                   </li>
-                </h4>
-                <ul className="space-y-4">
                   <li className="group">
                     <span className="block text-[#5c4033] font-bold text-sm">Whittier College</span>
                     <span className="text-sm text-[#5c4033]/70 italic">
                       Dual Degrees in Political Science and Sociology (Young Alumni Award Winner)
                     </span>
-                  </li>                  
-                </ul>
-              </div>
-              </h4>
-                <ul className="space-y-4">
+                  </li>
                   <li className="group">
                     <span className="block text-[#5c4033] font-bold text-sm">Western Governors University</span>
                     <span className="text-sm text-[#5c4033]/70 italic">
                       Masters in Business Administration
                     </span>
-                  </li>                  
+                  </li>
                 </ul>
               </div>
+
               {/* Areas of Expertise */}
               <div>
                 <h4 className="flex items-center gap-2 text-[#014421] font-bold uppercase tracking-widest text-xs mb-4">
@@ -112,16 +107,15 @@ const LeadershipBio = () => {
                   <li className="flex items-start gap-2">
                     <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     Organizational Diagnostics
-                    </li>
+                  </li>
                   <li className="flex items-start gap-2">
                     <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     Law & Policy Development
                   </li>
-                </li>
                   <li className="flex items-start gap-2">
                     <svg className="w-4 h-4 text-[#C5A059] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     Federal Advocacy
-                    </li>
+                  </li>
                 </ul>
               </div>
 
