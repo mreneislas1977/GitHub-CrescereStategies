@@ -13,7 +13,7 @@ const Footer = () => {
             Proprietary diagnostic engines for quantifying executive performance and organizational health.
           </p>
           <div className="pt-4">
-            <p className="text-[10px] font-mono opacity-50">© 2026 CRESCERE STRATEGIES | PROFESSIONAL CONFIDENTIALITY GUARANTEED</p>
+            <p className="text-[10px] font-mono opacity-50">© 2026 CRESCERE STRATEGIES LLC </p>
           </div>
         </div>
 
@@ -38,11 +38,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="flex flex-col justify-between">
-          {/* Adjusted quote box background to blend with brown */}
-          <div className="bg-[#fdfbf5]/10 p-6 border border-[#C5A059]/20">
-            <p className="text-[10px] italic opacity-70 leading-relaxed">
-              "Strategic alignment is the thermostat of organizational health."
             </p>
           </div>
         </div>
