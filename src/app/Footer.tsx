@@ -4,13 +4,12 @@ import { FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    // UPDATED: Background is now Brown (#5c4033)
     <footer className="bg-[#5c4033] text-[#fdfbf5] py-16 border-t border-[#C5A059]/30 font-sans">
       <div className="container mx-auto max-w-6xl px-6">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           
-          {/* COLUMN 1: BRAND & TAGLINE */}
+          {/* COLUMN 1: BRAND */}
           <div className="md:col-span-5">
             <h3 className="text-[#C5A059] font-serif font-bold text-xl tracking-wider mb-6">
               CRESCERE STRATEGIES LLC
@@ -29,7 +28,7 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* COLUMN 2: LEADERSHIP LAB */}
+          {/* COLUMN 2: THE LAB */}
           <div className="md:col-span-4">
             <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-[0.2em] mb-6">
               The Lab
@@ -42,25 +41,23 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* COLUMN 3: LEGAL DISCLAIMERS */}
+          {/* COLUMN 3: LEGAL (Now Active) */}
           <div className="md:col-span-3">
             <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-[0.2em] mb-6">
               Legal
             </h4>
             <ul className="space-y-3 text-sm opacity-80">
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Legal Disclaimers</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Consulting Agreement</a></li>
+              <li><a href="/privacy" className="hover:text-[#C5A059] transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-[#C5A059] transition-colors">Terms of Service</a></li>
+              <li><a href="/disclaimers" className="hover:text-[#C5A059] transition-colors">Legal Disclaimers</a></li>
+              <li><a href="/consulting" className="hover:text-[#C5A059] transition-colors">Consulting Agreement</a></li>
             </ul>
           </div>
         </div>
 
-        {/* BOTTOM BAR: COPYRIGHT ONLY */}
-        <div className="pt-8 border-t border-[#fdfbf5]/10 flex flex-col md:flex-row justify-center items-center gap-4 text-xs opacity-40 uppercase tracking-widest text-center">
-          <p>
-            © {new Date().getFullYear()} Crescere Strategies LLC. All Rights Reserved.
-          </p>
+        {/* BOTTOM BAR */}
+        <div className="pt-8 border-t border-[#fdfbf5]/10 text-center text-xs opacity-40 uppercase tracking-widest">
+          <p>© {new Date().getFullYear()} Crescere Strategies LLC. All Rights Reserved.</p>
         </div>
 
       </div>
