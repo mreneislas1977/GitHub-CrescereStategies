@@ -101,3 +101,4 @@ module.exports = {
   },
   plugins: [],
 }
+adjusted 02152026 at 11:40 AM
