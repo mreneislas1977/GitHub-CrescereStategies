@@ -27,7 +27,7 @@ const LeadershipLab = () => {
               Proprietary Intelligence
             </h4>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#fdfbf5] mb-6 leading-tight">
-              The Leader Lab. <br />
+              The Leadership Lab. <br />
               <span className="opacity-50 italic">Data, not Dogma.</span>
             </h2>
             <div className="w-20 h-1 bg-[#800020] mb-8"></div>
