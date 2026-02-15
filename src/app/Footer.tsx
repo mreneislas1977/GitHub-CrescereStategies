@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+// If the build fails on this import, ensure you have run: npm install react-icons
 import { FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
@@ -9,10 +10,9 @@ const Footer = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           
-          {/* COLUMN 1: BRAND (Updated Colors) */}
+          {/* COLUMN 1: BRAND (Custom Colors) */}
           <div className="md:col-span-5">
             <h3 className="font-serif font-bold text-xl tracking-wider mb-6">
-              {/* CRESCERE (Green) | STRATEGIES (Gold) | LLC (Cream) */}
               <span className="text-[#014421]">CRESCERE</span>
               <span className="text-[#C5A059]"> STRATEGIES</span>
               <span className="text-[#fdfbf5]"> LLC</span>
@@ -44,4 +44,30 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* COLUMN
+          {/* COLUMN 3: LEGAL */}
+          <div className="md:col-span-3">
+            <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-[0.2em] mb-6">
+              Legal
+            </h4>
+            <ul className="space-y-3 text-sm opacity-80">
+              <li><a href="/privacy" className="hover:text-[#C5A059] transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-[#C5A059] transition-colors">Terms of Service</a></li>
+              <li><a href="/disclaimers" className="hover:text-[#C5A059] transition-colors">Legal Disclaimers</a></li>
+              <li><a href="/consulting" className="hover:text-[#C5A059] transition-colors">Consulting Agreement</a></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* BOTTOM BAR */}
+        <div className="pt-8 border-t border-[#fdfbf5]/10 flex flex-col md:flex-row justify-center items-center gap-4 text-xs opacity-40 uppercase tracking-widest text-center">
+          <p>
+            © {new Date().getFullYear()} Crescere Strategies LLC. All Rights Reserved.
+          </p>
+        </div>
+
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
