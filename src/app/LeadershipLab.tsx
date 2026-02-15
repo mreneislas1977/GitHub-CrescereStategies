@@ -39,7 +39,7 @@ const LeadershipLab = () => {
             </p>
 
             <ul className="space-y-4 mb-10">
-              {['Executive Psychology', 'Market Force Analysis', 'Organizational Health Metrics'].map((item, index) => (
+              {['Executive Psychology', 'Implementation Science', 'Organizational Health Metrics'].map((item, index) => (
                 <li key={index} className="flex items-center gap-3 text-[#fdfbf5]">
                   <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#C5A059] text-[#014421]">
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
