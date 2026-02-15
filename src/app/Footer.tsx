@@ -1,55 +1,68 @@
 'use client';
 import React from 'react';
+import { FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-[##5c4033] text-[#fdfbf5] py-12 border-t border-[#C5A059]/30">
+    // UPDATED: Background is now Brown (#5c4033)
+    <footer className="bg-[#5c4033] text-[#fdfbf5] py-16 border-t border-[#C5A059]/30 font-sans">
       <div className="container mx-auto max-w-6xl px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           
-          {/* Column 1: Brand & Copyright */}
-          <div>
-            <h3 className="text-[#C5A059] font-serif font-bold text-lg mb-4">
+          {/* COLUMN 1: BRAND & TAGLINE */}
+          <div className="md:col-span-5">
+            <h3 className="text-[#C5A059] font-serif font-bold text-xl tracking-wider mb-6">
               CRESCERE STRATEGIES LLC
             </h3>
-            <p className="text-sm opacity-60">
-              &copy; {new Date().getFullYear()} Crescere Strategies LLC.<br />
-              All Rights Reserved.
+            <p className="text-sm opacity-70 leading-relaxed uppercase tracking-wide max-w-sm mb-6">
+              Proprietary diagnostic engines for quantifying executive performance and organizational health.
             </p>
+            <a 
+              href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7413946210195202048" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[#C5A059] hover:text-white transition-colors"
+            >
+              <FaLinkedin size={20} />
+              <span className="text-xs uppercase tracking-widest font-bold">Follow on LinkedIn</span>
+            </a>
           </div>
 
-          {/* Column 2: Contact / Location */}
-          <div>
-            <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-widest mb-4">
-              Headquarters
+          {/* COLUMN 2: LEADERSHIP LAB */}
+          <div className="md:col-span-4">
+            <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-[0.2em] mb-6">
+              The Lab
             </h4>
-            <p className="text-sm opacity-80 leading-relaxed">
-              Alexandria, Virginia<br />
-              United States
-            </p>
-          </div>
-
-          {/* Column 3: Legal Links */}
-          <div>
-            <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-widest mb-4">
-              Legal
-            </h4>
-            <ul className="space-y-2 text-sm opacity-60">
-              <li>
-                <a href="#" className="hover:text-[#C5A059] transition-colors">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-[#C5A059] transition-colors">Terms of Service</a>
-              </li>
+            <ul className="space-y-3 text-sm opacity-80">
+              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Research Overview</a></li>
+              <li><a href="#" className="hover:text-[#C5A059] transition-colors">OCEAN Personality Profile</a></li>
+              <li><a href="#" className="hover:text-[#C5A059] transition-colors">PANAS-X Affect Scales</a></li>
+              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Executive Intelligence</a></li>
             </ul>
           </div>
 
+          {/* COLUMN 3: LEGAL DISCLAIMERS */}
+          <div className="md:col-span-3">
+            <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-[0.2em] mb-6">
+              Legal
+            </h4>
+            <ul className="space-y-3 text-sm opacity-80">
+              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Legal Disclaimers</a></li>
+              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Consulting Agreement</a></li>
+            </ul>
+          </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-[#fdfbf5]/10 text-center text-xs opacity-40">
-          <p>Proprietary diagnostic engines for quantifying executive performance and organizational health.</p>
+        {/* BOTTOM BAR: COPYRIGHT ONLY */}
+        <div className="pt-8 border-t border-[#fdfbf5]/10 flex flex-col md:flex-row justify-center items-center gap-4 text-xs opacity-40 uppercase tracking-widest text-center">
+          <p>
+            © {new Date().getFullYear()} Crescere Strategies LLC. All Rights Reserved.
+          </p>
         </div>
+
       </div>
     </footer>
   );
