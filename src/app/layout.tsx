@@ -1,28 +1,29 @@
-import type { Metadata } from "next";
-import "./globals.css";
-// 1. Import ONLY the Provider
-import { ModalProvider } from "./ModalContext"; 
+import type { Metadata } from 'next';
+import { Inter, Playfair_Display } from 'next/font/google';
+import './globals.css';
+import { ModalProvider } from './ModalContext'; // <--- Import Logic
+import ModalUI from './ModalUI';                // <--- Import Visuals
 
-// 2. DELETE this line if it exists: 
-// import ModalUI from "./ModalUI"; 
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
 
 export const metadata: Metadata = {
-  title: "Crescere Strategies",
-  description: "Elite executive research and leadership consulting.",
+  title: 'Crescere Strategies',
+  description: 'Organizational Behavioral Architecture',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        {/* 3. Wrap everything in the Provider */}
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
+        {/* Wrap the app in the Provider */}
         <ModalProvider>
           {children}
-          {/* 4. DELETE <ModalUI /> if it is here. The provider handles it now. */}
+          <ModalUI /> {/* The Popup lives here, floating above everything */}
         </ModalProvider>
       </body>
     </html>
