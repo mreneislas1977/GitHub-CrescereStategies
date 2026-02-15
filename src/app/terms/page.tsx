@@ -20,7 +20,7 @@ export default function TermsPage() {
 
           <h3 className="text-xl font-bold mt-8 mb-4">2. Intellectual Property</h3>
           <p className="mb-4">
-            All content, methodologies, and branding on this site are the property of Crescere Strategies LLC. You may not reproduce or redistribute our assessment logic without permission.
+            All original content, assessment designs, scoring logic, methodologies, interfaces, and branding made available through this site are owned by Crescere Strategies LLC or our licensors and are protected by copyright, trademark, and other intellectual property laws. You may not copy, reproduce, distribute, or create derivative works from our proprietary assessment logic, workflows, or visualizations without our prior written permission, except as expressly allowed for your internal use of the services. Nothing in these Terms transfers to you any ownership rights in third‑party research protocols or instruments that we may implement; you remain responsible for complying with any rights applicable to those third‑party materials.
           </p>
 
           <h3 className="text-xl font-bold mt-8 mb-4">3. Limitation of Liability</h3>
