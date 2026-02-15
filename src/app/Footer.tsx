@@ -9,10 +9,13 @@ const Footer = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           
-          {/* COLUMN 1: BRAND */}
+          {/* COLUMN 1: BRAND (Updated Colors) */}
           <div className="md:col-span-5">
-            <h3 className="text-[#C5A059] font-serif font-bold text-xl tracking-wider mb-6">
-              CRESCERE STRATEGIES LLC
+            <h3 className="font-serif font-bold text-xl tracking-wider mb-6">
+              {/* CRESCERE (Green) | STRATEGIES (Gold) | LLC (Cream) */}
+              <span className="text-[#014421]">CRESCERE</span>
+              <span className="text-[#C5A059]"> STRATEGIES</span>
+              <span className="text-[#fdfbf5]"> LLC</span>
             </h3>
             <p className="text-sm opacity-70 leading-relaxed uppercase tracking-wide max-w-sm mb-6">
               Proprietary diagnostic engines for quantifying executive performance and organizational health.
@@ -41,28 +44,4 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* COLUMN 3: LEGAL (Now Active) */}
-          <div className="md:col-span-3">
-            <h4 className="text-[#C5A059] font-bold uppercase text-xs tracking-[0.2em] mb-6">
-              Legal
-            </h4>
-            <ul className="space-y-3 text-sm opacity-80">
-              <li><a href="/privacy" className="hover:text-[#C5A059] transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-[#C5A059] transition-colors">Terms of Service</a></li>
-              <li><a href="/disclaimers" className="hover:text-[#C5A059] transition-colors">Legal Disclaimers</a></li>
-              <li><a href="/consulting" className="hover:text-[#C5A059] transition-colors">Consulting Agreement</a></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* BOTTOM BAR */}
-        <div className="pt-8 border-t border-[#fdfbf5]/10 text-center text-xs opacity-40 uppercase tracking-widest">
-          <p>© {new Date().getFullYear()} Crescere Strategies LLC. All Rights Reserved.</p>
-        </div>
-
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;
+          {/* COLUMN
