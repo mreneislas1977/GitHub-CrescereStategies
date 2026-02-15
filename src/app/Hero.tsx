@@ -1,53 +1,72 @@
 'use client';
 import React from 'react';
-import { useModal } from './ModalContext';
+import Image from 'next/image';
+import { useModal } from './ModalContext'; // <--- 1. Import the Global Switch
 
 const Hero = () => {
-  const { openModal } = useModal();
+  const { openModal } = useModal(); // <--- 2. Get the trigger function
 
   return (
-    // Solid Cream Background (#fdfbf5) - Center Aligned
-    <section className="relative min-h-screen flex items-center justify-center bg-[#fdfbf5] px-6 pt-20">
+    <section className="relative min-h-[90vh] flex items-center justify-center bg-[#014421] overflow-hidden">
       
-      <div className="container mx-auto relative z-10 flex flex-col items-center text-center">
-        
-        <div className="max-w-4xl">
-          {/* HEADLINE: Deep Green (#014421) with Serif Font */}
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-[#014421] mb-6 leading-[1.1] tracking-tight">
-            From Conviction <br className="hidden md:block" />
-            to Adoption.
-          </h1>
-
-          {/* DECORATIVE DIVIDER: Brown (#5c4033) */}
-          <div className="w-16 h-0.5 bg-[#5c4033] opacity-30 mx-auto mb-8"></div>
-
-          {/* SUB-HEADLINE: Brown (#5c4033) */}
-          <p className="text-lg md:text-[1.125rem] text-[#5c4033] leading-relaxed max-w-2xl mx-auto mb-12">
-            Missions succeed or fail based on the alignment of minds and behaviors. 
-            We apply rigorous sociological frameworks to bridge the gap between internal 
-            conviction and the world's perception, ensuring your mission isn't just 
-            heard—it’s adopted.
-          </p>
-
-          {/* CTA BUTTON: Crimson (#800020) */}
-          <button 
-            onClick={openModal} 
-            className="inline-flex items-center gap-3 bg-[#800020] text-white font-bold text-sm tracking-widest uppercase py-4 px-10 rounded-sm hover:bg-[#66001a] hover:-translate-y-0.5 transition-all shadow-md group"
-          >
-            Initiate a Diagnostic
-            {/* SVG Arrow */}
-            <svg 
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
+      {/* Background Texture */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="heroGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fdfbf5" strokeWidth="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#heroGrid)" />
+        </svg>
       </div>
+
+      <div className="container mx-auto px-6 relative z-10 text-center">
+        
+        {/* Pre-Header */}
+        <div className="inline-block mb-6 px-4 py-1 border border-[#C5A059] rounded-full">
+          <span className="text-[#C5A059] text-xs font-bold tracking-[0.2em] uppercase">
+            Organizational Behavioral Architecture
+          </span>
+        </div>
+
+        {/* Main Headline */}
+        <h1 className="text-5xl md:text-7xl font-serif font-bold text-[#fdfbf5] mb-8 leading-tight">
+          Scientific Precision for <br />
+          <span className="text-[#C5A059] italic">Executive Performance.</span>
+        </h1>
+
+        {/* Sub-Headline */}
+        <p className="text-lg md:text-xl text-[#fdfbf5]/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+          We decode the hidden forces driving your organization. 
+          Move beyond intuition with data-driven behavioral intelligence.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+          
+          {/* PRIMARY BUTTON - WIRED TO GLOBAL MODAL */}
+          <button 
+            onClick={openModal} // <--- 3. The Switch is now live!
+            className="bg-[#C5A059] hover:bg-[#b08d4a] text-[#014421] font-bold py-4 px-8 rounded-sm uppercase tracking-widest text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+          >
+            Request Briefing
+          </button>
+
+          {/* SECONDARY BUTTON */}
+          <a 
+            href="#process" 
+            className="text-[#fdfbf5] border-b border-[#C5A059] pb-1 hover:text-[#C5A059] transition-colors text-sm uppercase tracking-widest"
+          >
+            Explore Methodology
+          </a>
+        </div>
+
+      </div>
+      
+      {/* Decorative Bottom Fade */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#014421] to-transparent pointer-events-none"></div>
+
     </section>
   );
 };
