@@ -3,14 +3,14 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#014421] text-[#fdfbf5] py-12 border-t border-[#C5A059]/30">
+    <footer className="bg-[##5c4033] text-[#fdfbf5] py-12 border-t border-[#C5A059]/30">
       <div className="container mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           
           {/* Column 1: Brand & Copyright */}
           <div>
             <h3 className="text-[#C5A059] font-serif font-bold text-lg mb-4">
-              CRESCERE STRATEGIES
+              CRESCERE STRATEGIES LLC
             </h3>
             <p className="text-sm opacity-60">
               &copy; {new Date().getFullYear()} Crescere Strategies LLC.<br />
