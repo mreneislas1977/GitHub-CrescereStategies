@@ -3,18 +3,17 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <nav style={{ backgroundColor: '#014421' }} className="sticky top-0 z-50 px-6 py-4 border-b border-[#C5A059]/40 shadow-xl">
+    <nav className="sticky top-0 z-50 px-6 py-4 border-b border-[#C5A059]/40 shadow-xl bg-[#014421]">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         {/* Logo & Centered Home Link Stack */}
         <div className="flex flex-col items-center">
           <Link href="/" className="text-xl font-bold tracking-tighter text-[#fdfbf5] leading-none">
-            CRESCERE <span style={{ color: '#C5A059' }}>STRATEGIES</span> <span className="italic font-light text-sm ml-1 text-[#fdfbf5]/80">LLC</span>
+            CRESCERE <span className="text-[#C5A059]">STRATEGIES</span> <span className="italic font-light text-sm ml-1 text-[#fdfbf5]/80">LLC</span>
           </Link>
           <Link 
             href="/" 
-            className="text-[10px] uppercase tracking-[0.3em] font-bold mt-2 transition-colors hover:text-[#fdfbf5]"
-            style={{ color: '#C5A059' }}
+            className="text-[10px] uppercase tracking-[0.3em] font-bold mt-2 transition-colors hover:text-[#fdfbf5] text-[#C5A059]"
           >
             Home
           </Link>
@@ -27,8 +26,7 @@ const Header = () => {
           </Link>
           <Link 
             href="/contact" 
-            style={{ backgroundColor: '#C5A059' }} 
-            className="px-5 py-2 text-[#014421] text-xs font-bold uppercase tracking-widest rounded hover:bg-[#fdfbf5] transition-all ml-4"
+            className="px-5 py-2 text-[#014421] text-xs font-bold uppercase tracking-widest rounded hover:bg-[#fdfbf5] transition-all ml-4 bg-[#C5A059]"
           >
             Contact
           </Link>
