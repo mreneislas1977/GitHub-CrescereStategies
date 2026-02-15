@@ -12,8 +12,9 @@ const Footer = () => {
           
           {/* COLUMN 1: BRAND (Custom Colors) */}
           <div className="md:col-span-5">
+            {/* Added font-serif for Playfair Display */}
             <h3 className="font-serif font-bold text-xl tracking-wider mb-6">
-              <span className="text-[#014421]">CRESCERE</span>
+              <span className="text-[#fdfbf5]">CRESCERE</span>
               <span className="text-[#C5A059]"> STRATEGIES</span>
               <span className="text-[#fdfbf5]"> LLC</span>
             </h3>
@@ -37,10 +38,9 @@ const Footer = () => {
               The Lab
             </h4>
             <ul className="space-y-3 text-sm opacity-80">
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Research Overview</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">OCEAN Personality Profile</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">PANAS-X Affect Scales</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">Executive Intelligence</a></li>
+              <li><a href="/research-overview" className="hover:text-[#C5A059] transition-colors">Research Overview</a></li>
+              <li><a href="/ocean" className="hover:text-[#C5A059] transition-colors">OCEAN Personality Profile</a></li>
+              <li><a href="/panas" className="hover:text-[#C5A059] transition-colors">PANAS-X Affect Scales</a></li>
             </ul>
           </div>
 
@@ -52,7 +52,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm opacity-80">
               <li><a href="/privacy" className="hover:text-[#C5A059] transition-colors">Privacy Policy</a></li>
               <li><a href="/terms" className="hover:text-[#C5A059] transition-colors">Terms of Service</a></li>
-              <li><a href="/disclaimers" className="hover:text-[#C5A059] transition-colors">Legal Disclaimers</a></li>
+              <li><a href="/disclaimer" className="hover:text-[#C5A059] transition-colors">Legal Disclaimers</a></li>
               <li><a href="/consulting" className="hover:text-[#C5A059] transition-colors">Consulting Agreement</a></li>
             </ul>
           </div>
