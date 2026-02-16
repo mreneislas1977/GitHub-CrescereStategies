@@ -2,8 +2,8 @@
 import React from 'react';
 import { FaLinkedin } from 'react-icons/fa';
 // 1. ADD THESE IMPORTS
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../Header';
+import Footer from '../Footer';
 
 /**
  * Intelligence Component - Page 2 Methodology
