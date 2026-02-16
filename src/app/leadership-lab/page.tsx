@@ -12,14 +12,14 @@ import Footer from '../Footer';
 const LeadershipLab = () => {
   const diagnosticEngines = [
     {
-      title: "OCEAN Behavioral Profile",
+      title: "STATE: OCEAN Behavioral Profile",
       subtitle: "Executive Psychology",
       desc: "Analyze the five broad domains of personality to understand leadership tendencies and team dynamics.",
       status: "Operational",
       href: "/ocean"
     },
     {
-      title: "PANAS-X Affect Audit",
+      title: "TRAIT: PANAS-X Affect Audit",
       subtitle: "Emotional Climate",
       desc: "Measure positive and negative affect to gauge emotional climate and resilience within leadership.",
       status: "Operational",
@@ -41,18 +41,7 @@ const LeadershipLab = () => {
       desc: "Architecting human-centric authority to increase Substack opt-in rates via profile psychology.",
       meta: "Weeks 1-3 • People Operations"
     },
-    {
-      tag: "Intelligence Note 02",
-      title: "The Intent Filter",
-      desc: "Leveraging engagement data to deploy personalized LinkedIn scripts for super-fan identification.",
-      meta: "Weeks 4-6 • Systems Strategy"
-    },
-    {
-      tag: "Intelligence Note 03",
-      title: "Closing Velocity",
-      desc: "Operationalizing proposal templates to align with social pain points and organizational bottlenecks.",
-      meta: "Weeks 7-8 • Execution Sprint"
-    }
+    
   ];
 
   return (
@@ -139,7 +128,7 @@ const LeadershipLab = () => {
                   </div>
                 </div>
 
-                {/* Intelligence Lite */}
+                {/* Leader Lab Lite on LinkedIn */}
                 <div>
                   <div className="flex items-center justify-between mb-10">
                     <h3 className="text-xs font-bold tracking-[0.2em] uppercase">Executive Notes (Intelligence Lite)</h3>
@@ -195,7 +184,7 @@ const LeadershipLab = () => {
                       className="flex items-center justify-center gap-3 bg-[#014421] text-[#fdfbf5] w-full py-4 rounded-sm font-bold text-[10px] tracking-[0.2em] hover:bg-[#002b15] transition-all shadow-md group"
                     >
                       <FaLinkedin size={16} />
-                      FOLLOW ON LINKEDIN
+                      SUBSCRIBE FOR EXECUTIVE BRIEFS AT LEADER LAB LITE ON LINKEDIN
                     </a>
                   </div>
 
