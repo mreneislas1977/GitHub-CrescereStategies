@@ -38,7 +38,7 @@ const LeadershipLab = () => {
     {
       tag: "Intelligence Note 01",
       title: "The Boardroom Trap: Why 70% of Change Fails",
-      desc: "Architecting human-centric authority to increase Substack opt-in rates via profile psychology.",
+      desc: "Implementing new initiatives requires attending to human dynamics.",
       meta: "Why 70% of Change Fails"
     },
     
