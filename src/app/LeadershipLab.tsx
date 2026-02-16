@@ -27,7 +27,7 @@ const LeadershipLab = () => {
               Proprietary Intelligence
             </h4>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#fdfbf5] mb-6 leading-tight">
-              The Leadership Lab. <br />
+              The Leader Lab. <br />
               <span className="opacity-50 italic">Data, not Dogma.</span>
             </h2>
             <div className="w-20 h-1 bg-[#800020] mb-8"></div>
@@ -35,7 +35,7 @@ const LeadershipLab = () => {
             <p className="text-lg text-[#fdfbf5]/80 leading-relaxed mb-8">
               True strategic advantage comes from understanding what others miss. 
               Join our deep-dive research newsletter where we dissect critical business issues 
-              through the lens of behavioral science and organizational dynamics.
+              through the lens of implementation science, behavioral analysis and organizational dynamics.
             </p>
 
             <ul className="space-y-4 mb-10">
