@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import Image from 'next/image'; // Added for the logo
+import Image from 'next/image'; 
 import { useModal } from './ModalContext';
 
 const Hero = () => {
@@ -24,10 +24,10 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
         
-        {/* Logo Integration */}
+        {/* Corrected Logo Path */}
         <div className="mb-6 relative w-[220px] md:w-[260px]">
           <Image 
-            src="/here-logo.png" 
+            src="/hero-logo.png" 
             alt="Crescere Strategies LLC" 
             width={520} 
             height={140} 
@@ -36,7 +36,7 @@ const Hero = () => {
           />
         </div>
 
- {/* Main Headline */}
+        {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-serif font-bold text-[#014421] mb-8 leading-tight">
           From Conviction <br />
           <span className="text-[#C5A059] italic">to Adoption.</span>
@@ -44,7 +44,7 @@ const Hero = () => {
 
         {/* Sub-Headline / Copy */}
         <p className="text-lg md:text-xl text-[#5c4033] max-w-3xl mx-auto mb-6 leading-relaxed font-medium">
-          Missions succeed or fail based on the alignment of minds and behaviors. 
+          Missions succeed or fail based on the alignment of minds and behaviors.
         </p>
         <p className="text-base text-[#5c4033] max-w-2xl mx-auto mb-10 leading-relaxed opacity-80">
           We apply rigorous sociological frameworks to bridge the gap between internal conviction and the world's perception, ensuring your mission isn't just heard—it’s adopted.
