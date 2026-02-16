@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
-import { useModal } from './ModalContext'; // <--- Connects to the Global Modal
+import Image from 'next/image'; // Added for the logo
+import { useModal } from './ModalContext';
 
 const Hero = () => {
-  const { openModal } = useModal(); // <--- Get the "switch" to open the popup
+  const { openModal } = useModal();
 
   return (
     // SECTION: Cream Background (#fdfbf5) with Dark Green Text
@@ -21,16 +22,21 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 text-center">
+      <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
         
-        {/* Pre-Header */}
-        <div className="inline-block mb-6 px-4 py-1 border border-[#014421]/20 rounded-full">
-          <span className="text-[#014421] text-xs font-bold tracking-[0.2em] uppercase opacity-70">
-            Organizational Behavioral Architecture
-          </span>
+        {/* Logo Integration */}
+        <div className="mb-6 relative w-[220px] md:w-[260px]">
+          <Image 
+            src="/here-logo.png" 
+            alt="Crescere Strategies LLC" 
+            width={520} 
+            height={140} 
+            className="w-full h-auto object-contain"
+            priority
+          />
         </div>
 
-        {/* Main Headline */}
+ {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-serif font-bold text-[#014421] mb-8 leading-tight">
           From Conviction <br />
           <span className="text-[#C5A059] italic">to Adoption.</span>
