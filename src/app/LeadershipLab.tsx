@@ -1,104 +1,182 @@
 'use client';
 import React from 'react';
-import { FaLinkedin } from 'react-icons/fa'; // Ensure you have react-icons (npm install react-icons)
+import { FaLinkedin } from 'react-icons/fa';
 
+/**
+ * Intelligence Component - Page 2 Methodology
+ * Palette: Parchment (#fdfbf5), Emerald (#014421), Gold (#C5A059)
+ */
 const LeadershipLab = () => {
+  const diagnosticEngines = [
+    {
+      title: "OCEAN Behavioral Profile",
+      subtitle: "Executive Psychology",
+      desc: "Analyze the five broad domains of personality to understand leadership tendencies and team dynamics.",
+      status: "Operational"
+    },
+    {
+      title: "PANAS-X Affect Audit",
+      subtitle: "Emotional Climate",
+      desc: "Measure positive and negative affect to gauge emotional climate and resilience within leadership.",
+      status: "Operational"
+    },
+    {
+      title: "Financial Intelligence",
+      subtitle: "Fiscal Health",
+      desc: "AI-driven fiscal health audit for 501(c)(3) organizations. Automated IRS 990 parsing and benchmarking.",
+      status: "Coming Soon"
+    }
+  ];
+
+  const labLiteNotes = [
+    {
+      tag: "Intelligence Note 01",
+      title: "The Trust Build",
+      desc: "Architecting human-centric authority to increase Substack opt-in rates via profile psychology.",
+      meta: "Weeks 1-3 • People Operations"
+    },
+    {
+      tag: "Intelligence Note 02",
+      title: "The Intent Filter",
+      desc: "Leveraging engagement data to deploy personalized LinkedIn scripts for super-fan identification.",
+      meta: "Weeks 4-6 • Systems Strategy"
+    },
+    {
+      tag: "Intelligence Note 03",
+      title: "Closing Velocity",
+      desc: "Operationalizing proposal templates to align with social pain points and organizational bottlenecks.",
+      meta: "Weeks 7-8 • Execution Sprint"
+    }
+  ];
+
   return (
-    <section className="relative bg-[#014421] py-24 px-6 overflow-hidden">
+    <section className="relative bg-[#fdfbf5] min-h-screen py-12 md:py-24 px-4 md:px-8 overflow-hidden font-sans text-[#014421]">
       
-      {/* Background Texture (Subtle Grid) */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+      {/* Background Texture: Subtle Research Grid */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fdfbf5" strokeWidth="0.5"/>
+            <pattern id="researchGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" strokeWidth="0.5"/>
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#smallGrid)" />
+          <rect width="100%" height="100%" fill="url(#researchGrid)" />
         </svg>
       </div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          {/* Left Column: Copy */}
-          <div className="text-left">
-            <h4 className="text-[#C5A059] font-bold tracking-[0.2em] uppercase text-xs mb-4">
-              Proprietary Intelligence
-            </h4>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#fdfbf5] mb-6 leading-tight">
-              The Leadership Lab. <br />
-              <span className="opacity-50 italic">Data, not Dogma.</span>
-            </h2>
-            <div className="w-20 h-1 bg-[#800020] mb-8"></div>
-            
-            <p className="text-lg text-[#fdfbf5]/80 leading-relaxed mb-8">
-              True strategic advantage comes from understanding what others miss. 
-              Join our deep-dive research newsletter where we dissect critical business issues 
-              through the lens of behavioral science and organizational dynamics.
-            </p>
+      <div className="container mx-auto max-w-7xl relative z-10">
+        
+        {/* Academic Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#014421]/10 pb-8 mb-16">
+          <div className="mb-6 md:mb-0">
+            <span className="text-[#C5A059] font-bold tracking-[0.4em] text-[10px] uppercase block mb-2">Crescere Strategies LLC</span>
+            <h1 className="text-4xl md:text-6xl font-serif font-medium leading-none">
+              Intelli<span className="italic font-light opacity-60">gence</span>
+            </h1>
+          </div>
+          <div className="flex flex-col md:items-end text-[10px] tracking-[0.15em] opacity-50 uppercase font-semibold text-right">
+            <span>Research Division</span>
+            <span>Ref: CS-INT-2026-Q1</span>
+          </div>
+        </div>
 
-            <ul className="space-y-4 mb-10">
-              {['Executive Psychology', 'Implementation Science', 'Organizational Health Metrics'].map((item, index) => (
-                <li key={index} className="flex items-center gap-3 text-[#fdfbf5]">
-                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#C5A059] text-[#014421]">
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
-                  </span>
-                  <span className="font-medium tracking-wide text-sm uppercase">{item}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Main Content (Left 8) */}
+          <div className="lg:col-span-8">
+            <div className="max-w-3xl mb-16">
+              <h2 className="text-[#C5A059] text-xs font-bold tracking-[0.3em] uppercase mb-6">Intelligence Brief</h2>
+              <p className="text-xl md:text-2xl font-serif leading-relaxed text-[#014421]/90 mb-8 italic">
+                "Advancing organizational health through the quantification of operational efficiency and human capital performance."
+              </p>
+              <p className="text-sm leading-relaxed text-[#014421]/70">
+                The Intelligence division serves as the proprietary research arm of Crescere Strategies, focusing on the critical intersection of operations and people. Our diagnostic engines provide a rigorous, data-driven foundation for scaling high-performance teams.
+              </p>
+            </div>
+
+            {/* Diagnostic Modules */}
+            <div className="mb-20">
+              <h3 className="text-xs font-bold tracking-[0.2em] uppercase mb-8 border-b border-[#014421]/10 pb-4">Diagnostic Tools</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                {diagnosticEngines.map((engine, i) => (
+                  <div key={i} className="group cursor-default">
+                    <span className="text-[#C5A059] text-[9px] font-bold tracking-widest uppercase block mb-3">{engine.subtitle}</span>
+                    <h4 className="text-lg font-serif font-bold mb-3 group-hover:text-[#C5A059] transition-colors leading-tight">{engine.title}</h4>
+                    <p className="text-xs leading-relaxed opacity-60 mb-6">{engine.desc}</p>
+                    <div className="flex items-center gap-2 py-1 px-2 bg-[#014421]/5 w-fit rounded-sm">
+                      <div className={`w-1 h-1 rounded-full ${engine.status === 'Operational' ? 'bg-emerald-600' : 'bg-amber-600 animate-pulse'}`}></div>
+                      <span className="text-[8px] uppercase tracking-widest font-bold opacity-60">{engine.status}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Intelligence Lite */}
+            <div>
+              <div className="flex items-center justify-between mb-10">
+                <h3 className="text-xs font-bold tracking-[0.2em] uppercase">Executive Notes (Intelligence Lite)</h3>
+                <div className="h-[1px] flex-1 bg-[#014421]/10 mx-6"></div>
+              </div>
+              
+              <div className="space-y-12">
+                {labLiteNotes.map((note, i) => (
+                  <div key={i} className="flex flex-col md:flex-row gap-6 md:gap-12 group cursor-pointer">
+                    <div className="md:w-32 shrink-0">
+                      <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.2em] uppercase">{note.tag}</span>
+                    </div>
+                    <div className="flex-1 pb-8 border-b border-[#014421]/5">
+                      <h5 className="text-xl font-serif font-bold mb-2 group-hover:text-[#C5A059] transition-colors">{note.title}</h5>
+                      <p className="text-sm opacity-60 leading-relaxed mb-4">{note.desc}</p>
+                      <div className="flex items-center gap-2 opacity-40 text-[9px] font-bold uppercase tracking-widest">
+                        <span>{note.meta}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Right Column: The "Card" CTA */}
-          <div className="relative">
-            {/* Decorative Offset Border */}
-            <div className="absolute top-4 left-4 w-full h-full border-2 border-[#C5A059]/30 rounded-sm pointer-events-none hidden md:block"></div>
-            
-            <div className="bg-[#fdfbf5] p-6 md:p-8 rounded-sm shadow-2xl relative flex flex-col items-center text-center">
+          {/* Sticky Sidebar (Right 4) */}
+          <div className="lg:col-span-4 lg:sticky lg:top-12">
+            <div className="bg-white border border-[#014421]/10 p-8 shadow-sm relative">
+              <div className="absolute top-0 left-0 w-1 h-full bg-[#C5A059]"></div>
               
-              <h3 className="text-2xl font-serif font-bold text-[#014421] mb-2">
-                Join the Inner Circle
-              </h3>
-              <p className="text-[#5c4033] mb-6 text-sm leading-relaxed max-w-md">
-                Get our latest briefing delivered directly to your inbox every week. 
-              </p>
+              <div className="mb-8">
+                <h3 className="text-xl font-serif font-bold text-[#014421] mb-2">Access Portal</h3>
+                <p className="text-[11px] leading-relaxed opacity-60">
+                  Register for proprietary access to the full intelligence sequence and operational frameworks.
+                </p>
+              </div>
 
-              {/* --- 1. SUBSTACK EMBED --- */}
-              <div className="w-full mb-6 flex justify-center">
+              <div className="mb-8 overflow-hidden rounded-sm border border-[#014421]/5 bg-gray-50 min-h-[320px]">
                 <iframe 
                   src="https://leaderlaboratory.substack.com/embed" 
-                  width="480" 
-                  height="320" 
-                  style={{ 
-                    border: '1px solid #EEE', 
-                    background: 'white',
-                    maxWidth: '100%' // Ensures responsiveness on mobile
-                  }} 
+                  className="w-full h-[320px] bg-white"
                   frameBorder="0" 
                   scrolling="no"
+                  title="Substack"
                 ></iframe>
               </div>
 
-              {/* Divider */}
-              <div className="flex items-center w-full gap-4 mb-6 opacity-50">
-                <div className="h-px bg-[#5c4033] flex-1"></div>
-                <span className="text-xs text-[#5c4033] uppercase">Or</span>
-                <div className="h-px bg-[#5c4033] flex-1"></div>
+              <div className="pt-8 border-t border-[#014421]/10">
+                <a 
+                  href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7413946210195202048" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 bg-[#014421] text-[#fdfbf5] w-full py-4 rounded-sm font-bold text-[10px] tracking-[0.2em] hover:bg-[#002b15] transition-all shadow-md group"
+                >
+                  <FaLinkedin size={16} />
+                  FOLLOW ON LINKEDIN
+                </a>
               </div>
 
-              {/* --- 2. LINKEDIN BUTTON --- */}
-              {/* Used your link but styled it to match your site + LinkedIn Blue */}
-              <a 
-                href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7413946210195202048" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-[#0A66C2] text-white w-full max-w-[280px] h-10 rounded-full font-sans font-medium text-sm hover:bg-[#004182] transition-colors shadow-sm"
-              >
-                <FaLinkedin size={18} />
-                Subscribe on LinkedIn
-              </a>
-              
+              <div className="mt-8 pt-6 border-t border-[#014421]/10 text-center">
+                <p className="text-[8px] tracking-[0.2em] uppercase opacity-40 italic">
+                  Non-disclosure protocols in effect
+                </p>
+              </div>
             </div>
           </div>
 
