@@ -37,9 +37,9 @@ const LeadershipLab = () => {
   const labLiteNotes = [
     {
       tag: "Intelligence Note 01",
-      title: "The Trust Build",
+      title: "The Boardroom Trap: Why 70% of Change Fails",
       desc: "Architecting human-centric authority to increase Substack opt-in rates via profile psychology.",
-      meta: "Weeks 1-3 • People Operations"
+      meta: Why 70% of Change Fails
     },
     
   ];
