@@ -49,7 +49,7 @@ const Hero = () => {
           onClick={openModal} 
           className="bg-[#014421] hover:bg-[#022c16] text-[#fdfbf5] font-bold py-5 px-10 rounded-sm uppercase tracking-widest text-sm transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
         >
-          Initiate A Brief Diagnostic
+          Initiate A Strategy Audit
         </button>
 
       </div>
