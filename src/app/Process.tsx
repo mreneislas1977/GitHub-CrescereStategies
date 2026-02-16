@@ -1,75 +1,82 @@
 import React from 'react';
 import { RefreshCcw } from 'lucide-react';
 
-const PathwayWithReviewBox = () => {
+const ServiceSchematic = () => {
   return (
-    <section className="py-16 bg-[#fdfbf5]">
+    <section className="py-20 bg-[#fdfbf5]">
       <div className="container mx-auto px-6">
         
-        {/* The Red Box: Signifying the Continuous Review Perimeter */}
-        <div className="border-2 border-[#8B0000] p-1 rounded-sm relative">
+        {/* The Review Perimeter: Defined by your Brand Red */}
+        <div className="border-[3px] border-[#BD1E2D] p-2 rounded-sm shadow-2xl relative">
           
-          {/* Label for the Box */}
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#fdfbf5] px-4 py-1 border border-[#8B0000]">
-             <span className="text-[#8B0000] text-[10px] font-bold uppercase tracking-[0.3em] flex items-center gap-2">
-               <RefreshCcw className="w-3 h-3" /> Continuous Review & Affect Audit Protocols
-             </span>
+          {/* Label: Continuous Review Protocol */}
+          <div className="absolute -top-5 left-10 bg-[#BD1E2D] px-4 py-1 shadow-md">
+            <span className="text-white text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
+              <RefreshCcw className="w-3 h-3 animate-spin-slow" /> 
+              Omnipresent Review: Registered Research Division Ref: CS-INT-2026
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 p-6 bg-white/50">
-            {/* 01 STUDY: The Entry Point */}
-            <div className="space-y-4">
-              <h4 className="text-[#014421] font-bold uppercase text-lg">01 Study</h4>
-              <p className="text-xs text-[#5c4033] opacity-80">
-                Initiated via the <strong>Preliminary Study</strong>. Initial mission reactions and cursory fiscal evaluation.
+          <div className="bg-white p-10 grid grid-cols-1 md:grid-cols-5 gap-12">
+            
+            {/* 01: STUDY (Entry Point) */}
+            <div className="relative">
+              <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">01 Study</h4>
+              <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
+                Initiated via the <strong>Preliminary Study</strong>. Initial mission sentiment and AI-driven fiscal health audit.
               </p>
-              <div className="text-[9px] font-bold text-[#C5A059] uppercase">GEM: Experience</div>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Experience</span>
             </div>
 
-            {/* 02 UNDERSTAND */}
-            <div className="space-y-4">
-              <h4 className="text-[#014421] font-bold uppercase text-lg">02 Understand</h4>
-              <p className="text-xs text-[#5c4033] opacity-80">
-                Opening the Human Black Box via OCEAN and PANAS-X diagnostic engines.
+            {/* 02: UNDERSTAND */}
+            <div className="relative">
+              <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">02 Understand</h4>
+              <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
+                Quantifying human assets. Deep-dive behavioral analytics via OCEAN and PANAS-X Affect Audits.
               </p>
-              <div className="text-[9px] font-bold text-[#C5A059] uppercase">GEM: Understanding</div>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Understanding</span>
             </div>
 
-            {/* 03 DREAM */}
-            <div className="space-y-4 border-l border-[#8B0000]/10 pl-4">
-              <h4 className="text-[#014421] font-bold uppercase text-lg">03 Dream</h4>
-              <p className="text-xs text-[#5c4033] opacity-80">
-                Formulating mission and vision statements that propel future behavior.
+            {/* 03: DREAM */}
+            <div className="relative">
+              <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">03 Dream</h4>
+              <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
+                Developing the <strong>Behavioral North Star</strong>: Mission and vision statements designed to propel action.
               </p>
-              <div className="text-[9px] font-bold text-[#C5A059] uppercase">GEM: Judgment</div>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Judgment</span>
             </div>
 
-            {/* 04 PLAN */}
-            <div className="space-y-4">
-              <h4 className="text-[#014421] font-bold uppercase text-lg">04 Plan</h4>
-              <p className="text-xs text-[#5c4033] opacity-80">
-                Architecting adoption strategies that survive the implementation slog.
+            {/* 04: PLAN */}
+            <div className="relative">
+              <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">04 Plan</h4>
+              <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
+                Architecting adoption strategies to survive the implementation slog and ensure sustained momentum.
               </p>
-              <div className="text-[9px] font-bold text-[#C5A059] uppercase">GEM: Decision</div>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Decision</span>
             </div>
 
-            {/* 05 DO */}
-            <div className="space-y-4">
-              <h4 className="text-[#014421] font-bold uppercase text-lg">05 Do</h4>
-              <p className="text-xs text-[#5c4033] opacity-80">
-                Rigorous execution to transform leadership capability into growth.
+            {/* 05: DO */}
+            <div className="relative">
+              <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">05 Do</h4>
+              <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
+                Rigorous execution and deployment of high-impact leadership strategies to catalyze growth.
               </p>
-              <div className="text-[9px] font-bold text-[#C5A059] uppercase">GEM: Action</div>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Action</span>
             </div>
+
           </div>
         </div>
 
-        {/* Footer Attribution */}
-        <div className="mt-6 text-center">
-          <p className="text-[10px] text-[#014421] font-bold uppercase tracking-widest opacity-60">
-            Crescere Strategies LLC • Provisionally Patented Pathway to Achievement • CS-INT-2026
+        {/* Narrative Attribution */}
+        <div className="mt-10 flex flex-col md:flex-row justify-between items-center opacity-70">
+          <p className="text-[10px] font-bold text-[#014421] uppercase tracking-[0.2em]">
+            Proprietary Business Architecture © Crescere Strategies LLC [cite: 268, 312]
+          </p>
+          <p className="text-[10px] font-bold text-[#BD1E2D] uppercase tracking-[0.2em]">
+            Provisionally Patented Process: Pathway to Achievement [cite: 270, 312]
           </p>
         </div>
+
       </div>
     </section>
   );
