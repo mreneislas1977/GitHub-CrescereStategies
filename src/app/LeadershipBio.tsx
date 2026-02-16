@@ -81,13 +81,13 @@ const LeadershipBio = () => {
                   <li className="group">
                     <span className="block text-[#5c4033] font-bold text-sm">Whittier College</span>
                     <span className="text-sm text-[#5c4033]/70 italic">
-                      Dual Degrees in Political Science and Sociology (Young Alumni Award Winner)
+                      Dual Bachlor Degrees in Political Science and Sociology (Young Alumni Award Winner)
                     </span>
                   </li>
                   <li className="group">
                     <span className="block text-[#5c4033] font-bold text-sm">Western Governors University</span>
                     <span className="text-sm text-[#5c4033]/70 italic">
-                      Masters in Business Administration
+                      Master in Business Administration (MBA)
                     </span>
                   </li>
                 </ul>
