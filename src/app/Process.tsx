@@ -81,3 +81,4 @@ const ServiceSchematic = () => {
     </section>
   );
 };
+export default Process;
