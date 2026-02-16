@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { FaLinkedin } from 'react-icons/fa';
-// 1. ADD THESE IMPORTS
+import Link from 'next/link';
 import Header from '../Header';
 import Footer from '../Footer';
 
@@ -15,19 +15,22 @@ const LeadershipLab = () => {
       title: "OCEAN Behavioral Profile",
       subtitle: "Executive Psychology",
       desc: "Analyze the five broad domains of personality to understand leadership tendencies and team dynamics.",
-      status: "Operational"
+      status: "Operational",
+      href: "/ocean"
     },
     {
       title: "PANAS-X Affect Audit",
       subtitle: "Emotional Climate",
       desc: "Measure positive and negative affect to gauge emotional climate and resilience within leadership.",
-      status: "Operational"
+      status: "Operational",
+      href: "/panas"
     },
     {
       title: "Financial Intelligence",
       subtitle: "Fiscal Health",
       desc: "AI-driven fiscal health audit for 501(c)(3) organizations. Automated IRS 990 parsing and benchmarking.",
-      status: "Coming Soon"
+      status: "Coming Soon",
+      href: "#"
     }
   ];
 
@@ -53,7 +56,6 @@ const LeadershipLab = () => {
   ];
 
   return (
-    // 2. WRAP CONTENT WITH HEADER AND FOOTER
     <>
       <Header />
       <main className="min-h-screen">
@@ -104,18 +106,36 @@ const LeadershipLab = () => {
                 {/* Diagnostic Modules */}
                 <div className="mb-20">
                   <h3 className="text-xs font-bold tracking-[0.2em] uppercase mb-8 border-b border-[#014421]/10 pb-4">Diagnostic Tools</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    {diagnosticEngines.map((engine, i) => (
-                      <div key={i} className="group cursor-default">
-                        <span className="text-[#C5A059] text-[9px] font-bold tracking-widest uppercase block mb-3">{engine.subtitle}</span>
-                        <h4 className="text-lg font-serif font-bold mb-3 group-hover:text-[#C5A059] transition-colors leading-tight">{engine.title}</h4>
-                        <p className="text-xs leading-relaxed opacity-60 mb-6">{engine.desc}</p>
-                        <div className="flex items-center gap-2 py-1 px-2 bg-[#014421]/5 w-fit rounded-sm">
-                          <div className={`w-1 h-1 rounded-full ${engine.status === 'Operational' ? 'bg-emerald-600' : 'bg-amber-600 animate-pulse'}`}></div>
-                          <span className="text-[8px] uppercase tracking-widest font-bold opacity-60">{engine.status}</span>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {diagnosticEngines.map((engine, i) => {
+                      const isOperational = engine.status === 'Operational';
+                      const CardContent = (
+                        <div className={`
+                          relative p-6 rounded-sm border transition-all duration-300 group
+                          ${isOperational 
+                            ? 'border-transparent hover:border-[#C5A059]/30 hover:bg-white hover:shadow-xl hover:-translate-y-1 cursor-pointer' 
+                            : 'border-transparent opacity-60 grayscale cursor-not-allowed'}
+                        `}>
+                          <span className="text-[#C5A059] text-[9px] font-bold tracking-widest uppercase block mb-3">{engine.subtitle}</span>
+                          <h4 className={`text-lg font-serif font-bold mb-3 transition-colors leading-tight ${isOperational ? 'group-hover:text-[#C5A059]' : ''}`}>
+                            {engine.title}
+                          </h4>
+                          <p className="text-xs leading-relaxed opacity-70 mb-6">{engine.desc}</p>
+                          <div className={`flex items-center gap-2 py-1 px-2 w-fit rounded-sm ${isOperational ? 'bg-emerald-500/10' : 'bg-gray-100'}`}>
+                            <div className={`w-1.5 h-1.5 rounded-full ${isOperational ? 'bg-emerald-600 animate-pulse' : 'bg-amber-600'}`}></div>
+                            <span className="text-[8px] uppercase tracking-widest font-bold opacity-80">{engine.status}</span>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+
+                      return isOperational ? (
+                        <Link key={i} href={engine.href} className="block">
+                          {CardContent}
+                        </Link>
+                      ) : (
+                        <div key={i}>{CardContent}</div>
+                      );
+                    })}
                   </div>
                 </div>
 
