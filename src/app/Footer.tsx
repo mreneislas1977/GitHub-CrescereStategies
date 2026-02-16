@@ -43,7 +43,6 @@ const Footer = () => {
               <li><a href="/leadership-lab" className="hover:text-[#C5A059] transition-colors">Research Briefs</a></li>
               <li><a href="/leadership-lab" className="hover:text-[#C5A059] transition-colors">OCEAN Behavioral Profile</a></li>
               <li><a href="/leadership-lab" className="hover:text-[#C5A059] transition-colors">PANAS-X Affect Audit</a></li>
-              <li><a href="/leadership-lab" className="hover:text-[#C5A059] transition-colors">Fiscal Health Engine</a></li>
             </ul>
           </div>
 
@@ -56,7 +55,6 @@ const Footer = () => {
               <li><a href="/privacy" className="hover:text-[#C5A059] transition-colors">Data Privacy</a></li>
               <li><a href="/terms" className="hover:text-[#C5A059] transition-colors">Terms of Access</a></li>
               <li><a href="/disclaimer" className="hover:text-[#C5A059] transition-colors">Legal Disclaimers</a></li>
-              <li><a href="/consulting" className="hover:text-[#C5A059] transition-colors">Consulting Agreement</a></li>
             </ul>
           </div>
         </div>
