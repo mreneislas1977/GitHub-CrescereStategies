@@ -34,14 +34,15 @@ const LeadershipLab = () => {
     }
   ];
 
+  // Corrected Data Array
   const labLiteNotes = [
     {
       tag: "Intelligence Note 01",
       title: "The Boardroom Trap: Why 70% of Change Fails",
       desc: "Implementing new initiatives requires attending to human dynamics.",
-      meta: "Why 70% of Change Fails"
-    },
-    
+      meta: "Why 70% of Change Fails",
+      href: "https://leaderlaboratory.substack.com/p/the-boardroom-trap-why-70-of-change?r=1ugy10"
+    }
   ];
 
   return (
@@ -128,7 +129,7 @@ const LeadershipLab = () => {
                   </div>
                 </div>
 
-                {/* Leader Lab Lite on LinkedIn */}
+                {/* Executive Notes Section */}
                 <div>
                   <div className="flex items-center justify-between mb-10">
                     <h3 className="text-xs font-bold tracking-[0.2em] uppercase">Executive Notes (Intelligence Lite)</h3>
@@ -137,18 +138,28 @@ const LeadershipLab = () => {
                   
                   <div className="space-y-12">
                     {labLiteNotes.map((note, i) => (
-                      <div key={i} className="flex flex-col md:flex-row gap-6 md:gap-12 group cursor-pointer">
+                      <a 
+                        key={i} 
+                        href={note.href} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex flex-col md:flex-row gap-6 md:gap-12 group cursor-pointer block no-underline"
+                      >
                         <div className="md:w-32 shrink-0">
                           <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.2em] uppercase">{note.tag}</span>
                         </div>
                         <div className="flex-1 pb-8 border-b border-[#014421]/5">
-                          <h5 className="text-xl font-serif font-bold mb-2 group-hover:text-[#C5A059] transition-colors">{note.title}</h5>
-                          <p className="text-sm opacity-60 leading-relaxed mb-4">{note.desc}</p>
-                          <div className="flex items-center gap-2 opacity-40 text-[9px] font-bold uppercase tracking-widest">
+                          <h5 className="text-xl font-serif font-bold mb-2 group-hover:text-[#C5A059] transition-colors text-[#014421]">
+                            {note.title}
+                          </h5>
+                          <p className="text-sm opacity-60 leading-relaxed mb-4 text-[#014421]">
+                            {note.desc}
+                          </p>
+                          <div className="flex items-center gap-2 opacity-40 text-[9px] font-bold uppercase tracking-widest text-[#014421]">
                             <span>{note.meta}</span>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     ))}
                   </div>
                 </div>
