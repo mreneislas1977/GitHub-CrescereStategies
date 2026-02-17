@@ -1,19 +1,19 @@
 import React from 'react';
 import { RefreshCcw } from 'lucide-react';
 
-const ServiceSchematic = () => {
+const Process = () => { // Renamed from ServiceSchematic to match export/import
   return (
     <section className="py-20 bg-[#fdfbf5]">
       <div className="container mx-auto px-6">
         
-        {/* The Review Perimeter: Defined by your Brand Red */}
+        {/* The Review Perimeter: Defined by Brand Red #BD1E2D */}
         <div className="border-[3px] border-[#BD1E2D] p-2 rounded-sm shadow-2xl relative">
           
           {/* Label: Continuous Review Protocol */}
           <div className="absolute -top-5 left-10 bg-[#BD1E2D] px-4 py-1 shadow-md">
             <span className="text-white text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
               <RefreshCcw className="w-3 h-3 animate-spin-slow" /> 
-              Omnipresent Review: Registered Research Division Ref: CS-INT-2026
+              Omnipresent Review: Registered Research Division Ref: CS-INT-2026 [cite: 312, 371]
             </span>
           </div>
 
@@ -23,18 +23,18 @@ const ServiceSchematic = () => {
             <div className="relative">
               <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">01 Study</h4>
               <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
-                Initiated via the <strong>Preliminary Study</strong>. Initial mission sentiment and AI-driven fiscal health audit.
+                Initiated via the <strong>Preliminary Study</strong>. Initial mission sentiment and AI-driven fiscal health audit[cite: 172].
               </p>
-              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Experience</span>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Experience [cite: 275]</span>
             </div>
 
             {/* 02: UNDERSTAND */}
             <div className="relative">
               <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">02 Understand</h4>
               <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
-                Quantifying human assets. Deep-dive behavioral analytics via OCEAN and PANAS-X Affect Audits.
+                Quantifying human assets. Deep-dive behavioral analytics via OCEAN and PANAS-X Affect Audits[cite: 160, 164].
               </p>
-              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Understanding</span>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Understanding [cite: 286]</span>
             </div>
 
             {/* 03: DREAM */}
@@ -43,25 +43,25 @@ const ServiceSchematic = () => {
               <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
                 Developing the <strong>Behavioral North Star</strong>: Mission and vision statements designed to propel action.
               </p>
-              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Judgment</span>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Judgment [cite: 291]</span>
             </div>
 
             {/* 04: PLAN */}
             <div className="relative">
               <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">04 Plan</h4>
               <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
-                Architecting adoption strategies to survive the implementation slog and ensure sustained momentum.
+                Architecting adoption strategies to survive the implementation slog and ensure sustained momentum[cite: 297].
               </p>
-              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Decision</span>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Decision [cite: 296]</span>
             </div>
 
             {/* 05: DO */}
             <div className="relative">
               <h4 className="text-[#014421] font-bold text-xl mb-4 uppercase">05 Do</h4>
               <p className="text-sm text-[#5c4033] mb-4 leading-relaxed">
-                Rigorous execution and deployment of high-impact leadership strategies to catalyze growth.
+                Rigorous execution and deployment of high-impact leadership strategies to catalyze growth[cite: 309].
               </p>
-              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Action</span>
+              <span className="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest">GEM: Action [cite: 308]</span>
             </div>
 
           </div>
@@ -81,4 +81,5 @@ const ServiceSchematic = () => {
     </section>
   );
 };
+
 export default Process;
