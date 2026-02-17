@@ -42,7 +42,7 @@ const StrategyAudit = () => {
           <div className="absolute top-2 left-2 right-2 bottom-2 border border-[#C5A059]/30 pointer-events-none"></div>
 
           <h3 className="text-2xl font-serif font-bold mb-2 relative z-10 text-[#C5A059]">
-            Strategy Audit
+            Preliminary Study
           </h3>
           <p className="text-sm text-[#fdfbf5]/80 mb-8 relative z-10">
             A 15-minute diagnostic to bridge the gap between conviction and adoption.
@@ -53,7 +53,7 @@ const StrategyAudit = () => {
             onClick={openModal} 
             className="w-full block bg-[#fdfbf5] hover:bg-[#C5A059] text-[#014421] py-4 px-6 font-bold text-sm uppercase tracking-widest transition-colors relative z-10"
           >
-            Schedule the Audit
+            Schedule the Preliminary Study
           </button>
         </div>
         
