@@ -6,15 +6,13 @@ const Process = () => {
     <section className="py-20 bg-[#fdfbf5]">
       <div className="container mx-auto px-6">
         
-        {/* Title and Introductory Statement */}
-        <div className="mb-12 text-center md:text-left">
-          <h2 className="text-[#014421] font-serif text-4xl md:text-5xl mb-6">
+        {/* Pathway to Achievement: Header and Introduction */}
+        <div className="mb-16 border-l-4 border-[#014421] pl-6">
+          <h2 className="text-[#014421] font-serif text-4xl md:text-5xl mb-6 uppercase tracking-tight">
             Pathway to Achievement
           </h2>
-          <p className="text-[#5c4033] text-lg max-w-3xl leading-relaxed">
-            A provisionally patented business architecture that synchronizes Bernard Lonergan’s 
-            Generalized Empirical Method (GEM) with rigorous organizational strategy to move 
-            from initial data to high-impact execution.
+          <p className="text-[#5c4033] text-lg max-w-4xl leading-relaxed font-medium">
+            A provisionally patented business architecture designed by M. Rene Islas to synchronize organizational strategy with Bernard Lonergan’s Generalized Empirical Method (GEM). This framework transforms raw data and human sentiment into a structured progression toward high-impact leadership and sustained growth.
           </p>
         </div>
         
@@ -80,7 +78,7 @@ const Process = () => {
         </div>
 
         {/* Narrative Attribution */}
-        <div className="mt-10 flex flex-col md:flex-row justify-between items-center opacity-70">
+        <div className="mt-10 flex flex-col md:flex-row justify-between items-center opacity-70 gap-4">
           <p className="text-[10px] font-bold text-[#014421] uppercase tracking-[0.2em]">
             Proprietary Business Architecture © Crescere Strategies LLC
           </p>
@@ -90,11 +88,6 @@ const Process = () => {
         </div>
 
       </div>
-    </section>
-  );
-};
-
-export default Process;
     </section>
   );
 };
