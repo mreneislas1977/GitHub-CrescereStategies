@@ -12,14 +12,14 @@ import Footer from '../Footer';
 const LeadershipLab = () => {
   const diagnosticEngines = [
     {
-      title: "STATE: OCEAN Behavioral Profile",
+      title: "Stable Trait: OCEAN Behavioral Profile",
       subtitle: "Executive Psychology",
       desc: "Analyze the five broad domains of personality to understand leadership tendencies and team dynamics.",
       status: "Operational",
       href: "/ocean"
     },
     {
-      title: "TRAIT: PANAS-X Affect Audit",
+      title: "Responsive Trait: PANAS-X Affect Audit",
       subtitle: "Emotional Climate",
       desc: "Measure positive and negative affect to gauge emotional climate and resilience within leadership.",
       status: "Operational",
