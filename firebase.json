@@ -1,6 +1,12 @@
-{
-  "functions": {
-    "source": "functions",
-    "runtime": "nodejs20"
+"redirects": [
+  {
+    "source": "/ocean",
+    "destination": "/onboarding",
+    "type": 302
+  },
+  {
+    "source": "/panas",
+    "destination": "/onboarding",
+    "type": 302
   }
-}
+]
