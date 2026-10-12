@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = 'force-dynamic';
+
 import React, { useState, useEffect } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -6,7 +8,7 @@ import { oceanQuestions } from '../../lib/oceanQuestions';
 import { panasQuestions } from '../../lib/panasQuestions';
 import { db } from '../../firebaseConfig';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { ArrowRight, CheckCircle, Lock, Printer, Gauge } from 'lucide-react';
+import { ArrowRight, CheckCircle, Lock, Printer, Gauge, Mail, MessageSquare } from 'lucide-react';
 
 export default function OnboardingPipeline() {
   // WIZARD STEP CONTROL: 1 = OCEAN, 2 = PANAS-X, 3 = Normalcy Check
@@ -28,8 +30,9 @@ export default function OnboardingPipeline() {
   const [oceanScores, setOceanScores] = useState<Record<string, number>>({});
   const [panasScores, setPanasScores] = useState<Record<string, number>>({});
   
-  // IDENTITY STATE
+  // IDENTITY & CONSULTATION GATE STATE
   const [email, setEmail] = useState('');
+  const [wantsConsultation, setWantsConsultation] = useState<boolean>(true); // Default checked
   const [showIdentityGate, setShowIdentityGate] = useState(false);
 
   // CONSTANTS
@@ -73,11 +76,8 @@ export default function OnboardingPipeline() {
 
   // PRE-SUBMIT CHECK
   const handlePreSubmit = () => {
-    if (email) {
-      handleSubmitAll();
-    } else {
-      setShowIdentityGate(true);
-    }
+    setShowIdentityGate(true);
+    window.scrollTo(0, 0);
   };
 
   // FINAL COMBINED FIRESTORE SUBMISSION
@@ -102,6 +102,7 @@ export default function OnboardingPipeline() {
     try {
       await addDoc(collection(db, "executive_baselines"), {
         email: email,
+        wantsConsultation: wantsConsultation,
         sessionStart: new Date(startTime).toISOString(),
         completedAt: serverTimestamp(),
         elapsedMinutes: Math.round(totalMinutes),
@@ -115,16 +116,6 @@ export default function OnboardingPipeline() {
         normalcyConfidenceScore: normalcyScore,
         isBaselineVolatile: normalcyScore <= 2,
         appType: 'COMBINED_ASSESSMENT'
-      });
-
-      // Background email alert trigger
-      fetch('/api/send-alert', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          clientEmail: email,
-          testType: 'Combined Assessment Completed'
-        })
       });
     } catch (error) {
       console.error("Save failed:", error);
@@ -144,9 +135,19 @@ export default function OnboardingPipeline() {
               <CheckCircle className="text-[#014421]" size={48} />
             </div>
             <h2 className="text-3xl font-bold text-[#014421] mb-2">Assessment Complete</h2>
-            <p className="text-[#014421]/70 mb-8">
+            <p className="text-[#014421]/70 mb-4">
               Profile compiled for <strong>{email}</strong>.
             </p>
+
+            {/* Consultation Indicator Banner */}
+            <div className="mb-8 p-3 bg-[#014421]/5 rounded-lg border border-[#014421]/10 inline-flex items-center gap-2 text-xs font-bold text-[#014421]">
+              <MessageSquare size={16} />
+              <span>
+                {wantsConsultation 
+                  ? "Free Consultation Requested: A Crescere Strategies advisor will reach out to review your results." 
+                  : "Private Baseline Saved: No consultation requested."}
+              </span>
+            </div>
 
             {/* Normalcy Check Badge */}
             <div className="mb-8 p-4 bg-[#fdfbf5] rounded-xl border border-[#014421]/15 text-left flex items-center justify-between">
@@ -206,7 +207,7 @@ export default function OnboardingPipeline() {
     );
   }
 
-  // IDENTITY GATE
+  // IDENTITY & CONSULTATION GATE
   if (showIdentityGate) {
     return (
       <div className="min-h-screen bg-[#fdfbf5]">
@@ -216,23 +217,54 @@ export default function OnboardingPipeline() {
              <div className="mb-6 inline-flex p-4 bg-[#014421]/5 rounded-full">
                <Lock className="text-[#014421]" size={32} />
              </div>
-             <h2 className="text-2xl font-bold text-[#014421] mb-4">Final Step</h2>
-             <p className="text-[#014421]/70 mb-8">
-               Your assessment is complete. Confirm your email to view your scores.
+             <h2 className="text-2xl font-bold text-[#014421] mb-2">Final Step: Unlock Your Results</h2>
+             <p className="text-[#014421]/70 text-sm mb-6">
+               Your baseline assessment data has been compiled. Please provide your email address to unlock and secure your results.
              </p>
-             <input 
-               type="email" 
-               placeholder="Enter your email address" 
-               value={email} 
-               onChange={(e) => setEmail(e.target.value)} 
-               className="w-full p-4 mb-6 border border-[#014421]/20 rounded-lg focus:outline-none focus:border-[#014421] text-[#014421]" 
-             />
+
+             {/* EMAIL INPUT */}
+             <div className="text-left mb-6">
+               <label className="block text-xs font-bold text-[#014421] uppercase tracking-wider mb-2">
+                 Email Address
+               </label>
+               <div className="relative">
+                 <input 
+                   type="email" 
+                   placeholder="executive@company.com" 
+                   value={email} 
+                   onChange={(e) => setEmail(e.target.value)} 
+                   className="w-full p-4 border border-[#014421]/20 rounded-xl focus:outline-none focus:border-[#014421] text-[#014421] pl-11" 
+                 />
+                 <Mail className="absolute left-4 top-4 text-[#014421]/40" size={20} />
+               </div>
+             </div>
+
+             {/* FREE CONSULTATION CHECKBOX */}
+             <div className="bg-[#fdfbf5] p-4 rounded-xl border border-[#014421]/15 text-left mb-8">
+               <label className="flex items-start gap-3 cursor-pointer">
+                 <input 
+                   type="checkbox" 
+                   checked={wantsConsultation} 
+                   onChange={(e) => setWantsConsultation(e.target.checked)}
+                   className="mt-1 h-5 w-5 accent-[#014421] rounded cursor-pointer"
+                 />
+                 <div>
+                   <span className="font-bold text-sm text-[#014421] block">
+                     Request a Free Consultation
+                   </span>
+                   <span className="text-xs text-[#014421]/70 leading-relaxed block mt-0.5">
+                     Would you like a free consultation with a Crescere Strategies advisor to confidentially review and analyze your baseline results?
+                   </span>
+                 </div>
+               </label>
+             </div>
+
              <button 
                onClick={handleSubmitAll} 
                disabled={!email || isSubmitting} 
-               className="w-full py-4 bg-[#014421] text-white font-bold rounded-lg hover:bg-[#014421]/90 transition-all disabled:opacity-50"
+               className="w-full py-4 bg-[#014421] text-white font-bold rounded-xl hover:bg-[#014421]/90 transition-all disabled:opacity-50 shadow-lg"
              >
-               {isSubmitting ? 'Saving...' : 'View Results'}
+               {isSubmitting ? 'Securing Profile...' : 'Unlock Results'}
              </button>
            </div>
         </main>
@@ -392,7 +424,7 @@ export default function OnboardingPipeline() {
                 onClick={handlePreSubmit} 
                 className="px-8 py-4 bg-[#014421] text-white font-bold rounded-full hover:bg-[#014421]/90 shadow-lg transition-all flex items-center"
               >
-                Complete & Submit Assessment
+                Complete & Unlock Results
               </button>
             </div>
           </div>
