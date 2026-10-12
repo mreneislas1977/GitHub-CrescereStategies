@@ -1,10 +1,10 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import { db } from '../../firebaseConfig';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
-import { Lock, FileText, AlertTriangle, CheckCircle2, Shield, Calendar, Mail, FileSearch } from 'lucide-react';
+import { Mail, Shield, FileSearch } from 'lucide-react';
 
 interface ExecutiveBaseline {
   id: string;
@@ -27,7 +27,6 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState<ExecutiveBaseline | null>(null);
 
-  // Default passcode set to Whittier
   const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'Whittier';
 
   const handleLogin = (e: React.FormEvent) => {
@@ -61,7 +60,6 @@ export default function AdminDashboard() {
     }
   };
 
-  // PASSCODE AUTHENTICATION GATE
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-[#fdfbf5]">
@@ -103,7 +101,6 @@ export default function AdminDashboard() {
     );
   }
 
-  // DASHBOARD VIEW
   return (
     <div className="min-h-screen bg-[#fdfbf5]">
       <Header />
@@ -125,8 +122,6 @@ export default function AdminDashboard() {
           <div className="text-center py-20 text-[#014421] font-bold">Loading Executive Vault Records...</div>
         ) : (
           <div className="grid lg:grid-cols-3 gap-8">
-            
-            {/* RECORD LIST (2 COLUMNS) */}
             <div className="lg:col-span-2 space-y-4">
               {baselines.length === 0 ? (
                 <div className="bg-white p-8 rounded-xl border border-[#014421]/10 text-center text-[#014421]/60">
@@ -148,7 +143,6 @@ export default function AdminDashboard() {
                         <span className="text-[11px] text-[#014421]/50 font-mono block mt-1">ID: {rec.id}</span>
                       </div>
 
-                      {/* VOLATILITY / NORMALCY BADGE */}
                       <div className="flex flex-col items-end gap-1">
                         <span className={`px-3 py-1 rounded-full text-[10px] font-bold ${rec.isBaselineVolatile ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-green-100 text-[#014421]'}`}>
                           {rec.isBaselineVolatile ? 'Volatile Baseline (≤2)' : 'Normal Baseline'}
@@ -182,7 +176,6 @@ export default function AdminDashboard() {
               )}
             </div>
 
-            {/* DETAIL PANEL (1 COLUMN) */}
             <div className="lg:col-span-1">
               {selectedRecord ? (
                 <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#014421]/20 sticky top-32">
@@ -190,7 +183,6 @@ export default function AdminDashboard() {
                   <p className="text-xs text-[#014421]/60 mb-6">{selectedRecord.email}</p>
 
                   <div className="space-y-6">
-                    {/* CUSTOM ANALYSIS OUTREACH PREFERENCE */}
                     <div className="p-3 bg-[#fdfbf5] rounded-lg border border-[#014421]/10">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-[#014421]/60 block mb-1">Outreach Status</span>
                       <span className="text-xs font-bold text-[#014421]">
@@ -200,7 +192,6 @@ export default function AdminDashboard() {
                       </span>
                     </div>
 
-                    {/* OCEAN SCORES */}
                     <div>
                       <h4 className="text-xs font-bold text-[#014421] uppercase tracking-wider border-b pb-1 mb-3">OCEAN Trait Baseline</h4>
                       <div className="space-y-2 text-xs">
@@ -217,7 +208,6 @@ export default function AdminDashboard() {
                       </div>
                     </div>
 
-                    {/* PANAS SCORES */}
                     <div>
                       <h4 className="text-xs font-bold text-[#014421] uppercase tracking-wider border-b pb-1 mb-3">PANAS-X Affect Baseline</h4>
                       <div className="space-y-2 text-xs max-h-48 overflow-y-auto pr-1">
@@ -241,7 +231,6 @@ export default function AdminDashboard() {
                 </div>
               )}
             </div>
-
           </div>
         )}
       </main>
