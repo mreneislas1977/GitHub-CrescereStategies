@@ -4,14 +4,15 @@ export const dynamic = 'force-dynamic';
 import React, { useState } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
-import { db, auth } from '@/lib/firebase';
+import { db } from '@/lib/firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { Shield, Mail, FileSearch } from 'lucide-react';
 
 interface ExecutiveBaseline {
   id: string;
   email: string;
-  wantsCustomAnalysis?: boolean;
+  wantsConsultation?: boolean;
+  wantsCustomAnalysis?: boolean; // Legacy field fallback
   completedAt?: { toDate?: () => Date };
   elapsedMinutes?: number;
   normalcyConfidenceScore?: number;
@@ -117,49 +118,53 @@ export default function AdminDashboard() {
                   No executive baseline records found in vault.
                 </div>
               ) : (
-                baselines.map((rec) => (
-                  <div
-                    key={rec.id}
-                    onClick={() => setSelectedRecord(rec)}
-                    className={`bg-white p-5 rounded-xl border transition-all cursor-pointer shadow-sm hover:shadow-md ${selectedRecord?.id === rec.id ? 'border-[#014421] ring-2 ring-[#014421]/20' : 'border-[#014421]/10'}`}
-                  >
-                    <div className="flex justify-between items-start mb-3">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <Mail size={16} className="text-[#014421]/60" />
-                          <span className="font-bold text-[#014421] text-base">{rec.email}</span>
+                baselines.map((rec) => {
+                  const hasRequestedConsultation = rec.wantsConsultation ?? rec.wantsCustomAnalysis;
+
+                  return (
+                    <div
+                      key={rec.id}
+                      onClick={() => setSelectedRecord(rec)}
+                      className={`bg-white p-5 rounded-xl border transition-all cursor-pointer shadow-sm hover:shadow-md ${selectedRecord?.id === rec.id ? 'border-[#014421] ring-2 ring-[#014421]/20' : 'border-[#014421]/10'}`}
+                    >
+                      <div className="flex justify-between items-start mb-3">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <Mail size={16} className="text-[#014421]/60" />
+                            <span className="font-bold text-[#014421] text-base">{rec.email}</span>
+                          </div>
+                          <span className="text-[11px] text-[#014421]/50 font-mono block mt-1">ID: {rec.id}</span>
                         </div>
-                        <span className="text-[11px] text-[#014421]/50 font-mono block mt-1">ID: {rec.id}</span>
-                      </div>
-                      <div className="flex flex-col items-end gap-1">
-                        <span className={`px-3 py-1 rounded-full text-[10px] font-bold ${rec.isBaselineVolatile ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-green-100 text-[#014421]'}`}>
-                          {rec.isBaselineVolatile ? 'Volatile Baseline (≤2)' : 'Normal Baseline'}
-                        </span>
-                        {rec.wantsCustomAnalysis && (
-                          <span className="px-2 py-0.5 bg-[#014421]/10 text-[#014421] text-[10px] font-bold rounded flex items-center gap-1">
-                            <FileSearch size={12} /> Custom Analysis Requested
+                        <div className="flex flex-col items-end gap-1">
+                          <span className={`px-3 py-1 rounded-full text-[10px] font-bold ${rec.isBaselineVolatile ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-green-100 text-[#014421]'}`}>
+                            {rec.isBaselineVolatile ? 'Volatile Baseline (≤2)' : 'Normal Baseline'}
                           </span>
-                        )}
+                          {hasRequestedConsultation && (
+                            <span className="px-2 py-0.5 bg-[#014421]/10 text-[#014421] text-[10px] font-bold rounded flex items-center gap-1">
+                              <FileSearch size={12} /> Consultation Requested
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4 pt-3 border-t border-gray-100 text-xs">
+                        <div>
+                          <span className="text-[#014421]/50 block uppercase text-[9px] font-bold">Normalcy Score</span>
+                          <span className="font-bold text-[#014421]">{rec.normalcyConfidenceScore ?? 'N/A'} / 5</span>
+                        </div>
+                        <div>
+                          <span className="text-[#014421]/50 block uppercase text-[9px] font-bold">Duration</span>
+                          <span className="font-bold text-[#014421]">{rec.elapsedMinutes ?? 'N/A'} min</span>
+                        </div>
+                        <div>
+                          <span className="text-[#014421]/50 block uppercase text-[9px] font-bold">Date Saved</span>
+                          <span className="font-bold text-[#014421]">
+                            {typeof rec.completedAt?.toDate === 'function' ? rec.completedAt.toDate().toLocaleDateString() : 'Recent'}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4 pt-3 border-t border-gray-100 text-xs">
-                      <div>
-                        <span className="text-[#014421]/50 block uppercase text-[9px] font-bold">Normalcy Score</span>
-                        <span className="font-bold text-[#014421]">{rec.normalcyConfidenceScore ?? 'N/A'} / 5</span>
-                      </div>
-                      <div>
-                        <span className="text-[#014421]/50 block uppercase text-[9px] font-bold">Duration</span>
-                        <span className="font-bold text-[#014421]">{rec.elapsedMinutes ?? 'N/A'} min</span>
-                      </div>
-                      <div>
-                        <span className="text-[#014421]/50 block uppercase text-[9px] font-bold">Date Saved</span>
-                        <span className="font-bold text-[#014421]">
-                          {typeof rec.completedAt?.toDate === 'function' ? rec.completedAt.toDate().toLocaleDateString() : 'Recent'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))
+                  );
+                })
               )}
             </div>
 
@@ -172,7 +177,9 @@ export default function AdminDashboard() {
                     <div className="p-3 bg-[#fdfbf5] rounded-lg border border-[#014421]/10">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-[#014421]/60 block mb-1">Outreach Status</span>
                       <span className="text-xs font-bold text-[#014421]">
-                        {selectedRecord.wantsCustomAnalysis ? "Yes - Requested Confidential Customized Analysis" : "No - Private Vault Storage Only"}
+                        {(selectedRecord.wantsConsultation ?? selectedRecord.wantsCustomAnalysis) 
+                          ? "Yes - Free Consultation Requested" 
+                          : "No - Private Vault Storage Only"}
                       </span>
                     </div>
                     <div>
