@@ -4,7 +4,6 @@ import Hero from './Hero';
 import PainPoints from './PainPoints';
 import Process from './Process';
 import Stakeholders from './Stakeholders';
-import LeadershipBio from './LeadershipBio';
 import Footer from './Footer';
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
         <PainPoints />
         <Process />
         <Stakeholders />
-        <LeadershipBio />
       </main>
       <Footer />
     </div>
