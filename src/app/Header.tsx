@@ -20,17 +20,26 @@ const Header = () => {
         </div>
 
         {/* Focused Navigation Links */}
-        <div className="flex space-x-10 items-center">
+        <div className="flex space-x-6 sm:space-x-8 items-center">
           <Link 
             href="/leadership-lab" 
             className="text-xs uppercase tracking-[0.2em] font-bold text-[#fdfbf5] hover:text-[#C5A059] transition-colors"
           >
             Intelligence
           </Link>
+
+          <a 
+            href="https://calendar.app.google/BmYeAJiPqk5dSnBv5"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs uppercase tracking-[0.2em] font-bold text-[#fdfbf5] hover:text-[#C5A059] transition-colors"
+          >
+            Schedule
+          </a>
           
           <Link 
             href="/contact" 
-            className="px-5 py-2 bg-[#C5A059] text-[#014421] text-[10px] font-bold uppercase tracking-widest rounded-sm hover:bg-[#fdfbf5] transition-all ml-4"
+            className="px-5 py-2 bg-[#C5A059] text-[#014421] text-[10px] font-bold uppercase tracking-widest rounded-sm hover:bg-[#fdfbf5] transition-all"
           >
             Contact
           </Link>
