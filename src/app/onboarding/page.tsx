@@ -6,7 +6,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import { oceanQuestions } from '../../lib/oceanQuestions';
 import { panasQuestions } from '../../lib/panasQuestions';
-import { db } from '../../firebaseConfig';
+import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { ArrowRight, CheckCircle, Lock, Printer, Gauge, Mail, MessageSquare } from 'lucide-react';
 
