@@ -34,23 +34,42 @@ export default function AdminDashboard() {
   const fetchBaselines = async () => {
     setLoading(true);
     try {
-      const querySnapshot = await getDocs(collection(db, "executive_baselines"));
-      const records: ExecutiveBaseline[] = [];
-      
-      querySnapshot.forEach((doc) => {
-        records.push({ id: doc.id, ...doc.data() } as ExecutiveBaseline);
-      });
+      const recordsMap = new Map<string, ExecutiveBaseline>();
 
-      // Client-side sort by timestamp descending
-      records.sort((a, b) => {
+      // 1. Fetch from executive_baselines
+      try {
+        const snap1 = await getDocs(collection(db, "executive_baselines"));
+        snap1.forEach((doc) => {
+          recordsMap.set(doc.id, { id: doc.id, ...doc.data() } as ExecutiveBaseline);
+        });
+      } catch (e) {
+        console.warn("Could not fetch executive_baselines:", e);
+      }
+
+      // 2. Fetch from legacy briefing Requests
+      try {
+        const snap2 = await getDocs(collection(db, "briefing Requests"));
+        snap2.forEach((doc) => {
+          if (!recordsMap.has(doc.id)) {
+            recordsMap.set(doc.id, { id: doc.id, ...doc.data() } as ExecutiveBaseline);
+          }
+        });
+      } catch (e) {
+        console.warn("Could not fetch briefing Requests:", e);
+      }
+
+      const combinedRecords = Array.from(recordsMap.values());
+
+      // Sort client-side by timestamp descending
+      combinedRecords.sort((a, b) => {
         const timeA = a.completedAt?.toDate ? a.completedAt.toDate().getTime() : 0;
         const timeB = b.completedAt?.toDate ? b.completedAt.toDate().getTime() : 0;
         return timeB - timeA;
       });
 
-      setBaselines(records);
+      setBaselines(combinedRecords);
     } catch (error) {
-      console.error("Error fetching executive baselines:", error);
+      console.error("Error fetching admin records:", error);
     } finally {
       setLoading(false);
     }
@@ -106,7 +125,7 @@ export default function AdminDashboard() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-[#014421]/15 pb-6">
           <div>
             <h1 className="text-3xl font-extrabold text-[#014421]">Executive Baselines Admin</h1>
-            <p className="text-sm text-[#014421]/60 mt-1">Reviewing combined OCEAN + PANAS-X records from <code className="font-mono bg-gray-100 px-1.5 py-0.5 rounded">executive_baselines</code>.</p>
+            <p className="text-sm text-[#014421]/60 mt-1">Reviewing combined OCEAN + PANAS-X records from <code className="font-mono bg-gray-100 px-1.5 py-0.5 rounded">executive_baselines</code> and <code className="font-mono bg-gray-100 px-1.5 py-0.5 rounded">briefing Requests</code>.</p>
           </div>
           <button onClick={fetchBaselines} className="px-4 py-2 bg-[#014421]/10 text-[#014421] text-xs font-bold rounded-lg hover:bg-[#014421]/20">
             Refresh Records
@@ -136,7 +155,7 @@ export default function AdminDashboard() {
                         <div>
                           <div className="flex items-center gap-2">
                             <Mail size={16} className="text-[#014421]/60" />
-                            <span className="font-bold text-[#014421] text-base">{rec.email}</span>
+                            <span className="font-bold text-[#014421] text-base">{rec.email || 'No email provided'}</span>
                           </div>
                           <span className="text-[11px] text-[#014421]/50 font-mono block mt-1">ID: {rec.id}</span>
                         </div>
@@ -177,7 +196,7 @@ export default function AdminDashboard() {
               {selectedRecord ? (
                 <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#014421]/20 sticky top-32">
                   <h3 className="text-xl font-bold text-[#014421] mb-1">Baseline Profile Detail</h3>
-                  <p className="text-xs text-[#014421]/60 mb-6">{selectedRecord.email}</p>
+                  <p className="text-xs text-[#014421]/60 mb-6">{selectedRecord.email || 'No email provided'}</p>
                   <div className="space-y-6">
                     <div className="p-3 bg-[#fdfbf5] rounded-lg border border-[#014421]/10">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-[#014421]/60 block mb-1">Outreach Status</span>
