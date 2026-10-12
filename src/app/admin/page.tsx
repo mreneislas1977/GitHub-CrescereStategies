@@ -1,8 +1,10 @@
 "use client";
+export const dynamic = 'force-dynamic';
+
 import React, { useState } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
-import { db } from '../../firebaseConfig';
+import { db } from '../firebaseConfig';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { Mail, Shield, FileSearch } from 'lucide-react';
 
@@ -167,7 +169,7 @@ export default function AdminDashboard() {
                       <div>
                         <span className="text-[#014421]/50 block uppercase text-[9px] font-bold">Date Saved</span>
                         <span className="font-bold text-[#014421]">
-                          {rec.completedAt?.toDate ? rec.completedAt.toDate().toLocaleDateString() : 'Recent'}
+                          {typeof rec.completedAt?.toDate === 'function' ? rec.completedAt.toDate().toLocaleDateString() : 'Recent'}
                         </span>
                       </div>
                     </div>
