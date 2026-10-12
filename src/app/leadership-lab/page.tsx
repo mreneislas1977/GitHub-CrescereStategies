@@ -3,15 +3,13 @@ import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import Link from 'next/link';
-import { ShieldCheck, ArrowRight, Activity, FileText, BrainCircuit, BarChart3 } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Activity, BarChart3, BrainCircuit } from 'lucide-react';
 
 export default function LeadershipLab() {
   return (
     <div className="min-h-screen bg-[#fdfbf5]">
       <Header />
-
       <main className="pt-32 pb-20 px-6 max-w-6xl mx-auto">
-        {/* HERO SECTION */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#014421]/5 border border-[#014421]/15 rounded-full text-xs font-bold text-[#014421] mb-4 uppercase tracking-wider">
             <BrainCircuit size={16} /> Diagnostic Intelligence Engines
@@ -24,284 +22,45 @@ export default function LeadershipLab() {
           </p>
         </div>
 
-        {/* DIAGNOSTIC CARDS GRID */}
         <div className="grid md:grid-cols-2 gap-8">
-          
-          {/* UNIFIED MASTER BASELINE CARD (PRIMARY HIGHLIGHT) */}
+          {/* UNIFIED MASTER BASELINE CARD */}
           <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-[#014421] flex flex-col justify-between relative overflow-hidden group">
             <div className="absolute -right-8 -top-8 w-32 h-32 bg-[#014421]/5 rounded-full group-hover:scale-125 transition-transform duration-500" />
-            
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="p-3 bg-[#014421] text-white rounded-xl">
-                  <Activity size={28} />
-                </div>
-                <span className="px-3 py-1 bg-amber-100 text-amber-900 font-bold text-xs rounded-full uppercase tracking-wider">
-                  Core Master Engine
-                </span>
+                <div className="p-3 bg-[#014421] text-white rounded-xl"><Activity size={28} /></div>
+                <span className="px-3 py-1 bg-amber-100 text-amber-900 font-bold text-xs rounded-full uppercase tracking-wider">Core Master Engine</span>
               </div>
-
-              <h2 className="text-2xl font-bold text-[#014421] mb-3">
-                Executive Baseline Intake Pipeline
-              </h2>
-              <p className="text-[#014421]/70 text-sm leading-relaxed mb-6">
-                Combines 50-item OCEAN personality hardware mapping with 60-item PANAS-X affective strain analysis and Part III Normalcy Check into a single 3-part intake wizard.
-              </p>
-
+              <h2 className="text-2xl font-bold text-[#014421] mb-3">Executive Baseline Intake Pipeline</h2>
+              <p className="text-[#014421]/70 text-sm leading-relaxed mb-6">Combines 50-item OCEAN personality hardware mapping with 60-item PANAS-X affective strain analysis and Part III Normalcy Check into a single 3-part intake wizard.</p>
               <div className="space-y-2 mb-8">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#014421]">
-                  <ShieldCheck size={16} className="text-green-700" /> 
-                  <span>Part I: 50-Item IPIP-NEO (OCEAN Trait Baseline)</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-bold text-[#014421]">
-                  <ShieldCheck size={16} className="text-green-700" /> 
-                  <span>Part II: 60-Item PANAS-X Affect Audit</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-bold text-[#014421]">
-                  <ShieldCheck size={16} className="text-green-700" /> 
-                  <span>Part III: Normalcy & Operational Reality Check</span>
-                </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-[#014421]"><ShieldCheck size={16} className="text-green-700" /> <span>Part I: 50-Item IPIP-NEO (OCEAN Trait Baseline)</span></div>
+                <div className="flex items-center gap-2 text-xs font-bold text-[#014421]"><ShieldCheck size={16} className="text-green-700" /> <span>Part II: 60-Item PANAS-X Affect Audit</span></div>
+                <div className="flex items-center gap-2 text-xs font-bold text-[#014421]"><ShieldCheck size={16} className="text-green-700" /> <span>Part III: Normalcy & Operational Reality Check</span></div>
               </div>
             </div>
-
-            <Link 
-              href="/onboarding"
-              className="w-full py-4 bg-[#014421] text-white font-bold rounded-xl hover:bg-[#014421]/90 transition-all flex items-center justify-center gap-2 shadow-md group-hover:shadow-lg"
-            >
-              <span>Launch Unified Master Assessment</span>
-              <ArrowRight size={18} />
+            <Link href="/onboarding" className="w-full py-4 bg-[#014421] text-white font-bold rounded-xl hover:bg-[#014421]/90 transition-all flex items-center justify-center gap-2 shadow-md">
+              <span>Launch Unified Master Assessment</span> <ArrowRight size={18} />
             </Link>
           </div>
 
-          {/* SECONDARY COMPLEMENTARY DIAGNOSTIC TOOL: FINANCIAL AUDIT */}
+          {/* FINANCIAL AUDIT CARD */}
           <div className="bg-white p-8 rounded-2xl shadow-md border border-[#014421]/10 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="p-3 bg-[#014421]/10 text-[#014421] rounded-xl">
-                  <BarChart3 size={28} />
-                </div>
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 font-bold text-xs rounded-full uppercase tracking-wider">
-                  Organizational Tool
-                </span>
+                <div className="p-3 bg-[#014421]/10 text-[#014421] rounded-xl"><BarChart3 size={28} /></div>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 font-bold text-xs rounded-full uppercase tracking-wider">Organizational Tool</span>
               </div>
-
-              <h2 className="text-2xl font-bold text-[#014421] mb-3">
-                Financial & Strategy Audit Engine
-              </h2>
-              <p className="text-[#014421]/70 text-sm leading-relaxed mb-6">
-                Position-aware 990 extraction and institutional financial sustainability audit designed for non-profit executives and early-stage startup board leaders.
-              </p>
+              <h2 className="text-2xl font-bold text-[#014421] mb-3">Financial & Strategy Audit Engine</h2>
+              <p className="text-[#014421]/70 text-sm leading-relaxed mb-6">Position-aware 990 extraction and institutional financial sustainability audit designed for non-profit executives and early-stage startup board leaders.</p>
             </div>
-
-            <Link 
-              href="/financial"
-              className="w-full py-4 bg-white text-[#014421] border-2 border-[#014421] font-bold rounded-xl hover:bg-[#014421]/5 transition-all flex items-center justify-center gap-2"
-            >
-              <span>Access Financial Audit Engine</span>
-              <ArrowRight size={18} />
+            <Link href="/financial" className="w-full py-4 bg-white text-[#014421] border-2 border-[#014421] font-bold rounded-xl hover:bg-[#014421]/5 transition-all flex items-center justify-center gap-2">
+              <span>Access Financial Audit Engine</span> <ArrowRight size={18} />
             </Link>
           </div>
-
         </div>
       </main>
-
       <Footer />
     </div>
   );
-}btitle: "Emotional Climate",
-      desc: "Measure positive and negative affect to gauge emotional climate and resilience within leadership.",
-      status: "Operational",
-      href: "/panas"
-    },
-    {
-      title: "Financial Intelligence",
-      subtitle: "Fiscal Health",
-      desc: "AI-driven fiscal health audit for 501(c)(3) organizations. Automated IRS 990 parsing and benchmarking.",
-      status: "Coming Soon",
-      href: "#"
-    }
-  ];
-
-  // Corrected Data Array
-  const labLiteNotes = [
-    {
-      tag: "Intelligence Note 01",
-      title: "The Boardroom Trap: Why 70% of Change Fails",
-      desc: "Implementing new initiatives requires attending to human dynamics.",
-      meta: "Why 70% of Change Fails",
-      href: "https://leaderlaboratory.substack.com/p/the-boardroom-trap-why-70-of-change?r=1ugy10"
-    }
-  ];
-
-  return (
-    <>
-      <Header />
-      <main className="min-h-screen">
-        <section className="relative bg-[#fdfbf5] py-12 md:py-24 px-4 md:px-8 overflow-hidden font-sans text-[#014421]">
-          
-          {/* Background Texture: Subtle Research Grid */}
-          <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="researchGrid" width="80" height="80" patternUnits="userSpaceOnUse">
-                  <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#researchGrid)" />
-            </svg>
-          </div>
-
-          <div className="container mx-auto max-w-7xl relative z-10">
-            
-            {/* Academic Header */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#014421]/10 pb-8 mb-16">
-              <div className="mb-6 md:mb-0">
-                <span className="text-[#C5A059] font-bold tracking-[0.4em] text-[10px] uppercase block mb-2">Crescere Strategies LLC</span>
-                <h1 className="text-4xl md:text-6xl font-serif font-medium leading-none">
-                  Intelli<span className="italic font-light opacity-60">gence</span>
-                </h1>
-              </div>
-              <div className="flex flex-col md:items-end text-[10px] tracking-[0.15em] opacity-50 uppercase font-semibold text-right">
-                <span>Research Division</span>
-                <span>Ref: CS-INT-2026-Q1</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-              
-              {/* Main Content (Left 8) */}
-              <div className="lg:col-span-8">
-                <div className="max-w-3xl mb-16">
-                  <h2 className="text-[#C5A059] text-xs font-bold tracking-[0.3em] uppercase mb-6">Intelligence Brief</h2>
-                  <p className="text-xl md:text-2xl font-serif leading-relaxed text-[#014421]/90 mb-8 italic">
-                    "Advancing organizational health through the quantification of operational efficiency and human capital performance."
-                  </p>
-                  <p className="text-sm leading-relaxed text-[#014421]/70">
-                    The Intelligence division serves as the proprietary research arm of Crescere Strategies, focusing on the critical intersection of operations and people. Our diagnostic engines provide a rigorous, data-driven foundation for scaling high-performance teams.
-                  </p>
-                </div>
-
-                {/* Diagnostic Modules */}
-                <div className="mb-20">
-                  <h3 className="text-xs font-bold tracking-[0.2em] uppercase mb-8 border-b border-[#014421]/10 pb-4">Diagnostic Tools</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {diagnosticEngines.map((engine, i) => {
-                      const isOperational = engine.status === 'Operational';
-                      const CardContent = (
-                        <div className={`
-                          relative p-6 rounded-sm border transition-all duration-300 group
-                          ${isOperational 
-                            ? 'border-transparent hover:border-[#C5A059]/30 hover:bg-white hover:shadow-xl hover:-translate-y-1 cursor-pointer' 
-                            : 'border-transparent opacity-60 grayscale cursor-not-allowed'}
-                        `}>
-                          <span className="text-[#C5A059] text-[9px] font-bold tracking-widest uppercase block mb-3">{engine.subtitle}</span>
-                          <h4 className={`text-lg font-serif font-bold mb-3 transition-colors leading-tight ${isOperational ? 'group-hover:text-[#C5A059]' : ''}`}>
-                            {engine.title}
-                          </h4>
-                          <p className="text-xs leading-relaxed opacity-70 mb-6">{engine.desc}</p>
-                          <div className={`flex items-center gap-2 py-1 px-2 w-fit rounded-sm ${isOperational ? 'bg-emerald-500/10' : 'bg-gray-100'}`}>
-                            <div className={`w-1.5 h-1.5 rounded-full ${isOperational ? 'bg-emerald-600 animate-pulse' : 'bg-amber-600'}`}></div>
-                            <span className="text-[8px] uppercase tracking-widest font-bold opacity-80">{engine.status}</span>
-                          </div>
-                        </div>
-                      );
-
-                      return isOperational ? (
-                        <Link key={i} href={engine.href} className="block">
-                          {CardContent}
-                        </Link>
-                      ) : (
-                        <div key={i}>{CardContent}</div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Executive Notes Section */}
-                <div>
-                  <div className="flex items-center justify-between mb-10">
-                    <h3 className="text-xs font-bold tracking-[0.2em] uppercase">Executive Notes (Intelligence Lite)</h3>
-                    <div className="h-[1px] flex-1 bg-[#014421]/10 mx-6"></div>
-                  </div>
-                  
-                  <div className="space-y-12">
-                    {labLiteNotes.map((note, i) => (
-                      <a 
-                        key={i} 
-                        href={note.href} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex flex-col md:flex-row gap-6 md:gap-12 group cursor-pointer block no-underline"
-                      >
-                        <div className="md:w-32 shrink-0">
-                          <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.2em] uppercase">{note.tag}</span>
-                        </div>
-                        <div className="flex-1 pb-8 border-b border-[#014421]/5">
-                          <h5 className="text-xl font-serif font-bold mb-2 group-hover:text-[#C5A059] transition-colors text-[#014421]">
-                            {note.title}
-                          </h5>
-                          <p className="text-sm opacity-60 leading-relaxed mb-4 text-[#014421]">
-                            {note.desc}
-                          </p>
-                          <div className="flex items-center gap-2 opacity-40 text-[9px] font-bold uppercase tracking-widest text-[#014421]">
-                            <span>{note.meta}</span>
-                          </div>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Sticky Sidebar (Right 4) */}
-              <div className="lg:col-span-4 lg:sticky lg:top-12">
-                <div className="bg-white border border-[#014421]/10 p-8 shadow-sm relative">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-[#C5A059]"></div>
-                  
-                  <div className="mb-8">
-                    <h3 className="text-xl font-serif font-bold text-[#014421] mb-2">Access Portal</h3>
-                    <p className="text-[11px] leading-relaxed opacity-60">
-                      Register for proprietary access to the full intelligence sequence and operational frameworks.
-                    </p>
-                  </div>
-
-                  <div className="mb-8 overflow-hidden rounded-sm border border-[#014421]/5 bg-gray-50 min-h-[320px]">
-                    <iframe 
-                      src="https://leaderlaboratory.substack.com/embed" 
-                      className="w-full h-[320px] bg-white"
-                      frameBorder="0" 
-                      scrolling="no"
-                      title="Substack"
-                    ></iframe>
-                  </div>
-
-                  <div className="pt-8 border-t border-[#014421]/10">
-                    <a 
-                      href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7413946210195202048" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-3 bg-[#014421] text-[#fdfbf5] w-full py-4 rounded-sm font-bold text-[10px] tracking-[0.2em] hover:bg-[#002b15] transition-all shadow-md group"
-                    >
-                      <FaLinkedin size={16} />
-                      SUBSCRIBE FOR EXECUTIVE BRIEFS AT LEADER LAB LITE ON LINKEDIN
-                    </a>
-                  </div>
-
-                  <div className="mt-8 pt-6 border-t border-[#014421]/10 text-center">
-                    <p className="text-[8px] tracking-[0.2em] uppercase opacity-40 italic">
-                      Non-disclosure protocols in effect
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </>
-  );
-};
-
-export default LeadershipLab;
+}
