@@ -32,11 +32,31 @@ export default function AdminDashboard() {
   const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'Whittier';
 
   const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      setIsAuthenticated(true);
-      setAuthError(false);
-      fetchBaselines();
+ const fetchBaselines = async () => {
+    setLoading(true);
+    try {
+      // Fetch documents without strict orderBy to avoid index issues
+      const querySnapshot = await getDocs(collection(db, "executive_baselines"));
+      const records: ExecutiveBaseline[] = [];
+      
+      querySnapshot.forEach((doc) => {
+        records.push({ id: doc.id, ...doc.data() } as ExecutiveBaseline);
+      });
+
+      // Sort in-memory safely on client side
+      records.sort((a, b) => {
+        const timeA = a.completedAt?.toDate ? a.completedAt.toDate().getTime() : 0;
+        const timeB = b.completedAt?.toDate ? b.completedAt.toDate().getTime() : 0;
+        return timeB - timeA;
+      });
+
+      setBaselines(records);
+    } catch (error) {
+      console.error("Error fetching executive baselines:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
     } else {
       setAuthError(true);
     }
