@@ -43,9 +43,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/financial" className="text-[#fdfbf5]/80 hover:text-white transition-colors">
-                Financial Audit
-              </Link>
+  
             </li>
           </ul>
         </div>
