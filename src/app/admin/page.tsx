@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic';
 import React, { useState } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
-import { db } from '../../firebaseConfig';
+import { db, auth } from '@/lib/firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { Shield, Mail, FileSearch } from 'lucide-react';
 
