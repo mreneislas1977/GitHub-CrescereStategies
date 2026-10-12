@@ -27,7 +27,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState<ExecutiveBaseline | null>(null);
 
-  // Set default passcode to Whittier
+  // Default passcode set to Whittier
   const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'Whittier';
 
   const handleLogin = (e: React.FormEvent) => {
@@ -45,7 +45,7 @@ export default function AdminDashboard() {
     setLoading(true);
     try {
       const q = query(
-        collection(db, "executive_baselines"), 
+        collection(db, "executive_baselines"),
         orderBy("completedAt", "desc")
       );
       const querySnapshot = await getDocs(q);
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
 
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <input 
+                <input
                   type="password"
                   placeholder="Passcode"
                   value={password}
@@ -89,7 +89,7 @@ export default function AdminDashboard() {
                 <p className="text-xs font-bold text-red-600">Invalid admin passcode. Please try again.</p>
               )}
 
-              <button 
+              <button
                 type="submit"
                 className="w-full py-3.5 bg-[#014421] text-white font-bold rounded-xl hover:bg-[#014421]/90 transition-all shadow-md"
               >
@@ -113,7 +113,7 @@ export default function AdminDashboard() {
             <h1 className="text-3xl font-extrabold text-[#014421]">Executive Baselines Admin</h1>
             <p className="text-sm text-[#014421]/60 mt-1">Reviewing combined OCEAN + PANAS-X records from <code className="font-mono bg-gray-100 px-1.5 py-0.5 rounded">executive_baselines</code>.</p>
           </div>
-          <button 
+          <button
             onClick={fetchBaselines}
             className="px-4 py-2 bg-[#014421]/10 text-[#014421] text-xs font-bold rounded-lg hover:bg-[#014421]/20 transition-all"
           >
@@ -134,8 +134,8 @@ export default function AdminDashboard() {
                 </div>
               ) : (
                 baselines.map((rec) => (
-                  <div 
-                    key={rec.id} 
+                  <div
+                    key={rec.id}
                     onClick={() => setSelectedRecord(rec)}
                     className={`bg-white p-5 rounded-xl border transition-all cursor-pointer shadow-sm hover:shadow-md ${selectedRecord?.id === rec.id ? 'border-[#014421] ring-2 ring-[#014421]/20' : 'border-[#014421]/10'}`}
                   >
@@ -194,8 +194,8 @@ export default function AdminDashboard() {
                     <div className="p-3 bg-[#fdfbf5] rounded-lg border border-[#014421]/10">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-[#014421]/60 block mb-1">Outreach Status</span>
                       <span className="text-xs font-bold text-[#014421]">
-                        {selectedRecord.wantsCustomAnalysis 
-                          ? "Yes - Requested Confidential Customized Analysis" 
+                        {selectedRecord.wantsCustomAnalysis
+                          ? "Yes - Requested Confidential Customized Analysis"
                           : "No - Private Vault Storage Only"}
                       </span>
                     </div>
