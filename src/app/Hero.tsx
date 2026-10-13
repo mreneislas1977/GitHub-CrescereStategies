@@ -51,9 +51,9 @@ const Hero = () => {
           href="https://calendar.app.google/aZPBmmh8AfRjsyEz9"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-[#014421] hover:bg-[#022c16] text-[#fdfbf5] font-bold py-5 px-10 rounded-sm uppercase tracking-widest text-sm transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
+          className="inline-block border-2 border-[#C5A059] bg-[#014421] hover:bg-[#C5A059] text-[#fdfbf5] hover:text-[#014421] font-bold py-5 px-10 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
         >
-          Initiate Preliminary Study
+          Schedule A Preliminary Study
         </a>
 
       </div>
