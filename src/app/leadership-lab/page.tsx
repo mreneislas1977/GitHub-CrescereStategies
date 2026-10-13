@@ -73,7 +73,6 @@ export default function LeadershipLab() {
                 </h2>
               </div>
 
-              {/* Tightened Description */}
               <p className="text-sm leading-relaxed text-[#014421]/80">
                 A unified three-stage diagnostic protocol mapping enduring personality architecture against acute affective strain—identifying behavioral vulnerabilities before operational friction occurs.
               </p>
@@ -181,26 +180,27 @@ export default function LeadershipLab() {
             </span>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* 3-CARD BALANCED GRID */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* MONOGRAPH CARD 1 - LINKED TO SUBSTACK */}
-            <article className="bg-white p-8 border border-[#014421]/15 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            {/* MONOGRAPH CARD 1 - MARINATE */}
+            <article className="bg-white p-7 border border-[#014421]/15 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-[#C5A059] mb-3">
                   <span>MONOGRAPH 01</span>
                   <span>OCT 2026</span>
                 </div>
-                <h3 className="text-xl font-bold font-serif text-[#014421] mb-3 leading-snug">
-                  Why Strategy Breaks: How Unmapped Executive Strain Derails High-Stakes Restructuring
+                <h3 className="text-lg font-bold font-serif text-[#014421] mb-3 leading-snug">
+                  Marinate: Strategic Patience Under Acute Operational Strain
                 </h3>
                 <p className="text-xs text-[#014421]/70 leading-relaxed mb-6">
-                  An empirical analysis examining how unmapped emotional volatility across C-suite leadership precipitates cascading execution failure during major organizational pivots.
+                  An examination of how strategic initiatives require deliberate cognitive incubation—countering the impulsive pivots that derail high-stakes execution.
                 </p>
               </div>
               <div className="pt-4 border-t border-[#014421]/10 flex justify-between items-center text-xs font-bold tracking-wider uppercase">
-                <span className="text-[#014421]/60">READ TIME: 8 MIN</span>
+                <span className="text-[#014421]/60">READ TIME: 6 MIN</span>
                 <a 
-                  href="https://mreneislas.substack.com" 
+                  href="https://mreneislas.substack.com/p/marinate" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-[#014421] hover:text-[#C5A059] transition-colors flex items-center gap-1.5 cursor-pointer"
@@ -211,23 +211,59 @@ export default function LeadershipLab() {
               </div>
             </article>
 
-            {/* MONOGRAPH CARD 2 */}
-            <article className="bg-white p-8 border border-[#014421]/15 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            {/* MONOGRAPH CARD 2 - BLINDED BY THE SMOKE */}
+            <article className="bg-white p-7 border border-[#014421]/15 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-[#C5A059] mb-3">
                   <span>MONOGRAPH 02</span>
-                  <span>FORTHCOMING</span>
+                  <span>OCT 2026</span>
                 </div>
-                <h3 className="text-xl font-bold font-serif text-[#014421] mb-3 leading-snug">
-                  Quantifying Affective Strain: Applying PANAS-X to Executive Volatility
+                <h3 className="text-lg font-bold font-serif text-[#014421] mb-3 leading-snug">
+                  Blinded by the Smoke: Disentangling Operational Noise from Strategic Reality
                 </h3>
                 <p className="text-xs text-[#014421]/70 leading-relaxed mb-6">
-                  Methodological frameworks for isolating transient affective stress from enduring Big Five personality traits in board-level decision-makers.
+                  An analysis of executive misdirection during organizational friction—how acute panic, sensory saturation, and crisis firefighting obscure root systemic drivers.
                 </p>
               </div>
               <div className="pt-4 border-t border-[#014421]/10 flex justify-between items-center text-xs font-bold tracking-wider uppercase">
-                <span className="text-[#014421]/60">IN PEER REVIEW</span>
-                <span className="text-[#014421]/40">RELEASE SOON</span>
+                <span className="text-[#014421]/60">READ TIME: 5 MIN</span>
+                <a 
+                  href="https://leaderlaboratory.substack.com/p/blinded-by-the-smoke" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#014421] hover:text-[#C5A059] transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>READ ON SUBSTACK</span>
+                  <ExternalLink size={14} />
+                </a>
+              </div>
+            </article>
+
+            {/* MONOGRAPH CARD 3 - THE RIGHT MAPS */}
+            <article className="bg-white p-7 border border-[#014421]/15 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-[#C5A059] mb-3">
+                  <span>MONOGRAPH 03</span>
+                  <span>OCT 2026</span>
+                </div>
+                <h3 className="text-lg font-bold font-serif text-[#014421] mb-3 leading-snug">
+                  Experience and Relationships Unlock The Right Maps
+                </h3>
+                <p className="text-xs text-[#014421]/70 leading-relaxed mb-6">
+                  Why analytical data alone fails without navigational context: how seasoned tenure and relational capital decode an organization's informal operating architecture.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#014421]/10 flex justify-between items-center text-xs font-bold tracking-wider uppercase">
+                <span className="text-[#014421]/60">READ TIME: 6 MIN</span>
+                <a 
+                  href="https://mreneislas.substack.com/p/experience-and-relationships-unlock" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#014421] hover:text-[#C5A059] transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>READ ON SUBSTACK</span>
+                  <ExternalLink size={14} />
+                </a>
               </div>
             </article>
 
