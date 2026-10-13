@@ -69,7 +69,7 @@ export default function DiagnosticMethodology() {
                   Layer 01 • Structural Baseline
                 </span>
                 <h3 className="text-lg font-bold font-serif text-[#014421] mb-2">
-                  Psychological "Hardware" (Big Five / OCEAN)
+                  Psychological &quot;Hardware&quot; (Big Five / OCEAN)
                 </h3>
                 <p className="text-xs text-[#014421]/75 leading-relaxed mb-4">
                   Rooted in decades of factor-analytic research by Paul Costa and Robert McCrae. Measures immutable baseline trait tendencies across Extraversion, Agreeableness, Conscientiousness, Emotional Stability, and Intellect.
@@ -86,10 +86,10 @@ export default function DiagnosticMethodology() {
                   Layer 02 • Real-Time State Dynamics
                 </span>
                 <h3 className="text-lg font-bold font-serif text-[#014421] mb-2">
-                  Psychological "Software" (PANAS-X)
+                  Psychological &quot;Software&quot; (PANAS-X)
                 </h3>
                 <p className="text-xs text-[#014421]/75 leading-relaxed mb-4">
-                  Grounded in David Watson and Lee Anna Clark's (1994) expanded affect schedule. Audits acute situational friction, cognitive fatigue, threat detection, and subjective burden under current board-level conditions.
+                  Grounded in David Watson and Lee Anna Clark&apos;s (1994) expanded affect schedule. Audits acute situational friction, cognitive fatigue, threat detection, and subjective burden under current board-level conditions.
                 </p>
               </div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-[#014421]/60 pt-3 border-t border-[#014421]/10">
@@ -99,7 +99,7 @@ export default function DiagnosticMethodology() {
           </div>
         </div>
 
-        {/* SECTION 2: ARTHUR BROOKS AFFECT MATRIX (THE 4 ARCHETYPES) */}
+        {/* SECTION 2: ARTHUR BROOKS AFFECT MATRIX */}
         <div className="mb-16">
           <div className="flex items-center justify-between border-b border-[#014421]/15 pb-4 mb-8">
             <div className="flex items-center gap-3">
@@ -188,7 +188,7 @@ export default function DiagnosticMethodology() {
           </div>
         </div>
 
-        {/* SECTION 3: COMPUTATIONAL FORMULAS & STANDARDIZATION */}
+        {/* SECTION 3: COMPUTATIONAL STANDARDS */}
         <div className="mb-16 bg-white border border-[#014421]/15 rounded-sm p-8 shadow-sm">
           <div className="flex items-center gap-3 mb-6 pb-3 border-b border-[#014421]/10">
             <Activity className="text-[#C5A059]" size={20} />
@@ -198,7 +198,7 @@ export default function DiagnosticMethodology() {
           </div>
 
           <p className="text-sm text-[#014421]/80 leading-relaxed mb-6">
-            To eliminate raw self-reporting bias, individual subscale scores are standardized into normalized T-scores calibrated against Watson & Clark's normative adult executive distributions (Normative Mean = 50.0, Standard Deviation = 10.0).
+            To eliminate raw self-reporting bias, individual subscale scores are standardized into normalized T-scores calibrated against Watson &amp; Clark&apos;s normative adult executive distributions (Normative Mean = 50.0, Standard Deviation = 10.0).
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 items-center">
@@ -224,7 +224,7 @@ export default function DiagnosticMethodology() {
               <div className="p-3 bg-[#fdfbf5] border border-[#014421]/10 rounded-sm flex items-start gap-3">
                 <CheckCircle2 size={16} className="text-[#014421] mt-0.5 shrink-0" />
                 <div>
-                  <strong className="text-[#014421]">Standard Operational Range (40 &lt; T &lt; 60):</strong> Denotes balanced cognitive equilibrium under routine board conditions.
+                  <strong className="text-[#014421]">Standard Operational Range (40 to 60):</strong> Denotes balanced cognitive equilibrium under routine board conditions.
                 </div>
               </div>
               <div className="p-3 bg-[#fdfbf5] border border-[#014421]/10 rounded-sm flex items-start gap-3">
@@ -237,7 +237,7 @@ export default function DiagnosticMethodology() {
           </div>
         </div>
 
-        {/* SECTION 4: INSTITUTIONAL GOVERNANCE & NON-CLINICAL DISCLAIMER */}
+        {/* SECTION 4: GOVERNANCE & NON-CLINICAL DISCLAIMER */}
         <div className="mb-16 bg-[#fdfbf5] border border-[#014421]/20 rounded-sm p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b border-[#014421]/15">
             <Scale className="text-[#014421]" size={20} />
@@ -249,7 +249,7 @@ export default function DiagnosticMethodology() {
             The psychometric frameworks, behavioral analytics, and affective state measurements utilized by Crescere Strategies LLC (including the IPIP-NEO Big Five and PANAS-X evaluations) are applied strictly for executive risk management, organizational restructuring, and strategic leadership development.
           </p>
           <p className="text-xs text-[#014421]/75 leading-relaxed">
-            Crescere Strategies LLC provides strategic management consulting services only and does not provide formal psychiatric diagnoses, medical mental health treatment, or legal/tax counsel. The Executive Behavioral & Affective Audit is a strategic governance asset designed to model executive strain and structural stability within organizational systems.
+            Crescere Strategies LLC provides strategic management consulting services only and does not provide formal psychiatric diagnoses, medical mental health treatment, or legal/tax counsel. The Executive Behavioral &amp; Affective Audit is a strategic governance asset designed to model executive strain and structural stability within organizational systems.
           </p>
         </div>
 
@@ -276,11 +276,6 @@ export default function DiagnosticMethodology() {
         </div>
 
       </main>
-
-      <Footer />
-    </div>
-  );
-}
 
       <Footer />
     </div>
