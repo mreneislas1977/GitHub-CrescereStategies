@@ -38,15 +38,15 @@ const Hero = () => {
           <span className="text-[#C5A059] italic">to Adoption.</span>
         </h1>
 
-        {/* Sub-Headline / Copy */}
+        {/* Sub-Headline / Copy - Tightened Cadence */}
         <p className="text-lg md:text-xl text-[#5c4033] max-w-3xl mx-auto mb-6 leading-relaxed font-medium">
-          Missions succeed or fail based on the alignment of minds and behaviors.
+          Missions succeed or fail on the alignment of conviction, perception, and behavior.
         </p>
         <p className="text-base text-[#5c4033] max-w-2xl mx-auto mb-10 leading-relaxed opacity-80">
-          We apply rigorous sociological frameworks to bridge the gap between internal conviction and the world's perception, ensuring your mission isn't just heard—it’s adopted.
+          We deploy sociological frameworks to bridge the divide between internal mandate and external adoption—ensuring strategic intent translates into operational reality.
         </p>
 
-        {/* CTA Button - Directly opens Google Calendar */}
+        {/* CTA Button */}
         <a 
           href="https://calendar.app.google/aZPBmmh8AfRjsyEz9"
           target="_blank"
@@ -58,7 +58,7 @@ const Hero = () => {
 
       </div>
       
-      {/* Decorative Bottom Fade (Cream to Transparent) */}
+      {/* Decorative Bottom Fade */}
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#fdfbf5] to-transparent pointer-events-none"></div>
 
     </section>
