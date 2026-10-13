@@ -2,7 +2,7 @@
 import Header from '../../Header';
 import Footer from '../../Footer';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ShieldCheck, Activity, Sliders, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sliders } from 'lucide-react';
 
 export default function DiagnosticMethodology() {
   return (
@@ -14,7 +14,7 @@ export default function DiagnosticMethodology() {
         {/* BREADCRUMB & CLASSIFICATION */}
         <div className="flex flex-wrap items-center justify-between border-b border-[#014421]/15 pb-4 mb-8 text-[11px] font-bold tracking-widest uppercase">
           <Link 
-            href="/leader-lab" 
+            href="/leadership-lab" 
             className="inline-flex items-center gap-2 text-[#014421]/70 hover:text-[#014421] transition-colors"
           >
             <ArrowLeft size={14} />
