@@ -73,8 +73,9 @@ export default function LeadershipLab() {
                 </h2>
               </div>
 
+              {/* Tightened Description */}
               <p className="text-sm leading-relaxed text-[#014421]/80">
-                A unified 3-part diagnostic wizard that maps persistent personality hardware against short-term affective strain to detect behavioral risk vectors before operational friction occurs.
+                A unified three-stage diagnostic protocol mapping enduring personality architecture against acute affective strain—identifying behavioral vulnerabilities before operational friction occurs.
               </p>
 
               {/* STATS / METRICS GRID */}
@@ -109,7 +110,7 @@ export default function LeadershipLab() {
                 </div>
               </div>
 
-              {/* DUAL ACTION BUTTONS */}
+              {/* ACTION BUTTONS */}
               <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link 
                   href="/onboarding" 
@@ -120,7 +121,7 @@ export default function LeadershipLab() {
                 </Link>
 
                 <Link 
-                  href="/leader-lab/methodology" 
+                  href="/leadership-lab/methodology" 
                   className="inline-flex items-center justify-center gap-2 px-6 py-4 border border-[#014421]/20 text-[#014421] text-xs uppercase tracking-widest font-bold rounded-sm hover:border-[#C5A059] hover:text-[#C5A059] hover:bg-white/60 transition-all text-center"
                 >
                   <span>Explore Methodology</span>
@@ -182,7 +183,7 @@ export default function LeadershipLab() {
 
           <div className="grid md:grid-cols-2 gap-8">
             
-            {/* MONOGRAPH CARD 1 */}
+            {/* MONOGRAPH CARD 1 - LINKED TO SUBSTACK */}
             <article className="bg-white p-8 border border-[#014421]/15 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-[#C5A059] mb-3">
@@ -190,18 +191,23 @@ export default function LeadershipLab() {
                   <span>OCT 2026</span>
                 </div>
                 <h3 className="text-xl font-bold font-serif text-[#014421] mb-3 leading-snug">
-                  The Boardroom Trap: Why 70% of Strategic Pivots Fail Under Strain
+                  Why Strategy Breaks: How Unmapped Executive Strain Derails High-Stakes Restructuring
                 </h3>
                 <p className="text-xs text-[#014421]/70 leading-relaxed mb-6">
-                  An empirical analysis of how unmapped emotional volatility in C-suite leadership creates cascading execution failure during high-stakes organizational restructuring.
+                  An empirical analysis examining how unmapped emotional volatility across C-suite leadership precipitates cascading execution failure during major organizational pivots.
                 </p>
               </div>
               <div className="pt-4 border-t border-[#014421]/10 flex justify-between items-center text-xs font-bold tracking-wider uppercase">
                 <span className="text-[#014421]/60">READ TIME: 8 MIN</span>
-                <Link href="#" className="text-[#014421] hover:text-[#C5A059] transition-colors flex items-center gap-1">
-                  <span>READ PAPER</span>
+                <a 
+                  href="https://mreneislas.substack.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#014421] hover:text-[#C5A059] transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>READ ON SUBSTACK</span>
                   <ExternalLink size={14} />
-                </Link>
+                </a>
               </div>
             </article>
 
