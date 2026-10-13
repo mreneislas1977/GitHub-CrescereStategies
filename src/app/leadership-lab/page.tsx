@@ -1,27 +1,22 @@
 "use client";
-import React, { useState } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import Link from 'next/link';
 import { 
-  ShieldCheck, 
   ArrowRight, 
   Activity, 
   BrainCircuit, 
   BookOpen, 
-  Sliders, 
   CheckCircle2, 
   ExternalLink 
 } from 'lucide-react';
 
 export default function LeadershipLab() {
-  const [activeTab, setActiveTab] = useState("ocean");
-
   return (
-    <div className="min-h-screen bg-[#fdfbf5] text-[#014421] font-sans selection:bg-[#C5A059]/30">
+    <div className="flex min-h-screen flex-col bg-[#fdfbf5] text-[#014421] font-sans selection:bg-[#C5A059]/30">
       <Header />
 
-      <main className="pt-28 pb-24 px-6 max-w-6xl mx-auto">
+      <main className="flex-1 pt-28 pb-24 px-6 max-w-6xl mx-auto w-full">
         
         {/* TOP CLASSIFICATION BANNER */}
         <div className="flex flex-wrap items-center justify-between border-b border-[#014421]/15 pb-3 mb-10 text-[11px] font-bold tracking-widest text-[#014421]/70 uppercase">
@@ -114,13 +109,22 @@ export default function LeadershipLab() {
                 </div>
               </div>
 
-              <div className="pt-4">
+              {/* DUAL ACTION BUTTONS */}
+              <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link 
                   href="/onboarding" 
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#014421] text-[#fdfbf5] text-xs uppercase tracking-widest font-bold rounded-sm hover:bg-[#C5A059] hover:text-[#014421] transition-all shadow-md w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#014421] text-[#fdfbf5] text-xs uppercase tracking-widest font-bold rounded-sm hover:bg-[#C5A059] hover:text-[#014421] transition-all shadow-md text-center"
                 >
                   <span>Launch Master Diagnostic</span>
                   <ArrowRight size={16} />
+                </Link>
+
+                <Link 
+                  href="/leader-lab/methodology" 
+                  className="inline-flex items-center justify-center gap-2 px-6 py-4 border border-[#014421]/20 text-[#014421] text-xs uppercase tracking-widest font-bold rounded-sm hover:border-[#C5A059] hover:text-[#C5A059] hover:bg-white/60 transition-all text-center"
+                >
+                  <span>Explore Methodology</span>
+                  <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
@@ -132,7 +136,6 @@ export default function LeadershipLab() {
                 <span>NORMATIVE Z-SCORES</span>
               </div>
 
-              {/* RADAR CHART MOCKUP GRAPHIC */}
               <div className="relative w-full h-48 flex items-center justify-center my-2">
                 <svg viewBox="0 0 200 200" className="w-full h-full max-h-48">
                   <polygon points="100,20 176,64 147,156 53,156 24,64" fill="none" stroke="#014421" strokeOpacity="0.15" strokeWidth="1" />
@@ -160,77 +163,6 @@ export default function LeadershipLab() {
               </div>
             </div>
 
-          </div>
-        </div>
-
-        {/* ARCHITECTURE EXPLORER */}
-        <div className="mb-20 bg-white p-8 border border-[#014421]/15 rounded-sm shadow-sm">
-          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#014421]/10">
-            <Sliders size={20} className="text-[#C5A059]" />
-            <h3 className="text-xl font-bold font-serif text-[#014421]">
-              Engine Diagnostic Architecture
-            </h3>
-          </div>
-
-          {/* TABS */}
-          <div className="flex flex-wrap gap-2 mb-6 text-xs border-b border-[#014421]/10 pb-2 font-bold tracking-wider uppercase">
-            <button 
-              onClick={() => setActiveTab('ocean')}
-              className={`px-4 py-2 transition-colors ${activeTab === 'ocean' ? 'bg-[#014421] text-[#fdfbf5]' : 'bg-[#014421]/5 text-[#014421]/70 hover:bg-[#014421]/10'}`}
-            >
-              01. OCEAN Personality Hardware
-            </button>
-            <button 
-              onClick={() => setActiveTab('panas')}
-              className={`px-4 py-2 transition-colors ${activeTab === 'panas' ? 'bg-[#014421] text-[#fdfbf5]' : 'bg-[#014421]/5 text-[#014421]/70 hover:bg-[#014421]/10'}`}
-            >
-              02. PANAS-X Affect Audit
-            </button>
-            <button 
-              onClick={() => setActiveTab('normalcy')}
-              className={`px-4 py-2 transition-colors ${activeTab === 'normalcy' ? 'bg-[#014421] text-[#fdfbf5]' : 'bg-[#014421]/5 text-[#014421]/70 hover:bg-[#014421]/10'}`}
-            >
-              03. Operational Reality Check
-            </button>
-          </div>
-
-          {/* TAB CONTENT */}
-          <div className="text-sm leading-relaxed text-[#014421]/80">
-            {activeTab === 'ocean' && (
-              <div className="space-y-4">
-                <p>
-                  <strong>50-Item IPIP-NEO Framework:</strong> Measures enduring baseline trait architecture across Extraversion, Agreeableness, Conscientiousness, Emotional Stability, and Intellect. Trait hardware remains relatively constant over extended executive horizons.
-                </p>
-                <div className="grid sm:grid-cols-2 gap-3 text-xs uppercase tracking-wider font-bold pt-2">
-                  <div className="p-3 bg-[#fdfbf5] border border-[#014421]/10"><strong>Primary Focus:</strong> Baseline behavior tendencies under routine operations.</div>
-                  <div className="p-3 bg-[#fdfbf5] border border-[#014421]/10"><strong>Output Format:</strong> Factor raw scores & standardized normative ranges.</div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'panas' && (
-              <div className="space-y-4">
-                <p>
-                  <strong>60-Item PANAS-X Affect Scale:</strong> Audits transient emotional states and operational strain experienced over the preceding weeks. Tracks Positive Affect, Negative Affect, Fear, Hostility, Joviality, and Attentiveness.
-                </p>
-                <div className="grid sm:grid-cols-2 gap-3 text-xs uppercase tracking-wider font-bold pt-2">
-                  <div className="p-3 bg-[#fdfbf5] border border-[#014421]/10"><strong>Primary Focus:</strong> Transient stress response and cognitive fatigue.</div>
-                  <div className="p-3 bg-[#fdfbf5] border border-[#014421]/10"><strong>Output Format:</strong> 13 Subscale Affect Indices with volatility flags.</div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'normalcy' && (
-              <div className="space-y-4">
-                <p>
-                  <strong>Self-Reported Normalcy Calibration:</strong> Evaluates whether current psychometric intake reflects typical executive operations or transient crisis conditions, preventing misclassification during acute board stress or operational pivots.
-                </p>
-                <div className="grid sm:grid-cols-2 gap-3 text-xs uppercase tracking-wider font-bold pt-2">
-                  <div className="p-3 bg-[#fdfbf5] border border-[#014421]/10"><strong>Primary Focus:</strong> Intake bias detection & condition grounding.</div>
-                  <div className="p-3 bg-[#fdfbf5] border border-[#014421]/10"><strong>Output Format:</strong> 5-Point Normalcy Index & Volatility Tagging.</div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
 
