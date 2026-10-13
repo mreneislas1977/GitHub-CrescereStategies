@@ -250,7 +250,7 @@ export default function LeadershipLab() {
                   Experience and Relationships Unlock The Right Maps
                 </h3>
                 <p className="text-xs text-[#014421]/70 leading-relaxed mb-6">
-                  Why analytical data alone fails without navigational context: how seasoned tenure and relational capital decode an organization's informal operating architecture.
+                  Why analytical data alone fails without navigational context: how seasoned tenure and relational capital decode an organization&apos;s informal operating architecture.
                 </p>
               </div>
               <div className="pt-4 border-t border-[#014421]/10 flex justify-between items-center text-xs font-bold tracking-wider uppercase">
