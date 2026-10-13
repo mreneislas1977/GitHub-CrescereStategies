@@ -8,7 +8,7 @@ import { oceanQuestions } from '../../lib/oceanQuestions';
 import { panasQuestions } from '../../lib/panasQuestions';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { ArrowRight, CheckCircle, Lock, Printer, Gauge, Mail, MessageSquare } from 'lucide-react';
+import { ArrowRight, CheckCircle, Lock, Printer, Gauge, Mail, MessageSquare, Calendar } from 'lucide-react';
 
 export default function OnboardingPipeline() {
   // WIZARD STEP CONTROL: 1 = OCEAN, 2 = PANAS-X, 3 = Normalcy Check
@@ -139,14 +139,28 @@ export default function OnboardingPipeline() {
               Profile compiled for <strong>{email}</strong>.
             </p>
 
-            {/* Consultation Indicator Banner */}
-            <div className="mb-8 p-3 bg-[#014421]/5 rounded-lg border border-[#014421]/10 inline-flex items-center gap-2 text-xs font-bold text-[#014421]">
-              <MessageSquare size={16} />
-              <span>
-                {wantsConsultation 
-                  ? "Free Consultation Requested: A Crescere Strategies advisor will reach out to review your results." 
-                  : "Private Baseline Saved: No consultation requested."}
-              </span>
+            {/* Consultation Indicator & Calendar Booking Callout */}
+            <div className="mb-8 p-4 bg-[#014421]/5 rounded-xl border border-[#014421]/10 flex flex-col items-center gap-3">
+              <div className="inline-flex items-center gap-2 text-xs font-bold text-[#014421]">
+                <MessageSquare size={16} />
+                <span>
+                  {wantsConsultation 
+                    ? "Free Consultation Requested: Schedule your session below." 
+                    : "Private Baseline Saved: No consultation requested."}
+                </span>
+              </div>
+
+              {wantsConsultation && (
+                <a
+                  href="https://calendar.app.google/BmYeAJiPqk5dSnBv5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-2 px-6 py-3 bg-[#014421] text-[#fdfbf5] font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-[#C5A059] hover:text-[#014421] transition-all shadow-md"
+                >
+                  <Calendar size={16} />
+                  Book Time on Google Calendar
+                </a>
+              )}
             </div>
 
             {/* Normalcy Check Badge */}
