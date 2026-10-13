@@ -1,11 +1,7 @@
 'use client';
-import React from 'react';
-import Image from 'next/image'; 
-import { useModal } from './ModalContext';
+import Image from 'next/image';
 
 const Hero = () => {
-  const { openModal } = useModal();
-
   return (
     // SECTION: Cream Background (#fdfbf5) with Dark Green Text
     <section className="relative min-h-[90vh] flex items-center justify-center bg-[#fdfbf5] overflow-hidden">
@@ -50,13 +46,15 @@ const Hero = () => {
           We apply rigorous sociological frameworks to bridge the gap between internal conviction and the world's perception, ensuring your mission isn't just heard—it’s adopted.
         </p>
 
-        {/* CTA Button - Wired to Global Modal */}
-        <button 
-          onClick={openModal} 
-          className="bg-[#014421] hover:bg-[#022c16] text-[#fdfbf5] font-bold py-5 px-10 rounded-sm uppercase tracking-widest text-sm transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
+        {/* CTA Button - Directly opens Google Calendar */}
+        <a 
+          href="https://calendar.app.google/aZPBmmh8AfRjsyEz9"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-[#014421] hover:bg-[#022c16] text-[#fdfbf5] font-bold py-5 px-10 rounded-sm uppercase tracking-widest text-sm transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
         >
           Initiate Preliminary Study
-        </button>
+        </a>
 
       </div>
       
