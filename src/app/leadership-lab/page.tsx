@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 
 export default function LeadershipLab() {
-  const [activeTab, setActiveTab] = useState<'ocean' | 'panas' | 'normalcy'>('ocean');
+  const [activeTab, setActiveTab] = useState("ocean");
 
   return (
     <div className="min-h-screen bg-[#fdfbf5] text-[#014421] font-sans selection:bg-[#C5A059]/30">
@@ -51,7 +51,7 @@ export default function LeadershipLab() {
           </p>
         </div>
 
-        {/* MAIN DIAGNOSTIC ENGINE SPECIFICATION (HERO ENGINE CARD) */}
+        {/* MAIN DIAGNOSTIC ENGINE SPECIFICATION */}
         <div className="mb-20 bg-white border border-[#014421]/20 rounded-sm shadow-xl overflow-hidden relative">
           
           {/* TOP CARD BAR */}
@@ -67,7 +67,7 @@ export default function LeadershipLab() {
 
           <div className="p-8 sm:p-10 grid lg:grid-cols-12 gap-10 items-center">
             
-            {/* LEFT: ENGINE SPECIFICATIONS & INTENT */}
+            {/* LEFT: ENGINE SPECIFICATIONS */}
             <div className="lg:col-span-7 space-y-6">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#C5A059] block mb-1">
@@ -135,19 +135,15 @@ export default function LeadershipLab() {
               {/* RADAR CHART MOCKUP GRAPHIC */}
               <div className="relative w-full h-48 flex items-center justify-center my-2">
                 <svg viewBox="0 0 200 200" className="w-full h-full max-h-48">
-                  {/* Concentric Polygons */}
                   <polygon points="100,20 176,64 147,156 53,156 24,64" fill="none" stroke="#014421" strokeOpacity="0.15" strokeWidth="1" />
                   <polygon points="100,45 152,75 132,137 68,137 48,75" fill="none" stroke="#014421" strokeOpacity="0.2" strokeWidth="1" />
                   <polygon points="100,70 128,86 117,118 83,118 72,86" fill="none" stroke="#014421" strokeOpacity="0.25" strokeWidth="1" />
-                  {/* Axis Lines */}
                   <line x1="100" y1="100" x2="100" y2="20" stroke="#014421" strokeOpacity="0.2" strokeDasharray="2 2" />
                   <line x1="100" y1="100" x2="176" y2="64" stroke="#014421" strokeOpacity="0.2" strokeDasharray="2 2" />
                   <line x1="100" y1="100" x2="147" y2="156" stroke="#014421" strokeOpacity="0.2" strokeDasharray="2 2" />
                   <line x1="100" y1="100" x2="53" y2="156" stroke="#014421" strokeOpacity="0.2" strokeDasharray="2 2" />
                   <line x1="100" y1="100" x2="24" y2="64" stroke="#014421" strokeOpacity="0.2" strokeDasharray="2 2" />
-                  {/* Score Polygon overlay */}
                   <polygon points="100,32 160,70 125,142 62,130 38,72" fill="#C5A059" fillOpacity="0.25" stroke="#C5A059" strokeWidth="2" />
-                  {/* Radar Points */}
                   <circle cx="100" cy="32" r="3" fill="#014421" />
                   <circle cx="160" cy="70" r="3" fill="#014421" />
                   <circle cx="125" cy="142" r="3" fill="#014421" />
@@ -301,4 +297,36 @@ export default function LeadershipLab() {
         </div>
 
         {/* SUBSTACK DISPATCH TERMINAL */}
-        <div className="bg-white p-8 border
+        <div className="bg-white p-8 border border-[#014421]/20 rounded-sm shadow-md text-center max-w-3xl mx-auto">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[#C5A059] mb-2">
+            Executive Intelligence Briefings
+          </div>
+          <h3 className="text-2xl font-bold font-serif text-[#014421] mb-3">
+            Subscribe to Private Intelligence Dispatches
+          </h3>
+          <p className="text-xs text-[#014421]/70 mb-6 max-w-md mx-auto">
+            Receive confidential psychometric research updates, C-suite case studies, and executive risk analysis directly to your inbox.
+          </p>
+
+          <div className="max-w-md mx-auto">
+            <iframe 
+              src="https://mreneislas.substack.com/embed" 
+              width="100%" 
+              height="280" 
+              style={{ background: "transparent", border: "none" }} 
+              frameBorder="0" 
+              scrolling="no"
+            />
+          </div>
+
+          <p className="text-[10px] font-bold uppercase tracking-widest text-[#014421]/40 mt-4">
+            CONFIDENTIAL PROTOCOLS APPLY • NO SPAM
+          </p>
+        </div>
+
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
